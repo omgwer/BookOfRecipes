@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "RFoevJ+NrtZa86E7bVaN8QrsVRCw+1K5CO3n8VSsaWifI/sT5tOZzzNlEk0xRtZWSzGEoO/9b+bHiMDIOyVwcA==",
+  "success": true,
+  "projectFilePath": "D:\\Study\\BookOfRecipes\\FrontEnd\\FrontEnd.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\79033\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\6.0.4\\microsoft.aspnetcore.spaservices.extensions.6.0.4.nupkg.sha512",
+    "C:\\Users\\79033\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\79033\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\6.0.0\\microsoft.extensions.fileproviders.physical.6.0.0.nupkg.sha512",
+    "C:\\Users\\79033\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\6.0.0\\microsoft.extensions.filesystemglobbing.6.0.0.nupkg.sha512",
+    "C:\\Users\\79033\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\79033\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
