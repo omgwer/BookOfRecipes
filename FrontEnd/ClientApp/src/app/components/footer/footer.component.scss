@@ -1,0 +1,22 @@
+@import 'colors';
+@import 'fonts';
+
+.footer
+{
+    background-color: $background-light-yellow;
+    padding: 37px 0;
+
+    &__container
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: $appSize;
+        margin: 0 auto;           
+    }
+
+    &__logo
+    {
+        color: $yellow;
+    }
+}
