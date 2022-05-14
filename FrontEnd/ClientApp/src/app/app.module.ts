@@ -8,9 +8,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TopBlockComponent } from './components/top-block/top-block.component';
 import { TagsBlockComponent } from './components/tags-block/tags-block.component';
+import { TagsListComponent } from './shared/tags-list/tags-list.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

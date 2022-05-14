@@ -15,6 +15,11 @@
   overflow: hidden;
 }
 
+body
+{
+  background-color: $background-white;  
+}
+
 .font {
   &__header {
     &_extra-large {
