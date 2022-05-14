@@ -1,3 +1,4 @@
 ﻿FrontEnd/ClientApp/node_modules/*
+FrontEnd/ClientApp/.vscode/*
 .idea/*
-
+.vs/*
