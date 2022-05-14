@@ -35,12 +35,14 @@
     {
         //box-shadow: 0 4px 4px 0 rgba($color: $black, $alpha: 0.25);
         margin-bottom: 13px;
+        color: $black-gray;
     }
 
     &__description
     {
         max-width: 566px;
         margin-bottom: 42px;
+        color: $gray;
     }
 
     &__add-recipe

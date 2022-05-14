@@ -1,14 +1,21 @@
 @import 'fonts';
+@import 'colors';
 
 .tags-block
 {
     max-width: $appSize;
     margin: 300px auto 0;
 
+    &__title
+    {
+        color: $dark-gray;
+    }
+
     &__description
     {
         max-width: 700px;
         margin-bottom: 40px;
         margin: 16px 0 42px;
+        color: $gray;
     }
 }

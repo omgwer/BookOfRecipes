@@ -9,14 +9,20 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TopBlockComponent } from './components/top-block/top-block.component';
 import { TagsBlockComponent } from './components/tags-block/tags-block.component';
 import { TagsListComponent } from './shared/tags-list/tags-list.component';
+import { RecipeOfDayComponent } from './components/recipe-of-day/recipe-of-day.component';
+import { SearchRecipesMainPageComponent } from './components/search-recipes-main-page/search-recipes-main-page.component';
+import { SearchRecipeFormComponent } from './shared/search-recipe-form/search-recipe-form.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent],
+  declarations: [AppComponent, 
+    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

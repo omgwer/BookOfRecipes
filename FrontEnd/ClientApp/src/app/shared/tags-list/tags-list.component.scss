@@ -23,5 +23,11 @@
     &__title
     {
         margin: 24px 0 16px;
+        color: $black-gray;
+    }
+
+    &__description
+    {
+        color: $gray;
     }
 }
