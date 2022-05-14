@@ -1,0 +1,41 @@
+@import 'fonts';
+@import 'colors';
+
+.recipe-of-day
+{
+    max-width: $appSize;
+    margin: 157px auto 150px;
+    display: flex;
+    justify-content: space-between;
+
+    &__title
+    {
+        max-width: 510px;
+        margin-bottom: 16px;
+        color: $black-gray;
+    }
+
+    &__description
+    {
+        color: $gray;
+    }
+
+    &__block
+    {
+        max-width: 542px;
+    }
+
+    &__info
+    {
+        display: flex;
+        justify-content: space-between;
+        max-width: 195px;        
+        margin: 0 0 0 auto;
+        color: $black-gray;
+    }
+
+    &__promo-image
+    {
+        margin: 23px 0 32px;
+    }    
+}

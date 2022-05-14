@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'fonts';
+@import 'colors';
+@import 'normalize';
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+body
+{
+  background-color: $background-white;  
+}
+
+.font {
+  &__header {
+    &_extra-large {
+      font: 700 72px/1.1 $main-font;
+    }
+
+    &_large {
+      font: 700 42px/1.47 $main-font;
+    }
+
+    &_normal {
+      font: 700 32px/1.21 $main-font;
+    }
+
+    &_tiny {
+      font: 700 24px/1.21 $main-font;
+    }
+  }
+
+  &__text {
+    &_extra-large {
+      font: 500 20px/1.2 $main-font;
+    }
+
+    &_large {
+      font: 600 18px/1.22 $main-font;
+    }
+
+    &_normal {
+      font: 400 18px/1.55 $main-font;
+    }
+
+    &_tiny {
+      font: 400 16px/1.75 $main-font;
+    }
+  }
+}

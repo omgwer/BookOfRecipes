@@ -1,0 +1,33 @@
+@import 'colors';
+
+.tags-list
+{
+    display: flex;
+    justify-content: space-between;
+
+    &__tag
+    {
+        max-width: 278px;
+        background-color: $white;
+        border-radius: 15px;
+        padding: 24px 24px 32px;
+        cursor: pointer;
+        transition: all 500ms ease;
+
+        &:hover
+        {
+            transform: scale(1.05);
+        }
+    }
+
+    &__title
+    {
+        margin: 24px 0 16px;
+        color: $black-gray;
+    }
+
+    &__description
+    {
+        color: $gray;
+    }
+}
