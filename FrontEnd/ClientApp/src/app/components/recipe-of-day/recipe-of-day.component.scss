@@ -4,9 +4,10 @@
 .recipe-of-day
 {
     max-width: $appSize;
-    margin: 157px auto 150px;
+    margin: 170px auto 146px;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
+    column-gap: 64px;
 
     &__title
     {
@@ -23,6 +24,7 @@
     &__block
     {
         max-width: 542px;
+        padding-left: 5px;
     }
 
     &__info

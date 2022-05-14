@@ -15,7 +15,7 @@
         height: 800px;
         background: content-box no-repeat url('../../../assets/top-block-image.png'); 
         top: -97px;
-        right: -151px;
+        right: -121px;
         z-index: -1;
     }
 
@@ -28,14 +28,14 @@
     &__title-block
     {
         max-width: 660px;
-        margin-top: 133px;
+        margin-top: 110px;
     }
 
     &__title
     {
-        //box-shadow: 0 4px 4px 0 rgba($color: $black, $alpha: 0.25);
         margin-bottom: 13px;
         color: $black-gray;
+        line-height: 1.25;
     }
 
     &__description
@@ -50,7 +50,7 @@
         background-color: $yellow;
         color: $white;
         border-radius: 16px;
-        padding: 16px 25px;
+        padding: 12px 25px;
         margin-right: 24px;
         width: 278px;
     }
@@ -60,6 +60,6 @@
         border: 1px solid $yellow;
         color: $yellow;
         border-radius: 16px;
-        padding: 16px 78px;
+        padding: 12px 78px;
     }
 }

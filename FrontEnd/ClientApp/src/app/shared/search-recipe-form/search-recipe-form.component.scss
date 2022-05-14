@@ -17,6 +17,7 @@
       border-radius: 16px;
       width: 716px;
       color: $black-gray;
+      cursor: pointer;    
    }
 
    &__input-field {
@@ -106,5 +107,10 @@
 
    .mat-form-field-outline-end {
       border-radius: 0 16px 16px 0 !important;
+   }
+
+   .mat-form-field-outline-end
+   {
+      width: 150px;
    }
 }
