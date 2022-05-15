@@ -13,16 +13,20 @@ import { RecipeOfDayComponent } from './components/recipe-of-day/recipe-of-day.c
 import { SearchRecipesMainPageComponent } from './components/search-recipes-main-page/search-recipes-main-page.component';
 import { SearchRecipeFormComponent } from './shared/search-recipe-form/search-recipe-form.component';
 import { MatInputModule } from '@angular/material/input';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { CreateRecipeComponent } from './pages/create-recipe/create-recipe.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [AppComponent, 
-    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent],
+    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent, MainPageComponent, CreateRecipeComponent, NotFoundPageComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
