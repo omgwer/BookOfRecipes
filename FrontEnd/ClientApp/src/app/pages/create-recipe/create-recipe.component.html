@@ -1,7 +1,33 @@
-<div>
-    <a> <- Назад</a>
-    <div>
-        <h2>Добавить новый рецепт</h2>
-        <button>Опубликовать</button>
+<div class="create-recipe">
+    <div class="create-recipe__top-block">
+        <a class="create-recipe__rollback">Назад</a>
+        <div class="create-recipe__block">
+            <h2 class="create-recipe__title">Добавить новый рецепт</h2>
+            <button mat-raised-button class="create-recipe__publicate-button">Опубликовать</button>
+        </div>
+    </div>
+    <div class="create-recipe__recipe-container">
+        <img src="../../../assets/create-recipe/upload-photo.png" class="create-recipe__upload-photo">
+        <input class="create-recipe__recipe-name">
+        <input class="create-recipe__recipe-description">
+        <input class="create-recipe__add-tags">
+        <div>
+            <input class="create-recipe__cooking-time">
+            <span>Минут</span>
+            <input class="create-recipe__serving">
+            <span>Персон</span>
+        </div>        
+    </div>
+    <div class="create-recipe__container">
+        <div class="create-recipe__ingrigients">
+            <div class="create-recipe__ingredients-container">
+                <div class="create-recipe__ingredient">
+                    <input class="create-recipe__ingridient-title">
+                    <input class="create-recipe__ingridient-description">
+                </div>            
+            </div>
+            <button mat-raised-button class="create-recipe__add-ingridient">+ Добавить ингридиент</button>
+        </div>
+        <div class="create-recipe__steps"></div>
     </div>
 </div>
