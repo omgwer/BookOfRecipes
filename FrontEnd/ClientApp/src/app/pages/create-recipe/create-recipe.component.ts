@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './create-recipe.component.html',
   styleUrls: ['./create-recipe.component.scss']
 })
-export class CreateRecipeComponent implements OnInit {
+export class CreateRecipeComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  saveRecipe():void {};
 }

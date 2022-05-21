@@ -1,0 +1,39 @@
+@import 'fonts';
+@import 'colors';
+
+.create-recipe
+{
+    max-width: $appSize;
+    margin: 0 auto;
+
+    &__rollback
+    {
+        color: $yellow;
+        padding-left: 20px;
+        position: relative;
+        cursor: pointer;  
+
+        &:before
+        {
+            position: absolute;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: url('../../../assets/yellow-pointer-left.svg');
+            left: -2px;
+            transition: ease-in-out 0.3s all;
+
+            
+        }
+
+        &:hover
+        {
+            font-weight: 500;
+
+            &::before
+            {                
+                left: -10px;                
+            }
+        }            
+    }
+}

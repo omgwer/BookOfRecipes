@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './top-block.component.html',
   styleUrls: ['./top-block.component.scss']
 })
-export class TopBlockComponent implements OnInit {
+export class TopBlockComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  addRecipe(): void {
   }
-
 }

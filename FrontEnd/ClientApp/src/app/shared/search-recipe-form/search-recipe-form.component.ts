@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-recipe-form',
@@ -11,5 +11,6 @@ export class SearchRecipeFormComponent implements OnInit {
  
   ngOnInit(): void {
   }
+
 
 }

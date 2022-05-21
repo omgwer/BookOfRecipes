@@ -7,8 +7,13 @@
             <div class="top-block__description font__text_normal">
                 Никаких кулинарных книг и блокнотов! Храни все любимые рецепты в одном месте.
             </div>
-            <a mat-raised-button class="top-block__add-recipe font__text_large" href="/create-recipe">+ &nbsp;&nbsp;&nbsp; Добавить рецепт</a>
-            <button mat-stroked-button class="top-block__login font__text_large">Войти</button>
+            <app-yellow-button
+                buttonValue="Добавить запись"
+                routingUrl="/create-recipe"
+            ></app-yellow-button>
+            <app-white-button
+                buttonValue="Войти"    
+            ></app-white-button>
         </div>        
     </div>
 </div>

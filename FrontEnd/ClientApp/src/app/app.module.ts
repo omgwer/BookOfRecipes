@@ -16,10 +16,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CreateRecipeComponent } from './pages/create-recipe/create-recipe.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { SimpleInputComponent } from './shared/inputs/simple-input/simple-input.component';
+import { DroplistInputComponent } from './shared/inputs/droplist-input/droplist-input.component';
+import { YellowButtonComponent } from './shared/buttons/yellow-button/yellow-button.component';
+import { WhiteButtonComponent } from './shared/buttons/white-button/white-button.component';
 
 @NgModule({
   declarations: [AppComponent, 
-    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent, MainPageComponent, CreateRecipeComponent, NotFoundPageComponent,],
+    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent, MainPageComponent, CreateRecipeComponent, NotFoundPageComponent, SimpleInputComponent, DroplistInputComponent, YellowButtonComponent, WhiteButtonComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,

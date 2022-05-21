@@ -1,9 +1,13 @@
 <div class="create-recipe">
     <div class="create-recipe__top-block">
-        <a class="create-recipe__rollback">Назад</a>
+        <a class="create-recipe__rollback font__text_normal">Назад</a>
         <div class="create-recipe__block">
             <h2 class="create-recipe__title">Добавить новый рецепт</h2>
-            <button mat-raised-button class="create-recipe__publicate-button">Опубликовать</button>
+            <app-yellow-button
+                buttonValue="Опубликовать"
+                (click) = "saveRecipe()"
+                routingUrl="/create-recipe"         
+            ></app-yellow-button>
         </div>
     </div>
     <div class="create-recipe__recipe-container">
