@@ -1,15 +1,14 @@
 @import 'colors';
 @import 'fonts';
 
-.search-recipe-form {   
-    
+.search-recipe-form {       
    &__submit {
       background-color: $yellow;
       color: $white;
       padding: 18px 47px;
       border-radius: 16px;
       margin-left: 16px;
-      top: -5px;
+      top: -11px;
    }
 
    &__input-field {
@@ -28,5 +27,11 @@
    {
       margin-right: 8px;
       cursor: pointer;   
+   }
+
+   &__input
+   {
+      width: 716px;
+      display: inline-block;
    }
 }

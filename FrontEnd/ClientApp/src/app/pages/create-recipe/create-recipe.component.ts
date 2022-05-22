@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-recipe.component.scss']
 })
 export class CreateRecipeComponent {
+  tests: Number[] = [1, 2,3];
 
   saveRecipe():void {};
+
+  addHeaderIngredient(): void {
+
+  };
 }

@@ -20,17 +20,22 @@ import { SimpleInputComponent } from './shared/inputs/simple-input/simple-input.
 import { DroplistInputComponent } from './shared/inputs/droplist-input/droplist-input.component';
 import { YellowButtonComponent } from './shared/buttons/yellow-button/yellow-button.component';
 import { WhiteButtonComponent } from './shared/buttons/white-button/white-button.component';
+import { LongInputComponent } from './shared/inputs/long-input/long-input.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [AppComponent, 
-    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent, MainPageComponent, CreateRecipeComponent, NotFoundPageComponent, SimpleInputComponent, DroplistInputComponent, YellowButtonComponent, WhiteButtonComponent,],
+    HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent, MainPageComponent, CreateRecipeComponent, NotFoundPageComponent, SimpleInputComponent, DroplistInputComponent, YellowButtonComponent, WhiteButtonComponent, LongInputComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,37 +1,102 @@
 <div class="create-recipe">
-    <div class="create-recipe__top-block">
-        <a class="create-recipe__rollback font__text_normal">Назад</a>
-        <div class="create-recipe__block">
-            <h2 class="create-recipe__title">Добавить новый рецепт</h2>
-            <app-yellow-button
-                buttonValue="Опубликовать"
-                (click) = "saveRecipe()"
-                routingUrl="/create-recipe"         
-            ></app-yellow-button>
+  <div class="create-recipe__top-block">
+    <span class="create-recipe__rollback font__text_normal" routerLink=""
+      >Назад</span
+    >
+    <div class="create-recipe__block">
+      <h2 class="create-recipe__title font__title_large">
+        Добавить новый рецепт
+      </h2>
+      <app-yellow-button
+        buttonValue="Опубликовать"
+        (click)="saveRecipe()"
+        routingUrl="/create-recipe"
+      ></app-yellow-button>
+    </div>
+  </div>
+  <div class="create-recipe__recipe-container">
+    <img
+      src="../../../assets/create-recipe/upload-photo.png"
+      class="create-recipe__upload-photo"
+    />
+    <div class="create-recipe__input-container">
+      <div class="create-recipe__recipe-name">
+        <app-simple-input placeholderName="Название рецепта"></app-simple-input>
+      </div>
+      <div class="create-recipe__recipe-description">
+        <app-long-input
+          placeholderName="Краткое описание рецепта(150 символов)"
+        ></app-long-input>
+      </div>
+      <div class="create-recipe__add-tags">
+        <app-simple-input placeholderName="Добавить теги"></app-simple-input>
+      </div>
+      <div class="create-recipe__droplist-container">
+        <div class="create-recipe__droplist-elements">
+          <div class="create-recipe__droplist-element">
+            <app-droplist-input
+              dropListType="cookingTime"
+              class="create-recipe__cooking-time"
+              placeholderName="Время готовки"
+            ></app-droplist-input>
+          </div>
+          <span class="font__text_tiny"> Минут</span>
         </div>
+        <div class="create-recipe__droplist-elements">
+          <div class="create-recipe__droplist-element">
+            <app-droplist-input
+              class="create-recipe__serving"
+              placeholderName="Порций в блюде"
+              dropListType="numberOfServings"
+            ></app-droplist-input>
+          </div>
+          <span class="font__text_tiny"> Персон</span>
+        </div>
+      </div>
     </div>
-    <div class="create-recipe__recipe-container">
-        <img src="../../../assets/create-recipe/upload-photo.png" class="create-recipe__upload-photo">
-        <input class="create-recipe__recipe-name">
-        <input class="create-recipe__recipe-description">
-        <input class="create-recipe__add-tags">
-        <div>
-            <input class="create-recipe__cooking-time">
-            <span>Минут</span>
-            <input class="create-recipe__serving">
-            <span>Персон</span>
-        </div>        
-    </div>
-    <div class="create-recipe__container">
-        <div class="create-recipe__ingrigients">
-            <div class="create-recipe__ingredients-container">
-                <div class="create-recipe__ingredient">
-                    <input class="create-recipe__ingridient-title">
-                    <input class="create-recipe__ingridient-description">
-                </div>            
+  </div>
+  <div class="create-recipe__container">
+    <div>
+      <p class="create-recipe__ingredients-header font__text_extra-large">
+        Ингридиенты
+      </p>
+      <div 
+      *ngFor="let test of tests"
+      class="create-recipe__ingredients-container">
+        <div class="create-recipe__ingredients">
+          <div class="create-recipe__ingredients">
+            <div class="create-recipe__ingredient-title">
+              <app-simple-input
+                placeholderName="Заголовок для ингридиентов"
+              ></app-simple-input>
             </div>
-            <button mat-raised-button class="create-recipe__add-ingridient">+ Добавить ингридиент</button>
+          </div>
+          <div>
+            <div class="create-recipe__ingredient-description">
+              <app-long-input
+                placeholderName="Список подуктов для категории"
+              ></app-long-input>
+            </div>
+          </div>
         </div>
-        <div class="create-recipe__steps"></div>
+      </div>
+      <div class="create-recipe__add-ingredient">
+        <app-white-button buttonValue="+&nbsp;&nbsp;&nbsp; Добавить заголовок" (click)="addHeaderIngredient()">           
+        </app-white-button>
+      </div>
     </div>
+    <div class="create-recipe__steps-container">
+      <div class="create-recipe__step">
+        <p class="font__text_large create-recipe__step-title">Шаг 1</p>
+        <div class="create-recipe__step-description">
+          <app-long-input
+            placeholderName="Список подуктов для категории"
+          ></app-long-input>
+        </div>
+      </div>
+      <div class="create-recipe__add-step">
+        <app-white-button buttonValue="+ &nbsp;&nbsp;&nbsp;Добавить шаг"> </app-white-button>
+      </div>
+    </div>
+  </div>
 </div>

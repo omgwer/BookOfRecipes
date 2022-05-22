@@ -1,20 +1,17 @@
 @import 'fonts';
 @import 'colors';
 
-.create-recipe
-{
+.create-recipe {
     max-width: $appSize;
-    margin: 0 auto;
+    margin: 49px auto 106px;
 
-    &__rollback
-    {
+    &__rollback {
         color: $yellow;
         padding-left: 20px;
         position: relative;
-        cursor: pointer;  
+        cursor: pointer;
 
-        &:before
-        {
+        &:before {
             position: absolute;
             content: '';
             width: 20px;
@@ -22,18 +19,123 @@
             background: url('../../../assets/yellow-pointer-left.svg');
             left: -2px;
             transition: ease-in-out 0.3s all;
-
-            
         }
 
-        &:hover
-        {
+        &:hover {
             font-weight: 500;
 
-            &::before
-            {                
-                left: -10px;                
+            &::before {
+                left: -10px;
             }
-        }            
+        }
     }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        margin-top: 11px;
+    }
+
+    &__recipe-container {
+        padding: 50px 0 50px;
+        margin-top: 50px;
+        position: relative;
+        background-color: $white;
+        border-radius: 16px;
+    }
+
+    &__input-container {
+        width: 647px;
+        background-color: $white;
+        margin: 0 70px 0 auto;
+        position: relative;
+    }
+
+    &__upload-photo {
+        position: absolute;
+    }
+
+    &__droplist-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__recipe-name {
+        margin-bottom: 20px;
+    }
+
+    &__recipe-description {
+        margin-bottom: 20px;
+    }
+
+    &__add-tags {
+        margin-bottom: 20px;
+    }
+
+    &__droplist-elements {
+        display: flex;
+        gap: 10px;
+        width: 287px;
+        align-items: center;
+        justify-content: stretch;
+    }
+
+    &__droplist-element {
+        width: 220px;
+    }
+
+    &__container {
+        display: flex;
+        margin-top: 40px;
+    }
+
+    &__ingredients-header {
+        margin-bottom: 30px;
+    }
+
+    &__ingredient-title {
+        margin-bottom: 20px;
+    }
+
+    &__ingredients-container {
+        width: 390px;
+        padding: 36px 30px;
+        background-color: $white;
+        border-radius: 24px;
+    }
+
+    &__steps-container {
+        margin-left: 30px;
+    }
+
+    &__step {
+        background-color: $white;
+        border-radius: 24px;
+        width: 790px;
+        padding: 50px 70px 70px;
+    }
+
+    &__step-title {
+        margin-bottom: 21px;
+    }
+
+    &__add-ingredient
+    {
+        display: block;
+        margin: 40px auto 0;
+        max-width: 380px;
+    }
+
+    &__add-step {
+        display: block;
+        margin: 40px auto 0;
+        max-width: 380px;
+    }
+
+
 }
