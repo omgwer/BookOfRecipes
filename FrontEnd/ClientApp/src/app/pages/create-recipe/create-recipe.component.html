@@ -63,11 +63,15 @@
       <div 
       *ngFor="let test of tests"
       class="create-recipe__ingredients-container">
+        <img 
+          src="../../../assets/create-recipe/close.svg" 
+          class="create-recipe__close-button"
+          (click) = "deleteHeaderIngredient()">
         <div class="create-recipe__ingredients">
           <div class="create-recipe__ingredients">
             <div class="create-recipe__ingredient-title">
               <app-simple-input
-                placeholderName="Заголовок для ингридиентов"
+                placeholderName="Заголовок для ингридиентов{{test}}"
               ></app-simple-input>
             </div>
           </div>
@@ -81,7 +85,9 @@
         </div>
       </div>
       <div class="create-recipe__add-ingredient">
-        <app-white-button buttonValue="+&nbsp;&nbsp;&nbsp; Добавить заголовок" (click)="addHeaderIngredient()">           
+        <app-white-button 
+        buttonValue="+&nbsp;&nbsp;&nbsp; Добавить заголовок" 
+        (click)="addHeaderIngredient()">         
         </app-white-button>
       </div>
     </div>

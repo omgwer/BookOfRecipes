@@ -107,6 +107,7 @@
         padding: 36px 30px;
         background-color: $white;
         border-radius: 24px;
+        position: relative;
     }
 
     &__steps-container {
@@ -135,6 +136,21 @@
         display: block;
         margin: 40px auto 0;
         max-width: 380px;
+    }
+
+    &__close-button {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        content: '';
+        right: 0;
+        top: -27px;
+        
+        &:hover
+        {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
     }
 
 
