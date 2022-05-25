@@ -23,9 +23,13 @@ import { WhiteButtonComponent } from './shared/buttons/white-button/white-button
 import { LongInputComponent } from './shared/inputs/long-input/long-input.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { RecipeHelper } from './data/helpers/recipe.helper';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, 
+  declarations: [AppComponent,
     HeaderComponent, FooterComponent, TopBlockComponent, TagsBlockComponent, TagsListComponent, RecipeOfDayComponent, SearchRecipesMainPageComponent, SearchRecipeFormComponent, MainPageComponent, CreateRecipeComponent, NotFoundPageComponent, SimpleInputComponent, DroplistInputComponent, YellowButtonComponent, WhiteButtonComponent, LongInputComponent,],
   imports: [
     BrowserModule,
@@ -35,9 +39,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     AppRoutingModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    FormsModule,    
   ],
-  providers: [],
+  providers: [RecipeHelper],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

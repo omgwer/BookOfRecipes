@@ -15,13 +15,20 @@
     </div>
   </div>
   <div class="create-recipe__recipe-container">
-    <img
-      src="../../../assets/create-recipe/upload-photo.png"
-      class="create-recipe__upload-photo"
+    <div>
+      <input      
+      type="file"
+      (change)="getFile($event)"
+      accept=".jpg, .png, .svg, .jpeg"
+      class="create-recipe__upload-photo-button"
+      id="photoUploadButton"
     />
+    <label class="create-recipe__upload-photo" for="photoUploadButton"></label>
+    </div>
     <div class="create-recipe__input-container">
       <div class="create-recipe__recipe-name">
-        <app-simple-input placeholderName="Название рецепта"></app-simple-input>
+        <app-simple-input placeholderName="Название рецепта"
+        ></app-simple-input>
       </div>
       <div class="create-recipe__recipe-description">
         <app-long-input
@@ -61,23 +68,28 @@
         Ингридиенты
       </p>
       <div 
-      *ngFor="let test of tests"
-      class="create-recipe__ingredients-container">
+      *ngFor="let ingr of ingredients"
+      class="create-recipe__ingredients-container"
+      id="ingredient_{{ingr}}">
         <img 
           src="../../../assets/create-recipe/close.svg" 
           class="create-recipe__close-button"
-          (click) = "deleteHeaderIngredient()">
+          (click) = "deleteHeaderIngredient(ingr)">
         <div class="create-recipe__ingredients">
           <div class="create-recipe__ingredients">
             <div class="create-recipe__ingredient-title">
               <app-simple-input
-                placeholderName="Заголовок для ингридиентов{{test}}"
+              ngDefaultControl 
+               [(ngModel)] = "ingredient.title"
+                placeholderName="Заголовок для ингридиентов"
               ></app-simple-input>
             </div>
           </div>
           <div>
             <div class="create-recipe__ingredient-description">
               <app-long-input
+              ngDefaultControl
+              [(ngModel)] = "ingredient.description"
                 placeholderName="Список подуктов для категории"
               ></app-long-input>
             </div>
@@ -91,9 +103,16 @@
         </app-white-button>
       </div>
     </div>
-    <div class="create-recipe__steps-container">
-      <div class="create-recipe__step">
-        <p class="font__text_large create-recipe__step-title">Шаг 1</p>
+    <div     
+    class="create-recipe__steps-container">
+      <div class="create-recipe__step"
+      *ngFor="let step of steps"
+      >
+      <img 
+      src="../../../assets/create-recipe/close.svg" 
+      class="create-recipe__close-step-button"
+      (click) = "deleteStep(step)">
+        <p class="font__text_large create-recipe__step-title">Шаг {{step}}</p>
         <div class="create-recipe__step-description">
           <app-long-input
             placeholderName="Список подуктов для категории"
@@ -101,7 +120,10 @@
         </div>
       </div>
       <div class="create-recipe__add-step">
-        <app-white-button buttonValue="+ &nbsp;&nbsp;&nbsp;Добавить шаг"> </app-white-button>
+        <app-white-button 
+        buttonValue="+ &nbsp;&nbsp;&nbsp;Добавить шаг"
+        (click) = "addStep()"
+        > </app-white-button>
       </div>
     </div>
   </div>
