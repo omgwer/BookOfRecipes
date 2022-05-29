@@ -68,7 +68,7 @@
         Ингридиенты
       </p>
       <div 
-      *ngFor="let ingredient of ingredients"
+      *ngFor="let ingredient of recipe.ingredients"
       class="create-recipe__ingredients-container"
       >
         <img 
@@ -106,7 +106,7 @@
     <div     
     class="create-recipe__steps-container">
       <div class="create-recipe__step"
-      *ngFor="let step of steps"
+      *ngFor="let step of recipe.steps"
       >
       <img 
       src="../../../assets/create-recipe/close.svg" 

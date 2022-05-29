@@ -1,16 +1,6 @@
-export interface Ingredient
-{
-    id?: number,
-    title?: string,
-    description?: string
-}
-
-export interface Step
-{
-    order: number, // шаг приготовления рецетпа
-    title: string,
-    description: string
-}
+import { Ingredient } from "./ingedient.interface"
+import { Step } from "./step.interface"
+import { Tag } from "./tag.interface"
 
 export interface Recipe
 {
@@ -18,10 +8,10 @@ export interface Recipe
     recipeId?: number,
     recipeName?: string,
     recipeDescription?: string,
-    tagsList?: string[],  //вынести в обьект
+    tagsList?: Tag[],  
     timeForCook?: number,
     numberOfServings?: number,
     ingredients: Ingredient[],
-    steps?: Step[],
+    steps: Step[],
     imageUrl?: string
 }
