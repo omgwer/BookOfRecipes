@@ -16,7 +16,7 @@
   </div>
   <div class="create-recipe__recipe-container">
     <div>
-      <input      
+      <input            
       type="file"
       (change)="getFile($event)"
       accept=".jpg, .png, .svg, .jpeg"
@@ -68,13 +68,13 @@
         Ингридиенты
       </p>
       <div 
-      *ngFor="let ingr of ingredients"
+      *ngFor="let ingredient of ingredients"
       class="create-recipe__ingredients-container"
-      id="ingredient_{{ingr}}">
+      >
         <img 
           src="../../../assets/create-recipe/close.svg" 
           class="create-recipe__close-button"
-          (click) = "deleteHeaderIngredient(ingr)">
+          (click) = "deleteHeaderIngredient(ingredient)">
         <div class="create-recipe__ingredients">
           <div class="create-recipe__ingredients">
             <div class="create-recipe__ingredient-title">

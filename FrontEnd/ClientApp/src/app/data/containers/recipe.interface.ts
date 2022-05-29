@@ -1,11 +1,13 @@
 export interface Ingredient
 {
-    title: string,
-    description: string
+    id?: number,
+    title?: string,
+    description?: string
 }
 
 export interface Step
 {
+    order: number, // шаг приготовления рецетпа
     title: string,
     description: string
 }
@@ -16,10 +18,10 @@ export interface Recipe
     recipeId?: number,
     recipeName?: string,
     recipeDescription?: string,
-    tagsList?: string[],
+    tagsList?: string[],  //вынести в обьект
     timeForCook?: number,
     numberOfServings?: number,
-    ingredients?: Ingredient[],
+    ingredients: Ingredient[],
     steps?: Step[],
     imageUrl?: string
 }

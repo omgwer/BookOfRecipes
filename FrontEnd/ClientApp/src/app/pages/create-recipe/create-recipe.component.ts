@@ -12,18 +12,18 @@ import { NgModel} from '@angular/forms';
   styleUrls: ['./create-recipe.component.scss'],
 })
 export class CreateRecipeComponent {
-  ingredients: number[] = [1];
+  recipe: Recipe = {ingredients:[], steps: []};
   steps: number[] = [1];
   file: any;
-  ingredient: Ingredient = {title: '', description: ''};
+  ingredient: Ingredient = {};
 
   constructor(private recipeHelper: RecipeHelper) {}
 
   addHeaderIngredient(): void {
-    this.ingredients.push(this.ingredients.length + 1);
+    this.recipe.ingredients.push({});
   }
 
-  deleteHeaderIngredient(item: number): void {
+  deleteHeaderIngredient(item: Ingredient): void {
     this.ingredients = this.ingredients.filter(
       (ingredient) => ingredient != item
     );
