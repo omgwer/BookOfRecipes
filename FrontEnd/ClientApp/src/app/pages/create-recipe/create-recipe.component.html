@@ -28,15 +28,20 @@
     <div class="create-recipe__input-container">
       <div class="create-recipe__recipe-name">
         <app-simple-input placeholderName="Название рецепта"
+        [(ngModel)] = "recipe.name"
         ></app-simple-input>
       </div>
       <div class="create-recipe__recipe-description">
         <app-long-input
           placeholderName="Краткое описание рецепта(150 символов)"
+          [(ngModel)] = "recipe.description"
         ></app-long-input>
       </div>
       <div class="create-recipe__add-tags">
-        <app-simple-input placeholderName="Добавить теги"></app-simple-input>
+        <app-simple-input 
+        placeholderName="Добавить теги"
+        [(ngModel)] = "recipe.tagsList"
+        ></app-simple-input>
       </div>
       <div class="create-recipe__droplist-container">
         <div class="create-recipe__droplist-elements">
@@ -45,6 +50,7 @@
               dropListType="cookingTime"
               class="create-recipe__cooking-time"
               placeholderName="Время готовки"
+              [(ngModel)] = "recipe.timeForCook"
             ></app-droplist-input>
           </div>
           <span class="font__text_tiny"> Минут</span>
@@ -55,6 +61,7 @@
               class="create-recipe__serving"
               placeholderName="Порций в блюде"
               dropListType="numberOfServings"
+              [(ngModel)] = "recipe.numberOfServings"
             ></app-droplist-input>
           </div>
           <span class="font__text_tiny"> Персон</span>
@@ -112,9 +119,10 @@
       src="../../../assets/create-recipe/close.svg" 
       class="create-recipe__close-step-button"
       (click) = "deleteStep(step)">
-        <p class="font__text_large create-recipe__step-title">Шаг {{step}}</p>
+        <p class="font__text_large create-recipe__step-title">Шаг {{step.order}}</p>
         <div class="create-recipe__step-description">
           <app-long-input
+            [(ngModel)] = "step.description"
             placeholderName="Список подуктов для категории"
           ></app-long-input>
         </div>

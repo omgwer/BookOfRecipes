@@ -27,18 +27,7 @@ export class CreateRecipeComponent {
     this.recipe.ingredients = this.recipe.ingredients.filter(
       (ingredient) => ingredient != item
     );
-    //this.updateHeaderArray();
   }
-
-  // updateHeaderArray(): void {
-  //   let arr: number = this.ingredients.length;
-  //   let i: number;
-  //   let newArr: number[] = [];
-  //   for (i = 1; i <= arr; i++) {
-  //     newArr.push(i);
-  //   }
-  //   this.ingredients = newArr;
-  // }
 
   addStep(): void {
     this.recipe.steps.push({});
@@ -46,18 +35,16 @@ export class CreateRecipeComponent {
 
   deleteStep(item: Step): void {
     this.recipe.steps = this.recipe.steps.filter((steps) => steps != item);
-    //this.updateStep();
+    this.updateSteps();
   }
 
-  // updateStep(): void {
-  //   let arr: number = this.steps.length;
-  //   let i: number;
-  //   let newArr: number[] = [];
-  //   for (i = 1; i <= arr; i++) {
-  //     newArr.push(i);
-  //   }
-  //   this.steps = newArr;
-  // }
+  updateSteps(): void {
+    let i = 0;
+    this.recipe.steps.forEach(step => {
+      step.order = i;
+      i++;
+    }); 
+  }
 
   getFile(event: any): void {
     this.file = event.target.files[0];
