@@ -27,6 +27,7 @@ import { RecipeHelper } from './data/helpers/recipe.helper';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent,
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     HttpClientModule,
-    FormsModule,    
+    FormsModule, 
+    ReactiveFormsModule,   
   ],
   providers: [RecipeHelper],
   bootstrap: [AppComponent],

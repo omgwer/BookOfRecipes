@@ -52,8 +52,11 @@ export class CreateRecipeComponent {
 
   saveRecipe(): void {
     this.recipe.authorId = 0;
-    this.recipe.imageUrl = 'null';
-    
+    this.recipe.imageUrl = 'null';    
     this.recipeHelper.createRecipe(this.recipe).subscribe();
+  }
+
+  validationForm(): boolean {
+    
   }
 }

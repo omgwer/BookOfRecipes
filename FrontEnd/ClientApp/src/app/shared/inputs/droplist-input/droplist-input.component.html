@@ -1,13 +1,22 @@
 <mat-form-field appearance="fill">
-  <mat-label>{{placeholderName}}</mat-label>
-  <mat-select *ngIf="dropListType == cookingTime">    
+  <mat-label>{{ placeholderName }}</mat-label>
+  <mat-select
+    *ngIf="dropListType == cookingTime"
+    [formControl]="input"
+    required
+  >
     <mat-option value="5">5</mat-option>
     <mat-option value="15">15</mat-option>
     <mat-option value="30">30</mat-option>
     <mat-option value="45">45</mat-option>
     <mat-option value="60">60</mat-option>
-  </mat-select>  
-  <mat-select *ngIf="dropListType == numberOfServings">    
+  </mat-select>
+  
+  <mat-select
+    *ngIf="dropListType == numberOfServings"
+    [formControl]="input"
+    required
+  >
     <mat-option value="1">1</mat-option>
     <mat-option value="2">2</mat-option>
     <mat-option value="3">3</mat-option>
@@ -18,5 +27,6 @@
     <mat-option value="8">8</mat-option>
     <mat-option value="9">9</mat-option>
     <mat-option value="10">10</mat-option>
-  </mat-select> 
+  </mat-select>
+  <mat-error *ngIf="input.invalid">{{getErrorMessage()}}</mat-error>
 </mat-form-field>

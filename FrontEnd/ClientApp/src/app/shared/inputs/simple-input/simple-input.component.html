@@ -1,4 +1,16 @@
-<mat-form-field appearance="fill" class="simple-input font__text_normal">
+<mat-form-field 
+  appearance="fill" 
+  class="simple-input font__text_normal" >
     <mat-label>{{placeholderName}}</mat-label>
-    <input autocomplete="off" class="simple-input__input-field" matInput />
+    <input 
+    *ngIf="validationType  == simpleInput"
+    autocomplete="off" 
+    class="simple-input__input-field" 
+    matInput 
+    [formControl]="input"
+    required
+    />    
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
+
+  

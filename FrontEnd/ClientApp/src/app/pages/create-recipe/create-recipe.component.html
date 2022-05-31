@@ -30,6 +30,7 @@
         <app-simple-input placeholderName="Название рецепта"
         [(ngModel)] = "recipe.name"
         ngDefaultControl
+        validationType="simpleInput"
         ></app-simple-input>
       </div>
       <div class="create-recipe__recipe-description">
@@ -37,6 +38,7 @@
           placeholderName="Краткое описание рецепта(150 символов)"
           [(ngModel)] = "recipe.description"
           ngDefaultControl
+          validationType="simpleInput"
         ></app-long-input>
       </div>
       <div class="create-recipe__add-tags">
@@ -44,6 +46,7 @@
         placeholderName="Добавить теги"
         [(ngModel)] = "recipe.tagsList"
         ngDefaultControl
+        validationType="simpleInput"
         ></app-simple-input>
       </div>
       <div class="create-recipe__droplist-container">
@@ -55,6 +58,7 @@
               placeholderName="Время готовки"
               [(ngModel)] = "recipe.timeForCook"
               ngDefaultControl
+              validationType="simpleInput"
             ></app-droplist-input>
           </div>
           <span class="font__text_tiny"> Минут</span>
@@ -67,6 +71,7 @@
               dropListType="numberOfServings"
               [(ngModel)] = "recipe.numberOfServings"
               ngDefaultControl
+              validationType="simpleInput"
             ></app-droplist-input>
           </div>
           <span class="font__text_tiny"> Персон</span>
@@ -94,6 +99,7 @@
               ngDefaultControl 
                [(ngModel)] = "ingredient.title"
                 placeholderName="Заголовок для ингридиентов"
+                validationType="simpleInput"
               ></app-simple-input>
             </div>
           </div>
@@ -103,6 +109,7 @@
               ngDefaultControl
               [(ngModel)] = "ingredient.description"
                 placeholderName="Список подуктов для категории"
+                validationType="simpleInput"
               ></app-long-input>
             </div>
           </div>
@@ -130,6 +137,7 @@
             [(ngModel)] = "step.description"
             placeholderName="Список подуктов для категории"
             ngDefaultControl
+            validationType="simpleInput"
           ></app-long-input>
         </div>
       </div>
