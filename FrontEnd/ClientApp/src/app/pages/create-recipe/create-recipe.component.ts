@@ -13,7 +13,7 @@ import { NgModel} from '@angular/forms';
 export class CreateRecipeComponent {
   recipe: Recipe = {
     ingredients:[{}], 
-    steps: [{}]
+    steps: [{order: 1}]
   };  
   file: any;
   
@@ -30,7 +30,7 @@ export class CreateRecipeComponent {
   }
 
   addStep(): void {
-    this.recipe.steps.push({});
+    this.recipe.steps.push({order: this.recipe.steps.length + 1});
   }
 
   deleteStep(item: Step): void {
@@ -39,7 +39,7 @@ export class CreateRecipeComponent {
   }
 
   updateSteps(): void {
-    let i = 0;
+    let i = 1;
     this.recipe.steps.forEach(step => {
       step.order = i;
       i++;
