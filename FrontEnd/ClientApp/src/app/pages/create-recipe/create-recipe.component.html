@@ -16,7 +16,7 @@
   </div>
   <div class="create-recipe__recipe-container">
     <div>
-      <input            
+      <input
       type="file"
       (change)="getFile($event)"
       accept=".jpg, .png, .svg, .jpeg"
@@ -40,7 +40,7 @@
       <div class="create-recipe__add-tags">
         <app-simple-input 
         placeholderName="Добавить теги"
-        [(ngModel)] = "recipe.tagsList"
+        (change)="updateTagsList($event)"
         ></app-simple-input>
       </div>
       <div class="create-recipe__droplist-container">

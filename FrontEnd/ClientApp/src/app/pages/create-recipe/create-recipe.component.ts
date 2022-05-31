@@ -56,4 +56,8 @@ export class CreateRecipeComponent {
     
     this.recipeHelper.createRecipe(this.recipe).subscribe();
   }
+
+  updateTagsList(event : any): void {
+    this.recipe.tagsList = event.target; // доделать
+  }
 }
