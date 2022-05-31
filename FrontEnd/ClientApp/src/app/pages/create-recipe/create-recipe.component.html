@@ -29,12 +29,14 @@
       <div class="create-recipe__recipe-name">
         <app-simple-input placeholderName="Название рецепта"
         [(ngModel)] = "recipe.name"
+        ngDefaultControl
         ></app-simple-input>
       </div>
       <div class="create-recipe__recipe-description">
         <app-long-input
           placeholderName="Краткое описание рецепта(150 символов)"
           [(ngModel)] = "recipe.description"
+          ngDefaultControl
         ></app-long-input>
       </div>
       <div class="create-recipe__add-tags">
@@ -51,6 +53,7 @@
               class="create-recipe__cooking-time"
               placeholderName="Время готовки"
               [(ngModel)] = "recipe.timeForCook"
+              ngDefaultControl
             ></app-droplist-input>
           </div>
           <span class="font__text_tiny"> Минут</span>
@@ -62,6 +65,7 @@
               placeholderName="Порций в блюде"
               dropListType="numberOfServings"
               [(ngModel)] = "recipe.numberOfServings"
+              ngDefaultControl
             ></app-droplist-input>
           </div>
           <span class="font__text_tiny"> Персон</span>
@@ -89,6 +93,7 @@
               ngDefaultControl 
                [(ngModel)] = "ingredient.title"
                 placeholderName="Заголовок для ингридиентов"
+                ngDefaultControl
               ></app-simple-input>
             </div>
           </div>
@@ -98,6 +103,7 @@
               ngDefaultControl
               [(ngModel)] = "ingredient.description"
                 placeholderName="Список подуктов для категории"
+                ngDefaultControl
               ></app-long-input>
             </div>
           </div>
@@ -124,6 +130,7 @@
           <app-long-input
             [(ngModel)] = "step.description"
             placeholderName="Список подуктов для категории"
+            ngDefaultControl
           ></app-long-input>
         </div>
       </div>
