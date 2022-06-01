@@ -1,0 +1,213 @@
+@import 'fonts';
+@import 'colors';
+
+
+.top-block {
+    position: relative;
+    max-width: $appSize;
+    margin: 0 auto;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 602px;
+        height: 800px;
+        background: content-box no-repeat url('../../../assets/top-block-image.png');
+        top: -97px;
+        right: -121px;
+        z-index: -1;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title-block {
+        max-width: 660px;
+        margin-top: 110px;
+    }
+
+    &__title {
+        margin-bottom: 13px;
+        color: $black-gray;
+        line-height: 1.25;
+    }
+
+    &__description {
+        max-width: 566px;
+        margin-bottom: 42px;
+        color: $gray;
+    }
+
+    &__add-recipe {
+        margin-right: 25px;
+    }
+
+    &__login-button {
+        display: inline-block;
+        max-width: 216px;
+    }
+}
+
+.tags-block
+{
+    max-width: $appSize;
+    margin: 351px auto 0;
+
+    &__title
+    {
+        color: $dark-gray;
+    }
+
+    &__description
+    {
+        max-width: 700px;
+        margin-bottom: 40px;
+        margin: 23px 0 50px;
+        color: $gray;
+    }
+}
+
+.recipe-of-day
+{
+    max-width: $appSize;
+    margin: 170px auto 146px;
+    display: flex;
+    justify-content: left;
+    column-gap: 64px;
+
+    &__title
+    {
+        max-width: 510px;
+        margin-bottom: 16px;
+        color: $black-gray;
+    }
+
+    &__description
+    {
+        color: $gray;
+    }
+
+    &__block
+    {
+        max-width: 542px;
+        padding-left: 5px;
+    }
+
+    &__info
+    {
+        display: flex;
+        justify-content: space-between;
+        max-width: 195px;        
+        margin: 0 0 0 auto;
+        color: $black-gray;
+    }
+
+    &__promo-image
+    {
+        margin: 23px 0 32px;
+    }    
+}
+
+.search-recipes
+{
+    max-width: $appSize;
+    margin: 0 auto 106px;
+    text-align: center;
+
+    &__description
+    {
+        margin: 16px 0 64px;
+        color: $gray;
+    }
+
+    &__title
+    {
+        color: $dark-gray;
+    }
+}  
+
+.search-recipe-form {       
+    &__submit {
+       background-color: $yellow;
+       color: $white;
+       padding: 18px 47px;
+       border-radius: 16px;
+       margin-left: 16px;
+       top: -11px;
+    }
+ 
+    &__input-field {
+       caret-color: pink;
+    }
+ 
+    &__tag-helper
+    {
+       text-align: left;
+       max-width: 884px;
+       margin: 0 auto;
+       color: $white-gray;
+    }
+ 
+    &__tag
+    {
+       margin-right: 8px;
+       cursor: pointer;   
+    }
+ 
+    &__input
+    {
+       width: 716px;
+       display: inline-block;
+    }
+ }
+
+ .tags-list
+{
+    display: flex;
+    justify-content: space-between;
+
+    &__tag
+    {
+        max-width: 278px;
+        background-color: $white;
+        border-radius: 15px;
+        padding: 24px 24px 32px;
+        cursor: pointer;
+        transition: all 500ms ease;
+
+        &:hover
+        {
+            transform: scale(1.05);
+        }
+    }
+
+    &__title
+    {
+        margin: 24px 0 16px;
+        color: $black-gray;
+    }
+
+    &__description
+    {
+        color: $gray;
+    }
+}
+
+.yellow-button
+{
+    background-color: $yellow;
+    color: $white;
+    border-radius: 16px;
+    padding: 12px 25px;
+    width: 278px;
+}
+
+.white-button {
+    border: 1px solid $yellow;
+    color: $yellow;
+    border-radius: 16px;
+    padding: 12px 78px;
+    width: 100%;
+}

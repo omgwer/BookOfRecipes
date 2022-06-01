@@ -187,6 +187,38 @@
             transform: scale(1.2);
         }
     }
+}
 
+.white-button {
+    border: 1px solid $yellow;
+    color: $yellow;
+    border-radius: 16px;
+    padding: 12px 78px;
+    width: 100%;
+}
 
+.yellow-button
+{
+    background-color: $yellow;
+    color: $white;
+    border-radius: 16px;
+    padding: 12px 25px;
+    width: 278px;
+}
+
+.simple-input {
+    background-color: $white;
+    border-radius: 16px;
+    color: $black-gray;
+    cursor: pointer;
+    width: 100%;
+ }
+
+ .long-input
+{
+   background-color: $white;
+      border-radius: 16px;
+      color: $black-gray;
+      cursor: pointer;
+      width: 100%; 
 }
