@@ -1,6 +1,5 @@
 import { Ingredient } from "./ingedient.interface"
 import { Step } from "./step.interface"
-import { Tag } from "./tag.interface"
 
 export interface Recipe
 {
@@ -8,7 +7,7 @@ export interface Recipe
     recipeId?: number,
     name?: string,
     description?: string,
-    tagsList?: Tag[],  
+    tagsList?: string,  
     timeForCook?: number,
     numberOfServings?: number,
     ingredients: Ingredient[],

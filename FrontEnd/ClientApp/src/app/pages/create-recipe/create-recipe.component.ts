@@ -1,68 +1,73 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/data/containers/recipe.interface';
 import { Ingredient } from 'src/app/data/containers/ingedient.interface';
 import { Step } from 'src/app/data/containers/step.interface';
 import { RecipeHelper } from 'src/app/data/helpers/recipe.helper';
-import { FormControl, NgModel, Validators} from '@angular/forms';
+import { FormArray, FormControl, NgModel, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-create-recipe',
   templateUrl: './create-recipe.component.html',
   styleUrls: ['./create-recipe.component.scss'],
 })
-export class CreateRecipeComponent {
-  recipe: Recipe = {
-    ingredients:[{}], 
-    steps: [{order: 1}]
-  };  
+export class CreateRecipeComponent implements OnInit {
   file: any;
-  // clientForm: FormGroup = new FormGroup({
-  //   "userName" : new FormControl('', Validators.required),
-  // }
-  // );
-  
+
+  createRecipeForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    tagsList: new FormControl('', Validators.required),
+    timeForCook: new FormControl('', Validators.required),
+    numberOfServings: new FormControl('', Validators.required),
+    ingredients: new FormArray([
+      new FormGroup({
+        title: new FormControl('', Validators.required),
+        description: new FormControl('', Validators.required),
+      }),
+    ]),
+    steps: new FormArray([
+      new FormGroup({
+        description: new FormControl('', Validators.required),
+      }),
+    ]),
+  });
+
+  ngOnInit(): void {
+  }
+
   constructor(private recipeHelper: RecipeHelper) {}
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  input = new FormControl('', Validators.required);
-  simpleInput: string = 'simpleInput';
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Введите значение в поле';
-    }
-
-    return this.email.hasError('email') ? 'Email невалидный!' : '';
+  addHeaderIngredient() {
+    const control = new FormGroup({
+      title: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+    });
+    this.getIngredientControls().push(control);
   }
 
-
-  addHeaderIngredient(): void {
-    this.recipe.ingredients.push({});
+  getIngredientControls() {
+    return this.createRecipeForm.get('ingredients') as FormArray;
   }
 
-  deleteHeaderIngredient(item: Ingredient): void {
-    this.recipe.ingredients = this.recipe.ingredients.filter(
-      (ingredient) => ingredient != item
-    );
+  deleteHeaderIngredient(index: number): void {
+    this.getIngredientControls().removeAt(index);
+  }
+
+  getStepsControls() {
+    return this.createRecipeForm.get('steps') as FormArray;
   }
 
   addStep(): void {
-    this.recipe.steps.push({order: this.recipe.steps.length + 1});
+    const control = new FormGroup({
+      description: new FormControl('', Validators.required),
+    });
+    this.getStepsControls().push(control);
   }
 
-  deleteStep(item: Step): void {
-    this.recipe.steps = this.recipe.steps.filter((steps) => steps != item);
-    this.updateSteps();
-  }
-
-  updateSteps(): void {
-    let i = 1;
-    this.recipe.steps.forEach(step => {
-      step.order = i;
-      i++;
-    }); 
+  deleteStep(index: number): void {
+    this.getStepsControls().removeAt(index);
   }
 
   getFile(event: any): void {
@@ -70,12 +75,12 @@ export class CreateRecipeComponent {
   }
 
   saveRecipe(): void {
-    this.recipe.authorId = 0;
-    this.recipe.imageUrl = 'null';    
-    this.recipeHelper.createRecipe(this.recipe).subscribe();
-  }
-
-  validationForm(): boolean {
-    return false;
+    // this.recipe.authorId = 0;
+    // this.recipe.imageUrl = 'null';
+    // console.log(this.createRecipeForm);
+    // this.recipeHelper.createRecipe(this.recipe).subscribe();
+    const formData = {...this.createRecipeForm.value}
+    console.log(formData);
+    //}
   }
 }
