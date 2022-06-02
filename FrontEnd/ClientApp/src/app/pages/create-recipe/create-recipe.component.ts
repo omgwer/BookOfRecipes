@@ -52,7 +52,9 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   deleteHeaderIngredient(index: number): void {
-    this.getIngredientControls().removeAt(index);
+    if (this.getIngredientControls().controls.length > 1) {
+      this.getIngredientControls().removeAt(index);
+    }
   }
 
   getStepsControls() {
@@ -67,20 +69,21 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   deleteStep(index: number): void {
-    this.getStepsControls().removeAt(index);
+    if (this.getStepsControls().controls.length > 1)
+    {
+      this.getStepsControls().removeAt(index);
+    }
   }
 
   getFile(event: any): void {
     this.file = event.target.files[0];
   }
 
-  saveRecipe(): void {
-    // this.recipe.authorId = 0;
-    // this.recipe.imageUrl = 'null';
-    // console.log(this.createRecipeForm);
-    // this.recipeHelper.createRecipe(this.recipe).subscribe();
-    const formData = {...this.createRecipeForm.value}
-    console.log(formData);
-    //}
+  saveRecipe(): void {   
+    let formData = {...this.createRecipeForm.value}
+    formData['recipeId'] = '0';
+    formData['authorId'] = '0';
+    formData['imageUrl'] = 'null';
+    this.recipeHelper.createRecipe(formData).subscribe();
   }
 }

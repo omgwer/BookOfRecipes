@@ -5,13 +5,12 @@ import { Recipe } from '../containers/recipe.interface';
 
 @Injectable()
 export class RecipeHelper {
-    private baseUrl: string = 'http://localhost:4200/';
-
+    private baseUrl: string = 'https://localhost:7192';
     constructor(private http: HttpClient) {
         this.http = http;
     }
 
     createRecipe(recipe: Recipe): Observable<Recipe> {
-        return this.http.post<Recipe>(this.baseUrl + '/save-recipe', recipe);
+        return this.http.post<Recipe>(this.baseUrl + '/api/CreateRecipe/test', recipe);
     }
 }
