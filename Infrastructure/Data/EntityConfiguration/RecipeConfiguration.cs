@@ -1,12 +1,12 @@
-﻿using Domain.Dto;
+﻿using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure
 {
-    public class RecipeConfiguration : IEntityTypeConfiguration<RecipeDto>
+    public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
     {
-        public void Configure( EntityTypeBuilder<RecipeDto> builder )
+        public void Configure( EntityTypeBuilder<Recipe> builder )
         {
             builder.HasKey( t => t.RecipeId );
             builder.HasKey( t => t.AuthorId );

@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Dto
+namespace Application.Services
 {
-    public interface IRecipeDto
+    internal interface IRecipeService
     {
-        string Name { get; set; }
-        string Description { get; set; }
     }
 }

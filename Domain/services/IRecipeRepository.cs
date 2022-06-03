@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Dto;
+﻿using Domain.Dto;
 
 namespace Infrastructure.Repositories
 {
@@ -12,7 +7,9 @@ namespace Infrastructure.Repositories
         List<IRecipeDto> GetRecipes();
         IRecipeDto GetRecipe( int id );
         int CreateTodo( IRecipeDto recipe );
-        void DeleteRecipe( int id);
+        void DeleteRecipe( int id );
         int UpdateRecipe( IRecipeDto recipe );
+
+        // описывает методы для работы с domain(хранилище рецептов)
     }
 }

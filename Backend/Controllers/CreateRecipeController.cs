@@ -7,12 +7,12 @@ namespace Backend.Controllers
 
     [ApiController]
     [Route( "api/[controller]" )]
-    public class CreateRecipeController : ControllerBase
+    public class RecipeController : ControllerBase
     {
         private readonly IRecipeRepository _todoRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateRecipeController( IRecipeRepository todoRepository, IUnitOfWork unitOfWork )
+        public RecipeController( IRecipeRepository todoRepository, IUnitOfWork unitOfWork )
         {
             _todoRepository = todoRepository;
             _unitOfWork = unitOfWork;

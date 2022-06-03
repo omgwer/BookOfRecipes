@@ -18,7 +18,7 @@
         class="yellow-button font__text_large"
         routerLink="/create-recipe"
         type="submit"
-        
+        [disabled]="createRecipeForm.invalid"
 
       >
         Опубликовать

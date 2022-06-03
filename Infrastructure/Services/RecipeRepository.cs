@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Dto;
+using Domain;
 
 namespace Infrastructure.Repositories
 {
     public class RecipeRepository : IRecipeRepository
     {
-        public int CreateTodo( IRecipeDto recipe )
+        public int CreateTodo( Recipe recipe )
         {
             throw new NotImplementedException();
         }

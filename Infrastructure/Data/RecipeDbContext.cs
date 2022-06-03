@@ -11,6 +11,8 @@ namespace Infrastructure
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             modelBuilder.ApplyConfiguration( new RecipeConfiguration() );
+
+            // для каждой таблицы добавлять в билдер конфиг.
         }
     }
 }
