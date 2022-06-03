@@ -1,26 +1,154 @@
-:host
-{
-    display: relative;
+@import 'colors';
 
-    &::before
-    {
-        position: absolute;
-        content: '';
-        background: url("../assets/background-top-wave.png") no-repeat center;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        top: 450px;
-    }
+:host {
+   display: relative;
 
-    &::after
-    {
-        position: absolute;
-        content: '';
-        background: url("../assets/background-bottom-wave.png") no-repeat center;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        top: 1500px;
-    }
+   &::before {
+      position: absolute;
+      content: '';
+      background: url("../assets/background-top-wave.png") no-repeat center;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 450px;
+   }
+
+   &::after {
+      position: absolute;
+      content: '';
+      background: url("../assets/background-bottom-wave.png") no-repeat center;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 1500px;
+   }
+}
+
+::ng-deep {
+   $custom-main-color: $yellow;
+   $custom-label-color: $dark-gray;
+
+   // mat-icon-stepper selected color change
+   .mat-step-header .mat-step-icon-selected,
+   .mat-step-header .mat-step-icon-state-done,
+   .mat-step-header .mat-step-icon-state-edit {
+      background-color: $custom-main-color  !important;
+   }
+
+   // input outline color
+   .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: $custom-main-color  !important;
+   }
+
+   // mat-input focused color
+   .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+      color: $custom-main-color  !important;
+   }
+
+   // mat-input error outline color
+   .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+      color: $custom-main-color  !important;
+      opacity: 0.8 !important;
+   }
+
+   // mat-input caret color
+   .mat-input-element {
+      caret-color: $custom-main-color  !important;
+   }
+
+   // mat-input error caret color
+   .mat-form-field-invalid .mat-input-element,
+   .mat-warn .mat-input-element {
+      caret-color: $custom-main-color  !important;
+   }
+
+   // mat-label normal state style
+   .mat-form-field-label {
+      color: $custom-label-color  !important;
+   }
+
+   // mat-label focused style
+   .mat-form-field.mat-focused .mat-form-field-label {
+      color: $custom-main-color  !important;
+   }
+
+   // mat-label error style
+   .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+      color: $custom-main-color  !important;
+   }
+
+   .mat-form-field-appearance-fill .mat-form-field-flex {
+      border-radius: 16px !important;
+      background-color: $white  !important
+   }
+
+   .mat-form-field-underline {
+      display: none;
+   }
+
+   //TODO  кривые углы у инпута
+
+   .mat-form-field-outline-start {
+      border-radius: 16px 0 0 16px !important;
+      width: 15px !important;
+   }
+
+   .mat-form-field-outline-gap {
+      width: 140px !important;
+   }
+
+   .mat-form-field-outline-end {
+      border-radius: 0 16px 16px 0 !important;
+      width: 140px !important;
+   }
+
+   .mat-form-field.mat-focused .mat-form-field-label {
+      left: 2px;
+   }
+
+   .mat-form-field-appearance-outline .mat-form-field-flex {
+      padding-left: 20px !important;
+   }
+
+   .mat-form-field-flex {
+      border: 1px solid $light-gray;
+   }
+
+   .mat-focused .mat-form-field-flex {
+      border: 1px solid $yellow;
+   }
+
+   .mat-form-field-wrapper {
+      padding-bottom: 0;
+   }
+
+   .mat-form-field {
+      width: 100%;
+   }
+
+   // Валидация поля
+   .mat-form-field-subscript-wrapper {
+      margin-top: 1.7em;
+   }
+
+   .mat-focused .mat-form-field-required-marker
+   {
+      color: $yellow;
+   }
+
+   .mat-form-field.mat-form-field-invalid 
+   {
+      & .mat-error {
+         color: red;
+      }
+
+      & .mat-form-field-label {
+         color: red !important;
+      }
+
+      & .mat-form-field-flex
+      {
+         border: 1px solid red;
+      }
+   }
 }

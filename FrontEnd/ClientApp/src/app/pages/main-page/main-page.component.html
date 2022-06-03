@@ -1,0 +1,135 @@
+<div class="top-block">
+  <div class="top-block__container">
+    <div class="top-block__title-block">
+      <h1 class="top-block__title font__title_extra-large">
+        Готовь и делись рецептами
+      </h1>
+      <div class="top-block__description font__text_normal">
+        Никаких кулинарных книг и блокнотов! Храни все любимые рецепты в одном
+        месте.
+      </div>
+
+      <button 
+        mat-raised-button
+        class="top-block__add-recipe yellow-button font__text_large"  
+        routerLink="/create-recipe"
+        >
+        + Добавить рецепт 
+      </button>
+      
+      
+        <button 
+        mat-stroked-button 
+        class="white-button font__text_large top-block__login-button">
+          Войти
+        </button>
+      
+    </div>
+  </div>
+</div>
+<div class="tags-block">
+  <h2 class="font__title_large tags-block__title">Умная сортировка по тегам</h2>
+  <div class="font__text_normal tags-block__description">
+    Добавляй рецепты и указывай наиболее популярные теги. Это позволит быстро
+    находить любые категории.
+  </div>
+  <div class="tags-list">
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/simple.png" />
+      <h3 class="font__title_tiny tags-list__title">Простые блюда</h3>
+      <p class="font__text_normal tags-list__description">
+        Время приготовления таких блюд не более 1 часа
+      </p>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/children.png" />
+      <h3 class="font__title_tiny tags-list__title">Детское</h3>
+      <p class="font__text_normal tags-list__description">
+        Самые полезные блюда которые можно детям любого возраста
+      </p>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/chief.png" />
+      <h3 class="font__title_tiny tags-list__title">От шеф-поваров</h3>
+      <p class="font__text_normal tags-list__description">
+        Требуют умения, времени и терпения, зато как в ресторане
+      </p>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/holiday.png" />
+      <h3 class="font__title_tiny tags-list__title">На праздник</h3>
+      <p class="font__text_normal tags-list__description">
+        Чем удивить гостей, чтобы все были сыты за праздничным столом
+      </p>
+    </div>
+  </div>
+</div>
+<div class="recipe-of-day">
+  <img
+    class="recipe-of-day__image"
+    src="../../../assets/recipe-of-day/recipe.jpg"
+  />
+  <div class="recipe-of-day__block">
+    <div class="recipe-of-day__info font__text_tiny">
+      <img
+        class="recipe-of-day__like"
+        src="../../../assets/recipe-of-day/favorite_border.svg"
+      />
+      <span>356</span>
+      <img
+        class="recipe-of-day__timer"
+        src="../../../assets/recipe-of-day/timer.svg"
+      />
+      <span>35 минут</span>
+    </div>
+    <img
+      class="recipe-of-day__promo-image"
+      src="../../../assets/recipe-of-day/recipe-of-day.png"
+    />
+    <h3 class="recipe-of-day__title font__title_large">
+      Тыквенный супчик На кокосовом молоке
+    </h3>
+    <p class="recipe-of-day__description font__text_normal">
+      Если у вас осталась тыква, и вы не знаете что с ней сделать, то это
+      решение для вас! Ароматный, согревающий суп-пюре на кокосовом молоке.
+      Можно даже в Пост!
+    </p>
+  </div>
+</div>
+
+<div class="search-recipes">
+  <h3 class="search-recipes__title font__title_large">Поиск рецептов</h3>
+  <p class="search-recipes__description font__text_normal">
+    Введите примерное название блюда, а мы по тегам найдем его
+  </p>
+  <div class="search-recipe-form">
+    <div class="search-recipe-form__input">
+      <mat-form-field 
+      appearance="fill" 
+      class="simple-input font__text_normal" >
+        <mat-label>Введите название рецепта</mat-label>
+        <input         
+        autocomplete="off" 
+        class="simple-input__input-field" 
+        matInput 
+        [formControl]="input"
+        required
+        />    
+        <mat-error *ngIf="input.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+    </div>
+    <button
+      mat-raised-button
+      class="search-recipe-form__submit font__text_normal"
+      >
+      Поиск
+    </button>
+    <p class="search-recipe-form__tag-helper font__text_tiny">
+      <span class="search-recipe-form__tag">Мясо</span>
+      <span class="search-recipe-form__tag">Деликатесы</span>
+      <span class="search-recipe-form__tag">Пироги</span>
+      <span class="search-recipe-form__tag">Рыба</span>
+    </p>  
+  </div>
+</div>

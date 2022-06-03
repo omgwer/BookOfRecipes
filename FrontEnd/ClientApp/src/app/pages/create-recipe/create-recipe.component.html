@@ -1,0 +1,253 @@
+<form
+  name="createRicipe"
+  novalidate
+  class="create-recipe"
+  [formGroup]="createRecipeForm"
+  (ngSubmit)="saveRecipe()"
+>
+  <div class="create-recipe__top-block">
+    <span class="create-recipe__rollback font__text_normal" routerLink=""
+      >Назад</span
+    >
+    <div class="create-recipe__block">
+      <h2 class="create-recipe__title font__title_large">
+        Добавить новый рецепт
+      </h2>
+      <button
+        mat-raised-button
+        class="yellow-button font__text_large"
+        routerLink="/create-recipe"
+        type="submit"
+        [disabled]="createRecipeForm.invalid"
+
+      >
+        Опубликовать
+      </button>
+    </div>
+  </div>
+  <div class="create-recipe__recipe-container">
+    <div>
+      <input
+        type="file"
+        (change)="getFile($event)"
+        accept=".jpg, .png, .svg, .jpeg"
+        class="create-recipe__upload-photo-button"
+        id="photoUploadButton"
+      />
+      <label
+        class="create-recipe__upload-photo"
+        for="photoUploadButton"
+      ></label>
+    </div>
+    <div class="create-recipe__input-container">
+      <div class="create-recipe__recipe-name">
+        <mat-form-field
+          appearance="fill"
+          class="simple-input font__text_normal"
+        >
+          <mat-label>Название рецепта</mat-label>
+          <input
+            autocomplete="off"
+            class="simple-input__input-field"
+            matInput
+            formControlName="name"
+          />
+          <mat-error *ngIf="createRecipeForm.controls['name'].invalid"
+            >Введите значение в поле</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="create-recipe__recipe-description">
+        <mat-form-field appearance="fill" class="long-input font__text_normal">
+          <mat-label>Краткое описание рецепта(150 символов)</mat-label>
+          <textarea
+            matInput
+            class="long-input__input-field"
+            formControlName="description"
+          ></textarea>
+          <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
+            >Введите значение в поле</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="create-recipe__add-tags">
+        <mat-form-field
+          appearance="fill"
+          class="simple-input font__text_normal"
+        >
+          <mat-label>Добавить теги</mat-label>
+          <input
+            autocomplete="off"
+            class="simple-input__input-field"
+            matInput
+            formControlName="tagsList"
+          />
+          <mat-error *ngIf="createRecipeForm.controls['tagsList'].invalid"
+            >Введите значение в поле</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="create-recipe__droplist-container">
+        <div class="create-recipe__droplist-elements">
+          <div class="create-recipe__droplist-element">
+            <mat-form-field
+              class="create-recipe__cooking-time"
+              appearance="fill"
+            >
+              <mat-label>Время готовки</mat-label>
+              <mat-select formControlName="timeForCook">
+                <mat-option value="5">5</mat-option>
+                <mat-option value="15">15</mat-option>
+                <mat-option value="30">30</mat-option>
+                <mat-option value="45">45</mat-option>
+                <mat-option value="60">60</mat-option>
+              </mat-select>
+
+              <mat-error
+                *ngIf="createRecipeForm.controls['timeForCook'].invalid"
+                >Введите значение в поле</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <span class="font__text_tiny"> Минут</span>
+        </div>
+        <div class="create-recipe__droplist-elements">
+          <div class="create-recipe__droplist-element">
+            <mat-form-field class="create-recipe__serving" appearance="fill">
+              <mat-label>Порций в блюде</mat-label>
+
+              <mat-select formControlName="numberOfServings" ngDefaultControl>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+                <mat-option value="6">6</mat-option>
+                <mat-option value="7">7</mat-option>
+                <mat-option value="8">8</mat-option>
+                <mat-option value="9">9</mat-option>
+                <mat-option value="10">10</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="createRecipeForm.controls['numberOfServings'].invalid"
+                >Введите значение в поле</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <span class="font__text_tiny"> Персон</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="create-recipe__container">
+    <div formArrayName ="ingredients">
+      <p class="create-recipe__ingredients-header font__text_extra-large">
+        Ингридиенты
+      </p>
+      <div
+        class="create-recipe__ingredients-container"
+        *ngFor="
+          let control of getIngredientControls()['controls'];
+          let idx = index;
+        ">
+        <img
+          src="../../../assets/create-recipe/close.svg"
+          class="create-recipe__close-button"
+          (click)="deleteHeaderIngredient(idx)"
+        />
+        <div class="create-recipe__ingredients" formGroupName="{{idx}}">
+          <div class="create-recipe__ingredients">
+            <div class="create-recipe__ingredient-title">
+              <mat-form-field
+                appearance="fill"
+                class="simple-input font__text_normal"
+              >
+                <mat-label>Заголовок для ингридиентов</mat-label>
+                <input
+                  autocomplete="off"
+                  class="simple-input__input-field"
+                  matInput
+                  formControlName="title"
+                />
+                <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
+                >Введите значение в поле</mat-error>  
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <div class="create-recipe__ingredient-description">
+              <mat-form-field
+                appearance="fill"
+                class="long-input font__text_normal"
+              >
+                <mat-label> Список продуктов для категории </mat-label>
+                <textarea
+                  ngDefaultControl
+                  matInput
+                  class="long-input__input-field"
+                  formControlName="description"
+                ></textarea>
+                <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
+                >Введите значение в поле</mat-error>                
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="create-recipe__add-ingredient">
+        <button
+          type="button"
+          (click)="addHeaderIngredient()"
+          mat-stroked-button
+          class="white-button font__text_large"
+        >
+          +&nbsp;&nbsp;&nbsp; Добавить заголовок
+        </button>
+      </div>
+    </div>
+    <div formArrayName ="steps" class="create-recipe__steps-container">
+      <div 
+      formGroupName="{{idx}}"
+      class="create-recipe__step" 
+      *ngFor="
+          let control of getStepsControls()['controls'];
+          let idx = index;"      
+          >
+        <img
+          src="../../../assets/create-recipe/close.svg"
+          class="create-recipe__close-step-button"
+          (click)="deleteStep(idx)"
+        />
+        <p class="font__text_large create-recipe__step-title">
+          Шаг {{ idx + 1}}
+        </p>
+        <div class="create-recipe__step-description">
+          <mat-form-field
+            appearance="fill"
+            class="long-input font__text_normal"
+          >
+            <mat-label>Список подуктов для категории</mat-label>
+            <textarea
+              matInput
+              class="long-input__input-field"
+              formControlName="description"
+              name="description"
+            ></textarea>
+            <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
+            >Введите значение в поле</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="create-recipe__add-step">
+        <button
+          (click)="addStep()"
+          mat-stroked-button
+          type="button"
+          class="white-button font__text_large"
+        >
+          + &nbsp;&nbsp;&nbsp;Добавить шаг
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

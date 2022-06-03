@@ -17,11 +17,11 @@
 
 body
 {
-  background-color: $background-white;  
+  background-color: $background-white;   
 }
 
 .font {
-  &__header {
+  &__title {
     &_extra-large {
       font: 700 72px/1.1 $main-font;
     }
