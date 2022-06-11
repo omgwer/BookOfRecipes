@@ -1,4 +1,4 @@
-﻿namespace Domain.Dto
+﻿namespace Application.Models.Dto
 {
     public class RecipeDto
     {

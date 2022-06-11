@@ -24,8 +24,9 @@ app.MapControllers();
 
 app.Run();*/
 
-using Infrastructure;
-using Infrastructure.Repositories;
+using Domain.Services;
+using Infrastructure.Data;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder( args );

@@ -3,20 +3,12 @@ FrontEnd/ClientApp/.vscode/*
 .idea/*
 .vs/*
 
-Infrastructure/obj/Debug/net6.0/Infrastructure.csproj.AssemblyReference.cache
-Domain/obj/Debug/net6.0/Domain.csproj.CoreCompileInputs.cache
-Backend/obj/Debug/net6.0/refint/Backend.dll
-Backend/obj/Debug/net6.0/Backend.pdb
-Backend/obj/Debug/net6.0/Backend.dll
-Backend/obj/Debug/net6.0/Backend.csproj.AssemblyReference.cache
-Application/obj/project.nuget.cache
-Application/obj/project.assets.json
-Application/obj/Application.csproj.nuget.dgspec.json
 
-
+Infrastructure/obj/Debug/*
+Domain/obj/Debug/*
+Application/obj/Debug/*
+Backend/obj/Debug/*
+Frontend/obj/Debug/*
+Frontend/bin/*
 *.dll
 *.cache
-Application/obj/Debug/net6.0/Application.GlobalUsings.g.cs
-Application/obj/Debug/net6.0/Application.GeneratedMSBuildEditorConfig.editorconfig
-Application/obj/Debug/net6.0/Application.AssemblyInfo.cs
-Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs

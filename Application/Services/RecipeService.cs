@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Dto;
-using Infrastructure.Repositories;
+﻿using Application.Models.Dto;
+using Domain.Services;
 
 namespace Application.Services
 {
-    internal class RecipeService : IRecipeService
+    public class RecipeService : IRecipeService
     {
         private readonly IRecipeRepository _recipeRepository;
 
@@ -17,7 +12,8 @@ namespace Application.Services
             _recipeRepository = recipeRepository;
         }
 
-        public RecipeDto createRecipe(RecipeDto recipe) {
+        public RecipeDto createRecipe( RecipeDto recipe )
+        {
             return new RecipeDto();
         }
 
@@ -25,3 +21,5 @@ namespace Application.Services
         // тут хранить метод toDto() Для удаления из обьекто полученных в базе данных, которые не нужны на фронте
     }
 }
+
+

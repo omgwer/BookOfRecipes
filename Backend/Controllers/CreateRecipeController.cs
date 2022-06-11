@@ -1,5 +1,5 @@
-﻿using Infrastructure;
-using Infrastructure.Repositories;
+﻿using Domain.Services;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers

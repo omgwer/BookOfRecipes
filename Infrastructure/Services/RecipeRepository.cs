@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain;
+﻿using Application.Models.Dto;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Services
 {
     public class RecipeRepository : IRecipeRepository
     {
-        public int CreateTodo( Recipe recipe )
+        public int CreateTodo( RecipeDto recipe )
         {
             throw new NotImplementedException();
         }
@@ -19,17 +14,17 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public IRecipeDto GetRecipe( int id )
+        public RecipeDto GetRecipe( int id )
         {
             throw new NotImplementedException();
         }
 
-        public List<IRecipeDto> GetRecipes()
+        public List<RecipeDto> GetRecipes()
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateRecipe( IRecipeDto recipe )
+        public int UpdateRecipe( RecipeDto recipe )
         {
             throw new NotImplementedException();
         }

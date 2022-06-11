@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dAYdNNRMjFlfHt4lbpTZ8Rr7epohaOKYuryYolpIWXrOAe2jG+golw8M4sF2r0mZJPWkY/sAd9f7VdLogV0pTQ==",
+  "dgSpecHash": "rWZafzQtwab5L6Ssh+LO8rZXgkMC+4ZFdLMhg1SYgSiW7GhPB1Bi+YYtWBQBGEFmnLWrxaSQnLJY0Bt7woWxWA==",
   "success": true,
-  "projectFilePath": "D:\\Study\\BookOfRecipes\\FrontEnd\\FrontEnd.csproj",
+  "projectFilePath": "D:\\Study\\BookOfRecipes\\FrontEnd\\Frontend.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\79033\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\6.0.4\\microsoft.aspnetcore.spaservices.extensions.6.0.4.nupkg.sha512",
+    "C:\\Users\\79033\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\6.0.5\\microsoft.aspnetcore.spaservices.extensions.6.0.5.nupkg.sha512",
     "C:\\Users\\79033\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\79033\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\79033\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
