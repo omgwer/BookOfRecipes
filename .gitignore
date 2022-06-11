@@ -16,3 +16,7 @@ Application/obj/Application.csproj.nuget.dgspec.json
 
 *.dll
 *.cache
+Application/obj/Debug/net6.0/Application.GlobalUsings.g.cs
+Application/obj/Debug/net6.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+Application/obj/Debug/net6.0/Application.AssemblyInfo.cs
+Application/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
