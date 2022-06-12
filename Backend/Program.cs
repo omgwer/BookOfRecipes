@@ -46,7 +46,7 @@ builder.Services.AddCors( options =>
 
 builder.Services.AddDbContext<RecipeDbContext>( t =>
 {
-    t.UseSqlServer( builder.Configuration.GetConnectionString( "DefaultConnection" ) );
+    t.UseSqlServer( builder.Configuration.GetConnectionString( "DefaultConnection" ), b => b.MigrationsAssembly("Backend") );
 } );
 
 builder.Services.AddControllers().AddJsonOptions( options => options.JsonSerializerOptions.IncludeFields = true );

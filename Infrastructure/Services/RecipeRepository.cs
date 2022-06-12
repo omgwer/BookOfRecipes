@@ -1,12 +1,22 @@
-﻿using Application.Models.Dto;
+﻿using Domain;
+using Domain.Services;
+using Infrastructure.Data;
 
 namespace Infrastructure.Services
 {
     public class RecipeRepository : IRecipeRepository
     {
-        public int CreateTodo( RecipeDto recipe )
+        private readonly RecipeDbContext _dbContext;
+
+        public RecipeRepository( RecipeDbContext dbContext )
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+        }
+        public int CreateRecipe( Recipe recipe )
+        {
+            var entity = _dbContext.Set<Recipe>().Add( recipe );
+            Console.WriteLine( '1' );
+            return entity.Entity.RecipeId;
         }
 
         public void DeleteRecipe( int id )
@@ -14,17 +24,17 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public RecipeDto GetRecipe( int id )
+        public Recipe GetRecipe( int id )
         {
             throw new NotImplementedException();
         }
 
-        public List<RecipeDto> GetRecipes()
+        public List<Recipe> GetRecipes()
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateRecipe( RecipeDto recipe )
+        public int UpdateRecipe( Recipe recipe )
         {
             throw new NotImplementedException();
         }

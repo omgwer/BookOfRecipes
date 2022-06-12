@@ -1,15 +1,14 @@
-﻿
-using Application.Models.Dto;
+﻿using Domain;
 
 namespace Domain.Services
 {
     public interface IRecipeRepository
     {
-        List<RecipeDto> GetRecipes();
-        RecipeDto GetRecipe( int id );
-        int CreateTodo( RecipeDto recipe );
+        List<Recipe> GetRecipes();
+        Recipe GetRecipe( int id );
+        int CreateRecipe( Recipe recipe );
         void DeleteRecipe( int id );
-        int UpdateRecipe( RecipeDto recipe );
+        int UpdateRecipe( Recipe recipe );
 
         // описывает методы для работы с domain(хранилище рецептов)
     }

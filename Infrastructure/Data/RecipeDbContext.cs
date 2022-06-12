@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infrastructure.Data.EntityConfiguration;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
@@ -11,6 +12,9 @@ namespace Infrastructure.Data
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             modelBuilder.ApplyConfiguration( new RecipeConfiguration() );
+            modelBuilder.ApplyConfiguration( new TagConfiguration() );
+            modelBuilder.ApplyConfiguration( new IngredientConfiguration() );
+            modelBuilder.ApplyConfiguration( new StepConfiguration() );
 
             // для каждой таблицы добавлять в билдер конфиг.
         }
