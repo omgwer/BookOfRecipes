@@ -4,7 +4,7 @@ namespace Application.Services
 {
     internal interface IRecipeService
     {
-        public int SaveRecipe(RecipeDto recipe);
+        public RecipeDto SaveRecipe(RecipeDto recipe);
 
         public RecipeDto GetRecipe(int recipeId);
 

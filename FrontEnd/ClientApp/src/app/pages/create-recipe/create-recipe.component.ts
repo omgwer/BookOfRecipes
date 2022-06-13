@@ -14,6 +14,10 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 })
 export class CreateRecipeComponent implements OnInit {
   file: any;
+  recipe: Recipe = {
+    ingredients : [],
+    steps : []
+  };
 
   createRecipeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -40,11 +44,11 @@ export class CreateRecipeComponent implements OnInit {
   constructor(private recipeHelper: RecipeHelper) {}
 
   addHeaderIngredient() {
-    const control = new FormGroup({
+    const control = new FormGroup({      
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
     });
-    this.getIngredientControls().push(control);
+    this.getIngredientControls().push(control);    
   }
 
   getIngredientControls() {
@@ -80,10 +84,42 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   saveRecipe(): void {   
-    let formData = {...this.createRecipeForm.value}
-    formData['recipeId'] = '0';
-    formData['authorId'] = '0';
-    formData['imageUrl'] = 'null';
-    this.recipeHelper.createRecipe(formData).subscribe();
+    let formData = {...this.createRecipeForm.value};    
+    this.recipeHelper.createRecipe(this.toDto(formData)).subscribe();
+    this.recipe.ingredients = [];
+    this.recipe.steps = [];
+  }
+
+  toDto(formData: any): Recipe {
+    this.recipe.recipeId = 0;
+    this.recipe.authorId = 0;
+    this.recipe.name = formData.name;
+    this.recipe.description = formData.description;
+    this.recipe.tagsList = formData.tagsList;
+    this.recipe.timeForCook = formData.timeForCook;
+    this.recipe.numberOfServings = formData.numberOfServings;
+    let i = 1;
+    console.log(formData);
+    formData.ingredients.forEach((element: any) => {
+      let ingredient: Ingredient  = {
+        title : element.title,
+        description : element.description,
+        order : i,
+      }
+      this.recipe.ingredients.push(ingredient);
+      i++;
+    });
+    i = 1;
+    formData.steps.forEach((element: any) => {
+      let step: Step  = {
+        description : element.description,
+        order : i,
+      }
+      this.recipe.steps.push(step);
+      i++;
+    })
+    i = 1;
+    this.recipe.imageUrl = 'null';    
+    return this.recipe;
   }
 }

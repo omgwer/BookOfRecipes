@@ -3,8 +3,8 @@ import { Step } from "./step.interface"
 
 export interface Recipe
 {
-    authorId?: number,
     recipeId?: number,
+    authorId?: number,
     name?: string,
     description?: string,
     tagsList?: string,  

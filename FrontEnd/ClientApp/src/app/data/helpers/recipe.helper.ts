@@ -11,6 +11,8 @@ export class RecipeHelper {
     }
 
     createRecipe(recipe: Recipe): Observable<Recipe> {
-        return this.http.post<Recipe>(this.baseUrl + '/api/CreateRecipe/test', recipe);
+        return this.http.post<Recipe>(this.baseUrl + '/api/Recipe/save', recipe);
     }
+
+    
 }

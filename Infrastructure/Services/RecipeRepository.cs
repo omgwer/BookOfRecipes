@@ -12,11 +12,10 @@ namespace Infrastructure.Services
         {
             _dbContext = dbContext;
         }
-        public int CreateRecipe( Recipe recipe )
+        public Recipe CreateRecipe( Recipe recipe )
         {
             var entity = _dbContext.Set<Recipe>().Add( recipe );
-            Console.WriteLine( '1' );
-            return entity.Entity.RecipeId;
+            return entity.Entity;
         }
 
         public void DeleteRecipe( int id )

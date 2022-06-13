@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20220612200433_test")]
+    [Migration("20220613191152_test")]
     partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,11 +54,14 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Domain.Recipe", b =>
                 {
-                    b.Property<int>("AuthorId")
+                    b.Property<int>("RecipeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeId"), 1L, 1);
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -77,13 +80,10 @@ namespace Backend.Migrations
                     b.Property<int>("NumberOfServings")
                         .HasColumnType("int");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TimeForCook")
                         .HasColumnType("int");
 
-                    b.HasKey("AuthorId");
+                    b.HasKey("RecipeId");
 
                     b.ToTable("Recipe");
                 });

@@ -12,9 +12,9 @@ namespace Backend.Migrations
                 name: "Recipe",
                 columns: table => new
                 {
-                    AuthorId = table.Column<int>(type: "int", nullable: false)
+                    RecipeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RecipeId = table.Column<int>(type: "int", nullable: false),
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     TimeForCook = table.Column<int>(type: "int", nullable: false),
@@ -23,7 +23,7 @@ namespace Backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recipe", x => x.AuthorId);
+                    table.PrimaryKey("PK_Recipe", x => x.RecipeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,7 +44,7 @@ namespace Backend.Migrations
                         name: "FK_Ingredient_Recipe_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipe",
-                        principalColumn: "AuthorId",
+                        principalColumn: "RecipeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -65,7 +65,7 @@ namespace Backend.Migrations
                         name: "FK_Step_Recipe_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipe",
-                        principalColumn: "AuthorId",
+                        principalColumn: "RecipeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -85,7 +85,7 @@ namespace Backend.Migrations
                         name: "FK_Tag_Recipe_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipe",
-                        principalColumn: "AuthorId",
+                        principalColumn: "RecipeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 

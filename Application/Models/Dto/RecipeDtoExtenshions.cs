@@ -48,6 +48,10 @@ namespace Application.Models.Dto
             var tagsList = tag.Split( " " );
             foreach ( var item in tagsList ) 
             {
+                if ( item.Trim() == " " )
+                {
+                    continue;
+                }
                 list.Add( new Tag { 
                     Id = 0,
                     Name = item.Trim(),
