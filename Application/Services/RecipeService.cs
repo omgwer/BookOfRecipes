@@ -7,10 +7,12 @@ namespace Application.Services
     public class RecipeService : IRecipeService
     {
         private readonly IRecipeRepository _recipeRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public RecipeService( IRecipeRepository recipeRepository )
+        public RecipeService( IRecipeRepository recipeRepository, IUnitOfWork unitOfWork )
         {
             _recipeRepository = recipeRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public void DeleteRecipe( int recipeId )
@@ -36,7 +38,9 @@ namespace Application.Services
                 newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() );
             }
 
-            return RecipeExtenshions.toDto(newRecipe);
+            _unitOfWork.Commit();
+
+            return RecipeExtensions.toDto(newRecipe);
         }
 
 

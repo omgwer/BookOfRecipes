@@ -1,21 +1,23 @@
 ﻿using Domain;
 using Domain.Services;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services
 {
     public class RecipeRepository : IRecipeRepository
     {
         private readonly RecipeDbContext _dbContext;
+        private readonly DbSet<Recipe> _test;
 
         public RecipeRepository( RecipeDbContext dbContext )
         {
-            _dbContext = dbContext;
+            _test = dbContext.Set<Recipe>();
         }
         public Recipe CreateRecipe( Recipe recipe )
         {
-            var entity = _dbContext.Set<Recipe>().Add( recipe );
-            return entity.Entity;
+            _test.Add( recipe );
+            return recipe;
         }
 
         public void DeleteRecipe( int id )

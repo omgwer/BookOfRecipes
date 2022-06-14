@@ -1910,19 +1910,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\79033\\.nuget\\packages\\": {}
+    "C:\\Users\\aleksandr.kislitsyn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\BookOfRecipes\\FrontEnd\\FrontEnd.csproj",
-      "projectName": "FrontEnd",
-      "projectPath": "D:\\Study\\BookOfRecipes\\FrontEnd\\FrontEnd.csproj",
-      "packagesPath": "C:\\Users\\79033\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\BookOfRecipes\\FrontEnd\\obj\\",
+      "projectUniqueName": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\FrontEnd\\Frontend.csproj",
+      "projectName": "Frontend",
+      "projectPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\FrontEnd\\Frontend.csproj",
+      "packagesPath": "C:\\Users\\aleksandr.kislitsyn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\FrontEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\79033\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aleksandr.kislitsyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1930,7 +1930,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://nuget.travelline.lan:8081/repository/nugetv3-proxy/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -1979,7 +1979,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

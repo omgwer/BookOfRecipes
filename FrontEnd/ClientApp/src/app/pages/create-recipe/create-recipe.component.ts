@@ -83,7 +83,7 @@ export class CreateRecipeComponent implements OnInit {
     this.file = event.target.files[0];
   }
 
-  saveRecipe(): void {   
+  saveRecipe(): void {
     let formData = {...this.createRecipeForm.value};    
     this.recipeHelper.createRecipe(this.toDto(formData)).subscribe();
     this.recipe.ingredients = [];

@@ -24,6 +24,8 @@ app.MapControllers();
 
 app.Run();*/
 
+using Application.Services;
+using Domain;
 using Domain.Services;
 using Infrastructure.Data;
 using Infrastructure.Services;
@@ -57,6 +59,7 @@ builder.Services.AddSwaggerGen();
 //Тут добавить сервис IToDoService в DI
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IRecipeService, RecipeService>();
 
 
 var app = builder.Build();

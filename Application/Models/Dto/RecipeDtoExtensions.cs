@@ -2,7 +2,7 @@
 
 namespace Application.Models.Dto
 {
-    public static class RecipeDtoExtenshions
+    public static class RecipeDtoExtensions
     {
         public static Recipe ToRecipe( this RecipeDto dto )
         {

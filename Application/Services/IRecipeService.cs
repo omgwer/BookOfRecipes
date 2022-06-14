@@ -2,7 +2,7 @@
 
 namespace Application.Services
 {
-    internal interface IRecipeService
+    public interface IRecipeService
     {
         public RecipeDto SaveRecipe(RecipeDto recipe);
 

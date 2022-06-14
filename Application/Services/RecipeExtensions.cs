@@ -3,7 +3,7 @@ using Domain;
 
 namespace Application.Services
 {
-    public static class RecipeExtenshions
+    public static class RecipeExtensions
     {
         public static RecipeDto toDto(this Recipe recipe )
         {
