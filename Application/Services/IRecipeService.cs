@@ -9,5 +9,7 @@ namespace Application.Services
         public RecipeDto GetRecipe(int recipeId);
 
         public void DeleteRecipe( int recipeId );
+
+        public List<RecipeDto> GetRecipeList(int count);
     }
 }

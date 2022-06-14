@@ -14,5 +14,7 @@ export class RecipeHelper {
         return this.http.post<Recipe>(this.baseUrl + '/api/Recipe/save', recipe);
     }
 
-    
+    getRecipeList(index: Number): Observable<Recipe[]> {
+        return this.http.get<Recipe[]>(this.baseUrl + '/api/Recipe/list/' + index);
+    }
 }

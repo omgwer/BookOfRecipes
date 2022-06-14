@@ -38,7 +38,7 @@ export class CreateRecipeComponent implements OnInit {
     ]),
   });
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
   }
 
   constructor(private recipeHelper: RecipeHelper) {}

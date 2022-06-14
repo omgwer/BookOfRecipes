@@ -5,7 +5,7 @@ namespace Domain.Services
     public interface IRecipeRepository
     {
         List<Recipe> GetRecipes();
-        Recipe GetRecipe( int id );
+        Recipe? GetRecipe( int id );
         Recipe CreateRecipe( Recipe recipe );
         void DeleteRecipe( int id );
         int UpdateRecipe( Recipe recipe );

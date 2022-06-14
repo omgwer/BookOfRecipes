@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipesComponent } from './pages/recipes/recipes.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainPageComponent,
     CreateRecipeComponent,
     NotFoundPageComponent,
+    RecipesComponent,
   ],
   imports: [
     BrowserModule,

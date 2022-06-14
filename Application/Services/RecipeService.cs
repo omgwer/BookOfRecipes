@@ -1,6 +1,6 @@
 ﻿using Application.Models.Dto;
-using Domain.Services;
 using Domain;
+using Domain.Services;
 
 namespace Application.Services
 {
@@ -33,17 +33,34 @@ namespace Application.Services
             {
                 newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() );
             }
-            else 
+            else
             {
                 newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() );
             }
 
             _unitOfWork.Commit();
 
-            return RecipeExtensions.toDto(newRecipe);
+            return RecipeExtensions.toDto( newRecipe );
         }
 
 
+        public List<RecipeDto> GetRecipeList( int count )
+        {
+            List<RecipeDto> list = new List<RecipeDto>();
+            for ( int i = count * 4; i < count * 4 + 4; i++ )
+            {
+                Recipe? recipe = _recipeRepository.GetRecipe( i + 1 );
+                if ( recipe != null )
+                {
+                    list.Add( RecipeExtensions.toDto( recipe ) );
+                }
+                else 
+                { 
+                    return list;
+                }                
+            }
+            return list;
+        }
 
         // слой бизнес логики, если id == 0  создается новый рецепт, если id != 0 обновляется
         // тут хранить метод toDto() Для удаления из обьекто полученных в базе данных, которые не нужны на фронте

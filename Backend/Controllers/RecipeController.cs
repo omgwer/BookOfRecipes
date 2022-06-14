@@ -20,14 +20,27 @@ namespace Backend.Controllers
         public IActionResult SaveRecipe( [FromBody] RecipeDto recipe )
         {
             RecipeDto newRecipe = _recipeService.SaveRecipe( recipe );
-           /* if ( recipeId == 0 )
-            {
-                return BadRequest( "Recipe dont save!!!" );
 
-            }*/
-                       
+            if ( recipe.RecipeId == 0 )
+            {
+                return BadRequest("Recipe dont save!");
+            }
+
             return Ok(newRecipe);
         }
 
-    }
+        [HttpGet]
+        [Route( "list/{count}" )]
+        public IActionResult GetRecipeList( int count )
+        {
+            List<RecipeDto> recipeList = _recipeService.GetRecipeList(count);
+
+            if ( recipeList.Count == 0 )
+            {
+                return NotFound();
+            }
+                
+            return Ok( recipeList );
+        }
+    }    
 }

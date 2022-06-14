@@ -8,15 +8,16 @@ namespace Infrastructure.Services
     public class RecipeRepository : IRecipeRepository
     {
         private readonly RecipeDbContext _dbContext;
-        private readonly DbSet<Recipe> _test;
+        private readonly DbSet<Recipe> _dbSet;
+        private readonly DbSet<Ingredient> _dbIngredient;
 
         public RecipeRepository( RecipeDbContext dbContext )
         {
-            _test = dbContext.Set<Recipe>();
+            _dbSet = dbContext.Set<Recipe>();
         }
         public Recipe CreateRecipe( Recipe recipe )
         {
-            _test.Add( recipe );
+            _dbSet.Add( recipe );
             return recipe;
         }
 
@@ -25,9 +26,13 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Recipe GetRecipe( int id )
+        public Recipe? GetRecipe( int recipeId )
         {
-            throw new NotImplementedException();
+            Recipe? recipe = _dbSet
+                .Include( x => x.Ingredients )
+                .Include( x => x.Steps )
+                .FirstOrDefault( x => x.RecipeId == recipeId );
+            return recipe;
         }
 
         public List<Recipe> GetRecipes()
