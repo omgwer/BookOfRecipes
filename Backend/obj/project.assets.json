@@ -2119,19 +2119,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aleksandr.kislitsyn\\.nuget\\packages\\": {}
+    "C:\\Users\\79033\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Backend\\Backend.csproj",
+      "projectUniqueName": "D:\\Study\\BookOfRecipes\\Backend\\Backend.csproj",
       "projectName": "Backend",
-      "projectPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Backend\\Backend.csproj",
-      "packagesPath": "C:\\Users\\aleksandr.kislitsyn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Backend\\obj\\",
+      "projectPath": "D:\\Study\\BookOfRecipes\\Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\79033\\.nuget\\packages\\",
+      "outputPath": "D:\\Study\\BookOfRecipes\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aleksandr.kislitsyn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\79033\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2139,20 +2139,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://nuget.travelline.lan:8081/repository/nugetv3-proxy/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Application\\Application.csproj"
+            "D:\\Study\\BookOfRecipes\\Application\\Application.csproj": {
+              "projectPath": "D:\\Study\\BookOfRecipes\\Application\\Application.csproj"
             },
-            "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Domain\\Domain.csproj"
+            "D:\\Study\\BookOfRecipes\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Study\\BookOfRecipes\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\aleksandr.kislitsyn\\Documents\\GitHub\\BookOfRecipes\\Infrastructure\\Infrastructure.csproj"
+            "D:\\Study\\BookOfRecipes\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\Study\\BookOfRecipes\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -2204,7 +2204,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
