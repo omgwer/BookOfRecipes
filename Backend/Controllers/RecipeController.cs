@@ -21,7 +21,7 @@ namespace Backend.Controllers
         {
             RecipeDto newRecipe = _recipeService.SaveRecipe( recipe );
 
-            if ( recipe.RecipeId == 0 )
+            if ( newRecipe.RecipeId == 0 )
             {
                 return BadRequest("Recipe dont save!");
             }

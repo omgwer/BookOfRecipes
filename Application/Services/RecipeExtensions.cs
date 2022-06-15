@@ -51,7 +51,7 @@ namespace Application.Services
                 tagsDto += tag.Name + ", ";
             }
 
-            return tagsDto;
+            return tagsDto[ 0..^2 ];
         }
 
         private static IngredientDto ToIngredientDto(Ingredient ingredient)

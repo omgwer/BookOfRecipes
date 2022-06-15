@@ -45,17 +45,19 @@ namespace Application.Models.Dto
         {
             var list = new List<Tag>();
             string tag = tags.Replace( ",", " " ).Replace(".", " ");
-            var tagsList = tag.Split( " " );
+            tag.Replace( "  ", " " );            
+            var tagsList = tag.Split( " " );            
             foreach ( var item in tagsList ) 
             {
-                if ( item.Trim() == " " )
+                var test = item.Trim();
+                if ( test != "" )
                 {
-                    continue;
-                }
-                list.Add( new Tag { 
-                    Id = 0,
-                    Name = item.Trim(),
-                } );
+                    list.Add( new Tag
+                    {
+                        Id = 0,
+                        Name = item.Trim(),
+                    } );
+                }                               
             }
             return list;
         }

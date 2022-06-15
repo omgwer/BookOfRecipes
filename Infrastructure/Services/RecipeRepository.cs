@@ -31,6 +31,7 @@ namespace Infrastructure.Services
             Recipe? recipe = _dbSet
                 .Include( x => x.Ingredients )
                 .Include( x => x.Steps )
+                .Include( x => x.TagsList)
                 .FirstOrDefault( x => x.RecipeId == recipeId );
             return recipe;
         }

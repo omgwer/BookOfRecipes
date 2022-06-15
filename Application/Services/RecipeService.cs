@@ -35,6 +35,7 @@ namespace Application.Services
             }
             else
             {
+                //TODO доделать обновление
                 newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() );
             }
 
