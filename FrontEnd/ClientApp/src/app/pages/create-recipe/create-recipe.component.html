@@ -19,7 +19,6 @@
         routerLink="/create-recipe"
         type="submit"
         [disabled]="createRecipeForm.invalid"
-
       >
         Опубликовать
       </button>
@@ -140,7 +139,7 @@
     </div>
   </div>
   <div class="create-recipe__container">
-    <div formArrayName ="ingredients">
+    <div formArrayName="ingredients">
       <p class="create-recipe__ingredients-header font__text_extra-large">
         Ингридиенты
       </p>
@@ -148,14 +147,15 @@
         class="create-recipe__ingredients-container"
         *ngFor="
           let control of getIngredientControls()['controls'];
-          let idx = index;
-        ">
+          let idx = index
+        "
+      >
         <img
           src="../../../assets/create-recipe/close.svg"
           class="create-recipe__close-button"
           (click)="deleteHeaderIngredient(idx)"
         />
-        <div class="create-recipe__ingredients" formGroupName="{{idx}}">
+        <div class="create-recipe__ingredients" formGroupName="{{ idx }}">
           <div class="create-recipe__ingredients">
             <div class="create-recipe__ingredient-title">
               <mat-form-field
@@ -169,8 +169,10 @@
                   matInput
                   formControlName="title"
                 />
-                <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
-                >Введите значение в поле</mat-error>  
+                <mat-error
+                  *ngIf="createRecipeForm.controls['description'].invalid"
+                  >Введите значение в поле</mat-error
+                >
               </mat-form-field>
             </div>
           </div>
@@ -187,8 +189,10 @@
                   class="long-input__input-field"
                   formControlName="description"
                 ></textarea>
-                <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
-                >Описание шага</mat-error>     
+                <mat-error
+                  *ngIf="createRecipeForm.controls['description'].invalid"
+                  >Описание шага</mat-error
+                >
               </mat-form-field>
             </div>
           </div>
@@ -205,21 +209,19 @@
         </button>
       </div>
     </div>
-    <div formArrayName ="steps" class="create-recipe__steps-container">
-      <div 
-      formGroupName="{{idx}}"
-      class="create-recipe__step" 
-      *ngFor="
-          let control of getStepsControls()['controls'];
-          let idx = index;"      
-          >
+    <div formArrayName="steps" class="create-recipe__steps-container">
+      <div
+        formGroupName="{{ idx }}"
+        class="create-recipe__step"
+        *ngFor="let control of getStepsControls()['controls']; let idx = index"
+      >
         <img
           src="../../../assets/create-recipe/close.svg"
           class="create-recipe__close-step-button"
           (click)="deleteStep(idx)"
         />
         <p class="font__text_large create-recipe__step-title">
-          Шаг {{ idx + 1}}
+          Шаг {{ idx + 1 }}
         </p>
         <div class="create-recipe__step-description">
           <mat-form-field
@@ -234,7 +236,8 @@
               name="description"
             ></textarea>
             <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
-            >Введите значение в поле</mat-error>
+              >Введите значение в поле</mat-error
+            >
           </mat-form-field>
         </div>
       </div>

@@ -1,68 +1,88 @@
 <div class="recipes">
-    <div class="recipes__header">
-        <h2 class="font__title_large">Рецепты</h2>
-        <button 
-        mat-raised-button
-        class="recipes__add-recipe yellow-button font__text_large"  
-        routerLink="/create-recipe"
-        >
-        + Добавить рецепт 
-      </button>
+  <div class="recipes__header">
+    <h2 class="font__title_large">Рецепты</h2>
+    <button
+      mat-raised-button
+      class="recipes__add-recipe yellow-button font__text_large"
+      routerLink="/create-recipe"
+    >
+      + Добавить рецепт
+    </button>
+  </div>
+  <div class="tags-list">
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/simple.png" />
+      <h3 class="font__title_tiny tags-list__title">Простые блюда</h3>
     </div>
-    <div class="tags-list">
-        <div class="tags-list__tag">
-          <img src="../../../assets/tags-list/simple.png" />
-          <h3 class="font__title_tiny tags-list__title">Простые блюда</h3>         
-        </div>
-        <div class="tags-list__tag">
-          <img src="../../../assets/tags-list/children.png" />
-          <h3 class="font__title_tiny tags-list__title">Детское</h3>          
-        </div>
-        <div class="tags-list__tag">
-          <img src="../../../assets/tags-list/chief.png" />
-          <h3 class="font__title_tiny tags-list__title">От шеф-поваров</h3>          
-        </div>
-        <div class="tags-list__tag">
-          <img src="../../../assets/tags-list/holiday.png" />
-          <h3 class="font__title_tiny tags-list__title">На праздник</h3>          
-        </div>
-      </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/children.png" />
+      <h3 class="font__title_tiny tags-list__title">Детское</h3>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/chief.png" />
+      <h3 class="font__title_tiny tags-list__title">От шеф-поваров</h3>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/holiday.png" />
+      <h3 class="font__title_tiny tags-list__title">На праздник</h3>
+    </div>
+  </div>
 
-      <div class="search-recipes">       
-        <h3 class="search-recipes__title font__title_tiny">Поиск рецепта</h3>           
-        <div class="search-recipe-form">
-            <div class="search-recipe-form__input">
-            <mat-form-field 
-            appearance="fill" 
-            class="simple-input font__text_normal" >
-                <mat-label>Введите название рецепта</mat-label>
-                <input         
-                autocomplete="off" 
-                class="simple-input__input-field" 
-                matInput 
-                [formControl]="input"
-                required
-                />    
-                <mat-error *ngIf="input.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>          
-            </div>
-            <button
-            mat-raised-button
-            class="search-recipe-form__submit font__text_normal yellow-button"
-            >
-            Поиск
-            </button>
-            <p class="search-recipe-form__tag-helper font__text_tiny">
-            <span class="search-recipe-form__tag">Мясо</span>
-            <span class="search-recipe-form__tag">Деликатесы</span>
-            <span class="search-recipe-form__tag">Пироги</span>
-            <span class="search-recipe-form__tag">Рыба</span>
-            </p>  
-        </div>
+  <div class="search-recipes">
+    <h3 class="search-recipes__title font__title_tiny">Поиск рецепта</h3>
+    <div class="search-recipe-form">
+      <div class="search-recipe-form__input">
+        <mat-form-field
+          appearance="fill"
+          class="simple-input font__text_normal"
+        >
+          <mat-label>Введите название рецепта</mat-label>
+          <input
+            autocomplete="off"
+            class="simple-input__input-field"
+            matInput
+            [formControl]="input"
+            required
+          />
+          <mat-error *ngIf="input.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
       </div>
+      <button
+        mat-raised-button
+        class="search-recipe-form__submit font__text_normal yellow-button"
+      >
+        Поиск
+      </button>
+      <p class="search-recipe-form__tag-helper font__text_tiny">
+        <span class="search-recipe-form__tag">Мясо</span>
+        <span class="search-recipe-form__tag">Деликатесы</span>
+        <span class="search-recipe-form__tag">Пироги</span>
+        <span class="search-recipe-form__tag">Рыба</span>
+      </p>
+    </div>
+  </div>
+  
+  <div class="recipe-block">
+      <div class="recipe-block__image">
+      </div>
+      <div class="recipe-block__container">
+          <div class="recipe-block__header">
+              <div class="recipe-block__tags-list"></div>
+              <div class="recipe-block__bookmark"></div>
+              <div class="recipe-block__like"></div>
+          </div>
+          <div class="recipe-block__title"></div>
+          <div class="recipe-block__description"></div>
+          <div class="recipe-block__footer">
+            <div class="recipe-block__time-for-cook"></div>
+            <div class="recipe-block__number-of-servings"></div>
+          </div>
+      </div>
+  </div>
 
-      <div>
-        
-      </div>
+  <div class="add-recipes">
     
+  </div>
+  
+  
 </div>
