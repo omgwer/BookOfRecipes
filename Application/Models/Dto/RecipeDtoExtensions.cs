@@ -45,7 +45,7 @@ namespace Application.Models.Dto
         {
             var list = new List<Tag>();
             string tag = tags.Replace( ",", " " ).Replace(".", " ");
-            tag.Replace( "  ", " " );            
+           // tag = tag.Replace( "  ", " " );            
             var tagsList = tag.Split( " " );            
             foreach ( var item in tagsList ) 
             {

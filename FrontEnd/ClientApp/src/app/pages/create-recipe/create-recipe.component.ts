@@ -6,6 +6,10 @@ import { RecipeHelper } from 'src/app/data/helpers/recipe.helper';
 import { FormArray, FormControl, NgModel, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+import { Tag } from 'src/app/data/containers/tag.interface';
+import { IconResolver } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-recipe',
@@ -18,11 +22,39 @@ export class CreateRecipeComponent implements OnInit {
     ingredients : [],
     steps : []
   };
+//
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  tags: Tag[] = [];
 
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.tags.push({tag: value});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(tag: Tag): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+//
   createRecipeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    tagsList: new FormControl('', Validators.required),
+    // tagsList: new FormArray([
+    //   new FormGroup({
+    //     tag: new FormControl('', Validators.required)
+    //   }) 
+    // ]),
     timeForCook: new FormControl('', Validators.required),
     numberOfServings: new FormControl('', Validators.required),
     ingredients: new FormArray([
@@ -104,7 +136,7 @@ export class CreateRecipeComponent implements OnInit {
       let ingredient: Ingredient  = {
         title : element.title,
         description : element.description,
-        order : i,
+        index : i,
       }
       this.recipe.ingredients.push(ingredient);
       i++;
@@ -113,7 +145,7 @@ export class CreateRecipeComponent implements OnInit {
     formData.steps.forEach((element: any) => {
       let step: Step  = {
         description : element.description,
-        order : i,
+        index : i,
       }
       this.recipe.steps.push(step);
       i++;

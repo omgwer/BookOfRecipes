@@ -24,19 +24,19 @@ namespace Application.Services
         {
             throw new NotImplementedException();
         }
-
+        
         public RecipeDto SaveRecipe( RecipeDto recipe )
         {
-            Recipe newRecipe = new Recipe();
+            Recipe newRecipe;
 
             if ( recipe.RecipeId == 0 )
-            {
-                newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() );
+            { 
+                newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() ); // rename to add
             }
             else
             {
                 //TODO доделать обновление
-                newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() );
+                newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() ); 
             }
 
             _unitOfWork.Commit();

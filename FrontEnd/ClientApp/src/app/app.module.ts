@@ -18,6 +18,8 @@ import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipesComponent } from './pages/recipes/recipes.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { RecipesComponent } from './pages/recipes/recipes.component';
     MainPageComponent,
     CreateRecipeComponent,
     NotFoundPageComponent,
-    RecipesComponent,
+    RecipesComponent,    
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,9 @@ import { RecipesComponent } from './pages/recipes/recipes.component';
     MatSelectModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    MatChipsModule,
+    MatIconModule
   ],
   providers: [RecipeHelper],
   bootstrap: [AppComponent],

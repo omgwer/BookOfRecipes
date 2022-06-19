@@ -2,5 +2,5 @@ export interface Ingredient
 {
     title?: string,
     description?: string,
-    order?: number,
+    index?: number,
 }

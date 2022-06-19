@@ -68,24 +68,25 @@
             >Введите значение в поле</mat-error
           >
         </mat-form-field>
-      </div>
-      <div class="create-recipe__add-tags">
-        <mat-form-field
-          appearance="fill"
-          class="simple-input font__text_normal"
-        >
-          <mat-label>Добавить теги</mat-label>
-          <input
-            autocomplete="off"
-            class="simple-input__input-field"
-            matInput
-            formControlName="tagsList"
-          />
-          <mat-error *ngIf="createRecipeForm.controls['tagsList'].invalid"
-            >Введите значение в поле</mat-error
-          >
-        </mat-form-field>
-      </div>
+      </div>         
+          <div class="create-recipe__add-tags">
+              <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label class="font__text_normal">Добавить теги</mat-label>
+                <mat-chip-list #chipList aria-label="Добавить теги">
+                  <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                    {{tag.tag}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Новый тег..."
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>                
+              </mat-form-field>
+          </div>
       <div class="create-recipe__droplist-container">
         <div class="create-recipe__droplist-elements">
           <div class="create-recipe__droplist-element">
@@ -93,7 +94,7 @@
               class="create-recipe__cooking-time"
               appearance="fill"
             >
-              <mat-label>Время готовки</mat-label>
+              <mat-label class="font__text_normal" >Время готовки</mat-label>
               <mat-select formControlName="timeForCook">
                 <mat-option value="5">5</mat-option>
                 <mat-option value="15">15</mat-option>
@@ -113,7 +114,7 @@
         <div class="create-recipe__droplist-elements">
           <div class="create-recipe__droplist-element">
             <mat-form-field class="create-recipe__serving" appearance="fill">
-              <mat-label>Порций в блюде</mat-label>
+              <mat-label class="font__text_normal">Порций в блюде</mat-label>
 
               <mat-select formControlName="numberOfServings" ngDefaultControl>
                 <mat-option value="1">1</mat-option>
@@ -162,7 +163,7 @@
                 appearance="fill"
                 class="simple-input font__text_normal"
               >
-                <mat-label>Заголовок для ингридиентов</mat-label>
+                <mat-label class="font__text_tiny">Заголовок для ингридиентов</mat-label>
                 <input
                   autocomplete="off"
                   class="simple-input__input-field"
@@ -182,7 +183,7 @@
                 appearance="fill"
                 class="long-input font__text_normal"
               >
-                <mat-label> Список продуктов для категории </mat-label>
+                <mat-label class="font__text_tiny"> Список продуктов для категории </mat-label>
                 <textarea
                   ngDefaultControl
                   matInput
@@ -248,7 +249,7 @@
           type="button"
           class="white-button font__text_large"
         >
-          + &nbsp;&nbsp;&nbsp;Добавить шагТест
+          + &nbsp;&nbsp;&nbsp;Добавить шаг
         </button>
       </div>
     </div>
