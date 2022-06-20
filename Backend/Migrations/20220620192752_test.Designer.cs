@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20220613191152_test")]
+    [Migration("20220620192752_test")]
     partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Order")
+                    b.Property<int>("Index")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipeId")
@@ -100,7 +100,7 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Order")
+                    b.Property<int>("Index")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipeId")
@@ -120,6 +120,9 @@ namespace Backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Index")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

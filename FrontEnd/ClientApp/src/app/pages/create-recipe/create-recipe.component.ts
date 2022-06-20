@@ -20,41 +20,34 @@ export class CreateRecipeComponent implements OnInit {
   file: any;
   recipe: Recipe = {
     ingredients : [],
-    steps : []
+    steps : [],
+    tagsList : []
   };
-//
+
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  tags: Tag[] = [];
+  tagList: Tag[] = [];
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-
-    // Add our fruit
+    
     if (value) {
-      this.tags.push({tag: value});
+      this.recipe.tagsList.push({name: value})
     }
-
-    // Clear the input value
+    
     event.chipInput!.clear();
   }
 
   remove(tag: Tag): void {
-    const index = this.tags.indexOf(tag);
-
+    const index = this.recipe.tagsList.indexOf(tag);
     if (index >= 0) {
-      this.tags.splice(index, 1);
+      this.recipe.tagsList.splice(index, 1);
     }
   }
-//
+
   createRecipeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
-    // tagsList: new FormArray([
-    //   new FormGroup({
-    //     tag: new FormControl('', Validators.required)
-    //   }) 
-    // ]),
+    description: new FormControl('', Validators.required),    
     timeForCook: new FormControl('', Validators.required),
     numberOfServings: new FormControl('', Validators.required),
     ingredients: new FormArray([
@@ -127,10 +120,14 @@ export class CreateRecipeComponent implements OnInit {
     this.recipe.authorId = 0;
     this.recipe.name = formData.name;
     this.recipe.description = formData.description;
-    this.recipe.tagsList = formData.tagsList;
     this.recipe.timeForCook = formData.timeForCook;
     this.recipe.numberOfServings = formData.numberOfServings;
     let i = 1;
+    this.recipe.tagsList.forEach((element: Tag) => {
+      element.index = i;
+      i++;  
+    })
+    i = 1;
     console.log(formData);
     formData.ingredients.forEach((element: any) => {
       let ingredient: Ingredient  = {

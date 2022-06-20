@@ -7,7 +7,7 @@ namespace Application.Models.Dto
         public int RecipeId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public string TagsList { get; set; } = string.Empty;
+        public List<TagDto> TagsList { get; set; } = new List<TagDto>();
         public int TimeForCook { get; set; }
         public int NumberOfServings { get; set; }
         public List<IngredientDto> Ingredients { get; set; } = new List<IngredientDto>();

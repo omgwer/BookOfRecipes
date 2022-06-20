@@ -15,7 +15,7 @@ namespace Infrastructure.Services
         {
             _dbSet = dbContext.Set<Recipe>();
         }
-        public Recipe CreateRecipe( Recipe recipe )
+        public Recipe Add( Recipe recipe )
         {
             _dbSet.Add( recipe );
             return recipe;

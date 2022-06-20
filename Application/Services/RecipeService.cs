@@ -31,17 +31,17 @@ namespace Application.Services
 
             if ( recipe.RecipeId == 0 )
             { 
-                newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() ); // rename to add
+                newRecipe = _recipeRepository.Add( recipe.ToRecipe() );
             }
             else
             {
                 //TODO доделать обновление
-                newRecipe = _recipeRepository.CreateRecipe( recipe.ToRecipe() ); 
+                newRecipe = _recipeRepository.Add( recipe.ToRecipe() ); 
             }
 
             _unitOfWork.Commit();
 
-            return RecipeExtensions.toDto( newRecipe );
+            return RecipeExtensions.ToDto( newRecipe );
         }
 
 
@@ -53,7 +53,7 @@ namespace Application.Services
                 Recipe? recipe = _recipeRepository.GetRecipe( i + 1 );
                 if ( recipe != null )
                 {
-                    list.Add( RecipeExtensions.toDto( recipe ) );
+                    list.Add( RecipeExtensions.ToDto( recipe ) );
                 }
                 else 
                 { 

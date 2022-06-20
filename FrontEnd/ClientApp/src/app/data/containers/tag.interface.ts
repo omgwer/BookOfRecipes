@@ -1,5 +1,5 @@
 export interface Tag
 {
     index?: number;
-    tag?: string;
+    name?: string;
 }

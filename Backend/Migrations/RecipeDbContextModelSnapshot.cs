@@ -33,7 +33,7 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Order")
+                    b.Property<int>("Index")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipeId")
@@ -98,7 +98,7 @@ namespace Backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Order")
+                    b.Property<int>("Index")
                         .HasColumnType("int");
 
                     b.Property<int>("RecipeId")
@@ -118,6 +118,9 @@ namespace Backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Index")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

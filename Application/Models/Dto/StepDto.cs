@@ -4,7 +4,7 @@ namespace Application.Models.Dto
 {
     public class StepDto
     {
-        public int Order { get; set; }
+        public int Index { get; set; }
         public string Description { get; set; } = string.Empty; 
 
         /*
@@ -14,7 +14,7 @@ namespace Application.Models.Dto
         {
             return new Step
             {
-                Order = dto.Order,
+                Index = dto.Index,
                 Description = dto.Description,
                 Id = 0,  
                 RecipeId = 0

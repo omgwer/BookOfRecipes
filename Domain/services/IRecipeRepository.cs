@@ -6,7 +6,7 @@ namespace Domain.Services
     {
         List<Recipe> GetRecipes();
         Recipe? GetRecipe( int id );
-        Recipe CreateRecipe( Recipe recipe );
+        Recipe Add( Recipe recipe );
         void DeleteRecipe( int id );
         int UpdateRecipe( Recipe recipe );
 

@@ -73,8 +73,8 @@
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label class="font__text_normal">Добавить теги</mat-label>
                 <mat-chip-list #chipList aria-label="Добавить теги">
-                  <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
-                    {{tag.tag}}
+                  <mat-chip *ngFor="let tag of recipe.tagsList" (removed)="remove(tag)">
+                    {{tag.name}}
                     <button matChipRemove>
                       <mat-icon>cancel</mat-icon>
                     </button>

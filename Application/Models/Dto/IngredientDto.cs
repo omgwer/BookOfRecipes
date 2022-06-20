@@ -4,7 +4,7 @@ namespace Application.Models.Dto
 {
     public class IngredientDto
     {
-        public int Order { get; set; }
+        public int Index { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
 
@@ -14,7 +14,7 @@ namespace Application.Models.Dto
             {
                 Id = 0,
                 RecipeId = 0,
-                Order = dto.Order,
+                Index = dto.Index,
                 Title = dto.Title,
                 Description = dto.Description,
             };

@@ -12,13 +12,23 @@ namespace Application.Models.Dto
                 AuthorId = dto.AuthorId,
                 Name = dto.Name,
                 Description = dto.Description,
-                TagsList = GetTagsList( dto.TagsList ),
                 TimeForCook = dto.TimeForCook,
                 NumberOfServings = dto.NumberOfServings,
                 ImageUrl = dto.ImageUrl,
                 Ingredients = GetIngredientsList( dto.Ingredients ),
+                TagsList = GetTagsList( dto.TagsList ) ,
                 Steps = GetStepsList(dto.Steps)
             };
+        }
+
+        private static List<Tag> GetTagsList( List<TagDto> listDto)
+        {
+            var list = new List<Tag>();
+            foreach ( var item in listDto )
+            {
+                list.Add( item.ToTag( item ) );
+            }
+            return list;
         }
 
         private static List<Ingredient> GetIngredientsList( List<IngredientDto> listDto )
@@ -39,27 +49,6 @@ namespace Application.Models.Dto
                 list.Add( item.ToStep( item ) );
             }
             return list;
-        }
-
-        private static List<Tag> GetTagsList( string tags )
-        {
-            var list = new List<Tag>();
-            string tag = tags.Replace( ",", " " ).Replace(".", " ");
-           // tag = tag.Replace( "  ", " " );            
-            var tagsList = tag.Split( " " );            
-            foreach ( var item in tagsList ) 
-            {
-                var test = item.Trim();
-                if ( test != "" )
-                {
-                    list.Add( new Tag
-                    {
-                        Id = 0,
-                        Name = item.Trim(),
-                    } );
-                }                               
-            }
-            return list;
-        }
+        }       
     }
 }
