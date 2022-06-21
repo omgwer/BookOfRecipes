@@ -113,27 +113,34 @@ namespace Backend.Migrations
 
             modelBuilder.Entity("Domain.Tag", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TagId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Index")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagId"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
+                    b.HasKey("TagId");
 
                     b.ToTable("Tag");
+                });
+
+            modelBuilder.Entity("RecipeTag", b =>
+                {
+                    b.Property<int>("RecipesRecipeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagsListTagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RecipesRecipeId", "TagsListTagId");
+
+                    b.HasIndex("TagsListTagId");
+
+                    b.ToTable("RecipeTag");
                 });
 
             modelBuilder.Entity("Domain.Ingredient", b =>
@@ -154,11 +161,17 @@ namespace Backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Tag", b =>
+            modelBuilder.Entity("RecipeTag", b =>
                 {
                     b.HasOne("Domain.Recipe", null)
-                        .WithMany("TagsList")
-                        .HasForeignKey("RecipeId")
+                        .WithMany()
+                        .HasForeignKey("RecipesRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsListTagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -168,8 +181,6 @@ namespace Backend.Migrations
                     b.Navigation("Ingredients");
 
                     b.Navigation("Steps");
-
-                    b.Navigation("TagsList");
                 });
 #pragma warning restore 612, 618
         }

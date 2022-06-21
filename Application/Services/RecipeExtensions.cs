@@ -76,7 +76,6 @@ namespace Application.Services
         {
             return new TagDto
             {
-                Index = tag.Index,
                 Name = tag.Name
             };
         }

@@ -8,10 +8,9 @@ namespace Infrastructure.Data.EntityConfiguration
     {
         public void Configure( EntityTypeBuilder<Tag> builder )
         {
-            builder.HasKey( x => x.Id );
+            builder.HasKey( x => x.TagId );
             builder.Property( x => x.Name );
-            builder.Property( x => x.Index );
-            builder.Property( x => x.RecipeId );
+            builder.HasMany( x => x.Recipes );
         }
     }
 }

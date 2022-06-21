@@ -29,12 +29,10 @@ export class CreateRecipeComponent implements OnInit {
   tagList: Tag[] = [];
 
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-    
+    const value = (event.value || '').trim();    
     if (value) {
       this.recipe.tagsList.push({name: value})
-    }
-    
+    }    
     event.chipInput!.clear();
   }
 
@@ -121,13 +119,8 @@ export class CreateRecipeComponent implements OnInit {
     this.recipe.name = formData.name;
     this.recipe.description = formData.description;
     this.recipe.timeForCook = formData.timeForCook;
-    this.recipe.numberOfServings = formData.numberOfServings;
+    this.recipe.numberOfServings = formData.numberOfServings;    
     let i = 1;
-    this.recipe.tagsList.forEach((element: Tag) => {
-      element.index = i;
-      i++;  
-    })
-    i = 1;
     console.log(formData);
     formData.ingredients.forEach((element: any) => {
       let ingredient: Ingredient  = {
