@@ -18,16 +18,19 @@ namespace Application.Services
             var list = new List<Tag>();
             foreach ( var item in tagDto )
             {
-                var t = _tagRepository.GetTag( item.Name );
-                if ( t == null )
+                var tag = _tagRepository.GetTag( item.Name );
+                if ( tag == null )
                 {
-                    t = new Tag {
-                       Name = item.Name
+                    tag = new Tag
+                    {
+                        Name = item.Name
                     };
                 }
-
-                //проверять имя на уникальность
-                list.Add( t );
+                if ( list.Find( x => x.Name == item.Name ) == null )
+                {
+                    //проверять имя на уникальность
+                    list.Add( tag );
+                }
             }
             return list;
         }

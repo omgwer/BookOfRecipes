@@ -10,7 +10,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class RecipesComponent implements OnInit {
   listIndex: number;
-  testArr: Recipe[] = [];
+  recipeList: Recipe[] = [];
   input = new FormControl('', Validators.required);
   
   constructor(private recipeHelper: RecipeHelper) {
@@ -18,12 +18,17 @@ export class RecipesComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.recipeHelper.getRecipeList(this.listIndex).subscribe(x => {
-      this.testArr = x;
-    });
+    this.pushRecipeElementForList();
   }
 
   getErrorMessage() {    
       return 'Введите значение в поле';   
+  }
+
+  pushRecipeElementForList():void {
+    this.recipeHelper.getRecipeList(this.listIndex).subscribe(x => {
+      x.forEach( e => this.recipeList.push(e));
+      this.listIndex++;
+    });
   }
 }

@@ -62,26 +62,34 @@
     </div>
   </div>
   
-  <div class="recipe-block">
+  <div *ngFor="let recipe of recipeList" >
+    <div class="recipe-block">
       <div class="recipe-block__image">
       </div>
       <div class="recipe-block__container">
           <div class="recipe-block__header">
-              <div class="recipe-block__tags-list"></div>
+              <div class="recipe-block__tags-list">
+                <span *ngFor="let tag of recipe.tagsList">{{tag.name}} &nbsp;</span>
+              </div>
               <div class="recipe-block__bookmark"></div>
               <div class="recipe-block__like"></div>
           </div>
-          <div class="recipe-block__title"></div>
-          <div class="recipe-block__description"></div>
+          <div class="recipe-block__title">{{recipe.name}}</div>
+          <div class="recipe-block__description">{{recipe.description}}</div>
           <div class="recipe-block__footer">
-            <div class="recipe-block__time-for-cook"></div>
-            <div class="recipe-block__number-of-servings"></div>
+            <div class="recipe-block__time-for-cook">{{recipe.timeForCook}}</div>
+            <div class="recipe-block__number-of-servings">{{recipe.numberOfServings}}</div>
           </div>
       </div>
   </div>
-
+  </div>
+  
   <div class="add-recipes">
-    
+    <button 
+        mat-stroked-button 
+        class="white-button font__text_large add-recipes__add-recipes" (click)="pushRecipeElementForList()">
+          Загрузить еще
+    </button>
   </div>
   
   
