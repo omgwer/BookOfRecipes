@@ -8,11 +8,13 @@ namespace Application.Services
     {
         private readonly IRecipeRepository _recipeRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ITagListBuilder _tagListBuilder;
 
-        public RecipeService( IRecipeRepository recipeRepository, IUnitOfWork unitOfWork )
+        public RecipeService( IRecipeRepository recipeRepository, IUnitOfWork unitOfWork, ITagListBuilder tagListBuilder )
         {
             _recipeRepository = recipeRepository;
             _unitOfWork = unitOfWork;
+            _tagListBuilder = tagListBuilder;
         }
 
         public void DeleteRecipe( int recipeId )
@@ -31,12 +33,12 @@ namespace Application.Services
 
             if ( recipe.RecipeId == 0 )
             { 
-                newRecipe = _recipeRepository.Add( recipe.ToRecipe() );
+                newRecipe = _recipeRepository.Add( recipe.ToRecipe( _tagListBuilder ) );
             }
             else
             {
                 //TODO доделать обновление
-                newRecipe = _recipeRepository.Add( recipe.ToRecipe() ); 
+                newRecipe = _recipeRepository.Add( recipe.ToRecipe( _tagListBuilder ) ); 
             }
 
             _unitOfWork.Commit();

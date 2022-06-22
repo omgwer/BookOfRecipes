@@ -60,6 +60,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRecipeService, RecipeService>();
+builder.Services.AddScoped<ITagListBuilder, TagListBuilder>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
 
 
 var app = builder.Build();
