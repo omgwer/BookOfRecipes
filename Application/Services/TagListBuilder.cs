@@ -26,7 +26,7 @@ namespace Application.Services
                         Name = item.Name
                     };
                 }
-                if ( list.Find( x => x.Name == item.Name ) == null )
+                if ( !list.Any( x => x.Name == item.Name ) )
                 {
                     //проверять имя на уникальность
                     list.Add( tag );

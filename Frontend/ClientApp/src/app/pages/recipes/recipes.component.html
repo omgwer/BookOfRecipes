@@ -69,28 +69,47 @@
       <div class="recipe-block__container">
           <div class="recipe-block__header">
               <div class="recipe-block__tags-list">
-                <span *ngFor="let tag of recipe.tagsList">{{tag.name}} &nbsp;</span>
+                <span class="recipe-block__tag" *ngFor="let tag of recipe.tagsList">{{tag.name}} &nbsp;</span>
               </div>
-              <div class="recipe-block__bookmark"></div>
-              <div class="recipe-block__like"></div>
+              <div class="recipe-block__likes-container">
+                <div class="recipe-block__bookmark">
+                  <img class="recipe-block__bookmark_logo" src="../../../assets/star-fill.svg">
+                  <span class="font__text_normal recipe-block__bookmark_color">10</span>
+                </div>
+                <div class="recipe-block__like">
+                  <img class="recipe-block__like_logo" src="../../../assets/favorite-fill.svg">
+                  <span class="font__text_normal recipe-block__like_color">5</span>
+                </div>
+              </div>
           </div>
-          <div class="recipe-block__title">{{recipe.name}}</div>
-          <div class="recipe-block__description">{{recipe.description}}</div>
+          <div class="recipe-block__title font__title_tiny">{{recipe.name}}</div>
+          <div class="recipe-block__description font__text_large">{{recipe.description}}</div>
           <div class="recipe-block__footer">
-            <div class="recipe-block__time-for-cook">{{recipe.timeForCook}}</div>
-            <div class="recipe-block__number-of-servings">{{recipe.numberOfServings}}</div>
+            <div class="recipe-block__time-for-cook">
+              <img src="../../../assets/time-for-cook.png">
+              <div class="recipe-block__time-for-cook_content">
+                <p class="recipe-block__time-title">Время приготовления:</p>
+                <p class="recipe-block__time-description font__text_tiny">{{recipe.timeForCook}} мин</p>
+              </div>
+            </div>
+
+            <div class="recipe-block__number-of-servings">
+              <img class="recipe-block__number-of-servings-logo" src="../../../assets/persons.png" width="59px" height="38px">
+              <div class="recipe-block__number-of-servings_content">
+                <p class="recipe-block__number-of-servings-title">Рецепт на:</p>
+                <p class="recipe-block__number-of-servings-description font__text_tiny">{{recipe.numberOfServings}} персон</p>
+              </div>
+            </div>
           </div>
       </div>
   </div>
   </div>
-  
-  <div class="add-recipes">
+
     <button 
         mat-stroked-button 
-        class="white-button font__text_large add-recipes__add-recipes" (click)="pushRecipeElementForList()">
+        class="white-button font__text_large add-recipes-button" (click)="pushRecipeElementForList()">
           Загрузить еще
     </button>
-  </div>
-  
+ 
   
 </div>

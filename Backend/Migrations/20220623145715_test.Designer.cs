@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20220621190054_test")]
+    [Migration("20220623145715_test")]
     partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
