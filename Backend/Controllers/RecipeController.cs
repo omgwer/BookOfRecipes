@@ -23,24 +23,34 @@ namespace Backend.Controllers
 
             if ( newRecipe.RecipeId == 0 )
             {
-                return BadRequest("Recipe dont save!");
+                return BadRequest( "Recipe dont save!" );
             }
 
-            return Ok(newRecipe);
+            return Ok( newRecipe );
         }
 
         [HttpGet]
         [Route( "list/{count}" )]
         public IActionResult GetRecipeList( int count )
         {
-            List<RecipeDto> recipeList = _recipeService.GetRecipeList(count);
+            List<RecipeDto> recipeList = _recipeService.GetRecipeList( count );
 
             if ( recipeList.Count == 0 )
             {
                 return NotFound();
             }
-                
+
             return Ok( recipeList );
+        }
+
+        [HttpPost]
+        [Route( "{recipeId}/updatePhoto" )]
+        public IActionResult UpdatePhoto( IFormFileCollection newPhoto, int recipeId )
+        {
+            var t = newPhoto;
+            Console.WriteLine( recipeId );
+            Console.WriteLine( 't' );
+            return Ok( "lolkek" );
         }
     }    
 }

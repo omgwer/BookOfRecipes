@@ -6,10 +6,12 @@ import { RecipeHelper } from 'src/app/data/helpers/recipe.helper';
 import { FormArray, FormControl, NgModel, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { COMMA, ENTER, X } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { Tag } from 'src/app/data/containers/tag.interface';
 import { IconResolver } from '@angular/material/icon';
+import { Photo } from 'src/app/data/containers/photo.interface';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-create-recipe',
@@ -17,22 +19,27 @@ import { IconResolver } from '@angular/material/icon';
   styleUrls: ['./create-recipe.component.scss'],
 })
 export class CreateRecipeComponent implements OnInit {
-  file: any;
+  file: File | null = null;
   recipe: Recipe = {
-    ingredients : [],
-    steps : [],
-    tagsList : []
+    ingredients: [],
+    steps: [],
+    tagsList: [],    
   };
-
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   tagList: Tag[] = [];
 
+  constructor(private recipeHelper: RecipeHelper) {}
+
+  ngOnInit(): void {
+    this.initPhoto();
+  }
+
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();    
+    const value = (event.value || '').trim();
     if (value) {
-      this.recipe.tagsList.push({name: value})
-    }    
+      this.recipe.tagsList.push({ name: value });
+    }
     event.chipInput!.clear();
   }
 
@@ -45,7 +52,7 @@ export class CreateRecipeComponent implements OnInit {
 
   createRecipeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),    
+    description: new FormControl('', Validators.required),
     timeForCook: new FormControl('', Validators.required),
     numberOfServings: new FormControl('', Validators.required),
     ingredients: new FormArray([
@@ -61,17 +68,12 @@ export class CreateRecipeComponent implements OnInit {
     ]),
   });
 
-  ngOnInit(): void {  
-  }
-
-  constructor(private recipeHelper: RecipeHelper) {}
-
   addHeaderIngredient() {
-    const control = new FormGroup({      
+    const control = new FormGroup({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
     });
-    this.getIngredientControls().push(control);    
+    this.getIngredientControls().push(control);
   }
 
   getIngredientControls() {
@@ -96,19 +98,42 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   deleteStep(index: number): void {
-    if (this.getStepsControls().controls.length > 1)
-    {
+    if (this.getStepsControls().controls.length > 1) {
       this.getStepsControls().removeAt(index);
     }
   }
 
   getFile(event: any): void {
-    this.file = event.target.files[0];
+    var newImg = document.getElementById('newPhoto') as HTMLImageElement;
+    this.file = event.target.files[0];    
+    newImg.src = URL.createObjectURL(this.file as File);
+  }
+
+  initPhoto(): void {
+    if (this.recipe.imageUrl != undefined) {
+      var newImg = document.getElementById('newPhoto') as HTMLImageElement;  
+      newImg.src = this.recipe.imageUrl as string;
+    }
+  }
+
+  deletePhoto(): void {
+    var newImg = document.getElementById('newPhoto') as HTMLImageElement;
+    this.file = null;
+    newImg.src = "../../../assets/create-recipe/upload-photo.png";
   }
 
   saveRecipe(): void {
-    let formData = {...this.createRecipeForm.value};    
-    this.recipeHelper.createRecipe(this.toDto(formData)).subscribe();
+    let formData = { ...this.createRecipeForm.value };
+    this.recipeHelper.createRecipe(this.toDto(formData)).subscribe(e => {
+      if (this.file != null) {
+        let fd = new FormData();
+        fd.append(this.file.name, this.file, this.file.name);
+         console.log(this.file);
+        let newUrl: string = 'https://localhost:7192/api/Recipe/'+ e.recipeId +'/updatePhoto';      
+        this.recipeHelper.updatePhoto(newUrl, fd ).subscribe();
+      }
+    } );  
+
     this.recipe.ingredients = [];
     this.recipe.steps = [];
   }
@@ -119,29 +144,28 @@ export class CreateRecipeComponent implements OnInit {
     this.recipe.name = formData.name;
     this.recipe.description = formData.description;
     this.recipe.timeForCook = formData.timeForCook;
-    this.recipe.numberOfServings = formData.numberOfServings;    
+    this.recipe.numberOfServings = formData.numberOfServings;
     let i = 1;
-    console.log(formData);
     formData.ingredients.forEach((element: any) => {
-      let ingredient: Ingredient  = {
-        title : element.title,
-        description : element.description,
-        index : i,
-      }
+      let ingredient: Ingredient = {
+        title: element.title,
+        description: element.description,
+        index: i,
+      };
       this.recipe.ingredients.push(ingredient);
       i++;
     });
     i = 1;
     formData.steps.forEach((element: any) => {
-      let step: Step  = {
-        description : element.description,
-        index : i,
-      }
+      let step: Step = {
+        description: element.description,
+        index: i,
+      };
       this.recipe.steps.push(step);
       i++;
-    })
-    i = 1;
+    });
+    i = 1;    
     this.recipe.imageUrl = 'null';    
     return this.recipe;
-  }
+  }  
 }

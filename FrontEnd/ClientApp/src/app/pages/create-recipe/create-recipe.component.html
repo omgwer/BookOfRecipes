@@ -33,10 +33,18 @@
         class="create-recipe__upload-photo-button"
         id="photoUploadButton"
       />
-      <label
-        class="create-recipe__upload-photo"
-        for="photoUploadButton"
-      ></label>
+      <label for="photoUploadButton">        
+        <img class="create-recipe__upload-photo" 
+          src="../../../assets/create-recipe/upload-photo.png" 
+          width="430px" 
+          height="430px"
+          id="newPhoto">
+      </label>
+      <div
+        *ngIf="file != null"
+        class="create-recipe__delete-photo" id="deletePhoto" (click)="deletePhoto()">
+        <mat-icon>cancel</mat-icon>
+      </div>      
     </div>
     <div class="create-recipe__input-container">
       <div class="create-recipe__recipe-name">
@@ -94,7 +102,7 @@
               class="create-recipe__cooking-time"
               appearance="fill"
             >
-              <mat-label class="font__text_normal" >Время готовки</mat-label>
+              <mat-label class="font__text_normal">Время готовки</mat-label>
               <mat-select formControlName="timeForCook">
                 <mat-option value="5">5</mat-option>
                 <mat-option value="15">15</mat-option>

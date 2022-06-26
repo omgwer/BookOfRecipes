@@ -19,6 +19,7 @@ body
 {
   background: $background-white url("assets/background-wave.png") no-repeat;  
   background-size: 100%;
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
 }
 
 .font {

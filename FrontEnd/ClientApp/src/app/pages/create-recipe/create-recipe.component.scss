@@ -67,14 +67,22 @@
     &__upload-photo {
         position: absolute;
         cursor: pointer;
-        transition: all ease-in-out 0.2s;
-        background: url('../../../assets/create-recipe/upload-photo.png');
-        width: 430px;
-        height: 430px;
+        transition: all ease-in-out 0.2s;      
+        border-radius: 30px;
+    }
 
-        &:hover
-        {
-            transform: scale(1.02);
+    &__delete-photo {
+        position: absolute;
+        left: 392px;
+        top: 65px;
+        background-color: $yellow;
+        border-radius: 15px;
+        width: 24px;
+        height: 24px;
+        
+        &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
         }
     }
 
