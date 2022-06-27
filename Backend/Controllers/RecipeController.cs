@@ -9,10 +9,12 @@ namespace Backend.Controllers
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeService _recipeService;
+        private readonly IPhotoService _photoService;
 
-        public RecipeController( IRecipeService recipeService )
+        public RecipeController( IRecipeService recipeService, IPhotoService photoService )
         {
             _recipeService = recipeService;
+            _photoService = photoService;
         }
 
         [HttpPost]
@@ -45,12 +47,20 @@ namespace Backend.Controllers
 
         [HttpPost]
         [Route( "{recipeId}/updatePhoto" )]
-        public IActionResult UpdatePhoto( IFormFileCollection newPhoto, int recipeId )
+        public IActionResult UpdatePhoto( IFormFile file, int recipeId )
         {
-            var t = newPhoto;
-            Console.WriteLine( recipeId );
-            Console.WriteLine( 't' );
-            return Ok( "lolkek" );
+            RecipeDto recipe = _recipeService.GetRecipe( recipeId );
+            if ( recipe == null )
+            {
+                return BadRequest( "Recipe not found!" );
+            }
+
+            string photoPath = _photoService.savePhoto( file, recipeId );
+
+            recipe.ImageUrl = photoPath;
+            RecipeDto newRecipe = _recipeService.SaveRecipe( recipe );
+
+            return Ok( "photo saved" );
         }
-    }    
+    }
 }

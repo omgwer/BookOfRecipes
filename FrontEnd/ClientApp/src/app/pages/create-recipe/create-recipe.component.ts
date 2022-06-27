@@ -119,7 +119,7 @@ export class CreateRecipeComponent implements OnInit {
   deletePhoto(): void {
     var newImg = document.getElementById('newPhoto') as HTMLImageElement;
     this.file = null;
-    newImg.src = "../../../assets/create-recipe/upload-photo.png";
+    newImg.src = "../../../assets/create-recipe/upload-photo.png";    
   }
 
   saveRecipe(): void {
@@ -127,12 +127,12 @@ export class CreateRecipeComponent implements OnInit {
     this.recipeHelper.createRecipe(this.toDto(formData)).subscribe(e => {
       if (this.file != null) {
         let fd = new FormData();
-        fd.append(this.file.name, this.file, this.file.name);
-         console.log(this.file);
+        fd.append('file', this.file, this.file.name);
+         console.log(fd);
         let newUrl: string = 'https://localhost:7192/api/Recipe/'+ e.recipeId +'/updatePhoto';      
         this.recipeHelper.updatePhoto(newUrl, fd ).subscribe();
       }
-    } );  
+    } );
 
     this.recipe.ingredients = [];
     this.recipe.steps = [];

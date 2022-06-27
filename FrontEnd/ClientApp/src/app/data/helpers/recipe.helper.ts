@@ -20,11 +20,6 @@ export class RecipeHelper {
   }
 
   updatePhoto(url: string, file: FormData) : Observable<Recipe> {
-    return this.http.post<Recipe>(url, file, {
-      headers: {
-         'Content-Type': 'multipart/form-data',
-         'Accept': '*/*'
-      },
-    });
+    return this.http.post<Recipe>(url, file);
   }
 }

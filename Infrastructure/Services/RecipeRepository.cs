@@ -41,9 +41,10 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public int UpdateRecipe( Recipe recipe )
+        public Recipe Update( Recipe recipe )
         {
-            throw new NotImplementedException();
+            _dbSet.Update( recipe );
+            return recipe;
         }
     }
 }

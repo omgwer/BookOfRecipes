@@ -22,23 +22,28 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public RecipeDto GetRecipe( int recipeId )
+        public RecipeDto? GetRecipe( int recipeId )
         {
-            throw new NotImplementedException();
+            Recipe? recipe = _recipeRepository.GetRecipe( recipeId );
+            if ( recipe != null )
+            {
+                return recipe.ToDto();
+            }
+
+            return null;            
         }
-        
+
         public RecipeDto SaveRecipe( RecipeDto recipe )
         {
             Recipe newRecipe;
 
             if ( recipe.RecipeId == 0 )
-            { 
+            {
                 newRecipe = _recipeRepository.Add( recipe.ToRecipe( _tagListBuilder ) );
             }
             else
             {
-                //TODO доделать обновление
-                newRecipe = _recipeRepository.Add( recipe.ToRecipe( _tagListBuilder ) ); 
+                newRecipe = _recipeRepository.Update( recipe.ToRecipe( _tagListBuilder ) );
             }
 
             _unitOfWork.Commit();
@@ -57,10 +62,10 @@ namespace Application.Services
                 {
                     list.Add( RecipeExtensions.ToDto( recipe ) );
                 }
-                else 
-                { 
+                else
+                {
                     return list;
-                }                
+                }
             }
             return list;
         }

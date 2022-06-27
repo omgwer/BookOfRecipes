@@ -8,7 +8,7 @@ namespace Domain.Services
         Recipe? GetRecipe( int id );
         Recipe Add( Recipe recipe );
         void DeleteRecipe( int id );
-        int UpdateRecipe( Recipe recipe );
+        Recipe Update( Recipe recipe );
 
         // описывает методы для работы с domain(хранилище рецептов)
     }

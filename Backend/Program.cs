@@ -58,11 +58,11 @@ builder.Services.AddSwaggerGen();
 
 //Тут добавить сервис IToDoService в DI
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRecipeService, RecipeService>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.AddScoped<ITagListBuilder, TagListBuilder>();
-builder.Services.AddScoped<ITagRepository, TagRepository>();
-
 
 var app = builder.Build();
 
