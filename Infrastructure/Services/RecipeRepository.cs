@@ -7,9 +7,7 @@ namespace Infrastructure.Services
 {
     public class RecipeRepository : IRecipeRepository
     {
-        private readonly RecipeDbContext _dbContext;
         private readonly DbSet<Recipe> _dbSet;
-        private readonly DbSet<Ingredient> _dbIngredient;
 
         public RecipeRepository( RecipeDbContext dbContext )
         {

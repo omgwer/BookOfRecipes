@@ -6,7 +6,7 @@ namespace Application.Services
     public class PhotoService : IPhotoService
     {
         private readonly IHostingEnvironment _appEnvironment;
-        private string _path = "SharedData\\";
+        private string _path = "Frontend/ClientApp/src/assets/shared-data/";
 
         public PhotoService( IHostingEnvironment appEnvironment )
         {
@@ -26,9 +26,10 @@ namespace Application.Services
             using ( var fileStream = new FileStream( filePath, FileMode.Create ) )
             {
                 file.CopyTo( fileStream );
-            }
+                fileStream.Close();
+            }            
 
-            filePath = "../../../../../../" + _path + recipeId.ToString() + "/" + file.FileName;
+            filePath = "../../../assets/shared-data/" + recipeId.ToString() + "/" + file.FileName;
             return filePath;
         }
     }

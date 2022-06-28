@@ -31,4 +31,6 @@ export class RecipesComponent implements OnInit {
       this.listIndex++;
     });
   }
+  
+  
 }

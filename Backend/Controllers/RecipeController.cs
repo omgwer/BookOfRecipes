@@ -1,5 +1,6 @@
 ﻿using Application.Models.Dto;
 using Application.Services;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
@@ -49,7 +50,7 @@ namespace Backend.Controllers
         [Route( "{recipeId}/updatePhoto" )]
         public IActionResult UpdatePhoto( IFormFile file, int recipeId )
         {
-            RecipeDto recipe = _recipeService.GetRecipe( recipeId );
+            Recipe? recipe = _recipeService.GetRecipeForUpdate( recipeId );
             if ( recipe == null )
             {
                 return BadRequest( "Recipe not found!" );
@@ -58,6 +59,7 @@ namespace Backend.Controllers
             string photoPath = _photoService.savePhoto( file, recipeId );
 
             recipe.ImageUrl = photoPath;
+
             RecipeDto newRecipe = _recipeService.SaveRecipe( recipe );
 
             return Ok( "photo saved" );

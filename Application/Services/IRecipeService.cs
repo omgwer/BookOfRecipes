@@ -1,4 +1,5 @@
 ﻿using Application.Models.Dto;
+using Domain;
 
 namespace Application.Services
 {
@@ -6,10 +7,14 @@ namespace Application.Services
     {
         public RecipeDto SaveRecipe(RecipeDto recipe);
 
-        public RecipeDto GetRecipe(int recipeId);
+        public RecipeDto? GetRecipe(int recipeId);
 
         public void DeleteRecipe( int recipeId );
 
         public List<RecipeDto> GetRecipeList(int count);
+
+        public Recipe? GetRecipeForUpdate( int recipeId );
+
+        public RecipeDto SaveRecipe( Recipe recipe );
     }
 }

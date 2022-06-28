@@ -30,7 +30,12 @@ namespace Application.Services
                 return recipe.ToDto();
             }
 
-            return null;            
+            return null;
+        }
+
+        public Recipe? GetRecipeForUpdate( int recipeId )
+        {
+            return _recipeRepository.GetRecipe( recipeId );
         }
 
         public RecipeDto SaveRecipe( RecipeDto recipe )
@@ -49,6 +54,15 @@ namespace Application.Services
             _unitOfWork.Commit();
 
             return RecipeExtensions.ToDto( newRecipe );
+        }
+
+        public RecipeDto SaveRecipe( Recipe recipe )
+        {
+            _recipeRepository.Update( recipe );
+
+            _unitOfWork.Commit();
+
+            return RecipeExtensions.ToDto( recipe );
         }
 
 

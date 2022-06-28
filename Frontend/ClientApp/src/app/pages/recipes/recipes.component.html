@@ -63,9 +63,19 @@
   </div>
   
   <div *ngFor="let recipe of recipeList" >
-    <div class="recipe-block">
-      <div class="recipe-block__image">
-      </div>
+    <div class="recipe-block">            
+        <img 
+          *ngIf="recipe.imageUrl != 'null'"
+          class="recipe-block__upload-photo" 
+          [src]="recipe.imageUrl"
+          width="430px" 
+          height="430px">  
+        <img 
+          *ngIf="recipe.imageUrl == 'null'"
+          class="recipe-block__upload-photo" 
+          src="../../../assets/recipe-background.png" 
+          width="430px" 
+          height="430px">    
       <div class="recipe-block__container">
           <div class="recipe-block__header">
               <div class="recipe-block__tags-list">
