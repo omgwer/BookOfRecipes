@@ -1,4 +1,5 @@
-﻿using Application.Services;
+﻿using System.Diagnostics;
+using Application.Services;
 using Domain;
 
 namespace Application.Models.Dto
@@ -22,16 +23,19 @@ namespace Application.Models.Dto
             };
         }
 
-/*        private static List<Tag> GetTagsList( List<TagDto> listDto)
+        public static Recipe ToRecipe( this RecipeDto dto, ITagListBuilder tagListBuilder, Recipe recipe )
         {
-            var list = new List<Tag>();
-            foreach ( var item in listDto )
-            {
-                list.Add( item.ToTag( item ) );
-                // дописать метод для работы с тегами
-            }
-            return list;
-        }*/
+            recipe.AuthorId = dto.AuthorId;
+            recipe.Name = dto.Name;
+            recipe.Description = dto.Description;
+            recipe.TimeForCook = dto.TimeForCook;
+            recipe.NumberOfServings = dto.NumberOfServings;
+            recipe.ImageUrl = dto.ImageUrl;
+            recipe.Ingredients = GetIngredientsList( dto.Ingredients );
+            recipe.TagsList = tagListBuilder.Build( dto.TagsList );
+            recipe.Steps = GetStepsList( dto.Steps );
+            return recipe;
+        }
 
         private static List<Ingredient> GetIngredientsList( List<IngredientDto> listDto )
         {

@@ -124,14 +124,19 @@ export class CreateRecipeComponent implements OnInit {
 
   saveRecipe(): void {
     let formData = { ...this.createRecipeForm.value };
+    this.showPreloader();
     this.recipeHelper.createRecipe(this.toDto(formData)).subscribe(e => {
       if (this.file != null) {
         let fd = new FormData();
         fd.append('file', this.file, this.file.name);
          console.log(fd);
         let newUrl: string = 'https://localhost:7192/api/Recipe/'+ e.recipeId +'/updatePhoto';      
-        this.recipeHelper.updatePhoto(newUrl, fd ).subscribe();
+        this.recipeHelper.updatePhoto(newUrl, fd ).subscribe( e => {
+        });
+        this.hidePreloader();
+        window.location.href='http://localhost:4200/recipes';
       }
+    
     } );
 
     this.recipe.ingredients = [];
@@ -168,4 +173,16 @@ export class CreateRecipeComponent implements OnInit {
     this.recipe.imageUrl = 'null';    
     return this.recipe;
   }  
+
+
+  showPreloader(): void {
+    let preloader = document.getElementById('preloader') as HTMLElement;
+    preloader.classList.remove('visually-hidden');
+  }
+  
+  hidePreloader(): void {
+    let preloader = document.getElementById('preloader') as HTMLElement;
+    preloader.classList.add('visually-hidden');
+  }
 }
+

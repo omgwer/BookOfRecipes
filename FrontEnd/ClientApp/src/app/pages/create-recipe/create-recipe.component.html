@@ -36,6 +36,7 @@
       <label for="photoUploadButton">        
         <img class="create-recipe__upload-photo" 
           src="../../../assets/create-recipe/upload-photo.png" 
+          alt=""
           width="430px" 
           height="430px"
           id="newPhoto">
@@ -263,3 +264,11 @@
     </div>
   </div>
 </form>
+
+<div class="create-recipe__preloader-container visually-hidden" id="preloader">
+  <mat-spinner
+    class="create-recipe__preloader"
+    color="dark"
+  >
+  </mat-spinner>
+</div>

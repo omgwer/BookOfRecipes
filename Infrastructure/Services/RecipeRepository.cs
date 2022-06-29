@@ -19,9 +19,15 @@ namespace Infrastructure.Services
             return recipe;
         }
 
-        public void DeleteRecipe( int id )
+        public String Delete( int id )
         {
-            throw new NotImplementedException();
+            Recipe? recipe = _dbSet.Where( r => r.RecipeId == id ).FirstOrDefault();
+            if ( recipe != null )
+            {
+                _dbSet.Remove( recipe );
+                return "Success";
+            }
+            return "Fail";            
         }
 
         public Recipe? GetRecipe( int recipeId )

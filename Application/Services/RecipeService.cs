@@ -17,9 +17,11 @@ namespace Application.Services
             _tagListBuilder = tagListBuilder;
         }
 
-        public void DeleteRecipe( int recipeId )
+        public String DeleteRecipe( int recipeId )
         {
-            throw new NotImplementedException();
+            string result = _recipeRepository.Delete( recipeId );
+            _unitOfWork.Commit();
+            return result;
         }
 
         public RecipeDto? GetRecipe( int recipeId )
@@ -29,15 +31,9 @@ namespace Application.Services
             {
                 return recipe.ToDto();
             }
-
             return null;
         }
-
-        public Recipe? GetRecipeForUpdate( int recipeId )
-        {
-            return _recipeRepository.GetRecipe( recipeId );
-        }
-
+               
         public RecipeDto SaveRecipe( RecipeDto recipe )
         {
             Recipe newRecipe;
@@ -48,23 +44,14 @@ namespace Application.Services
             }
             else
             {
-                newRecipe = _recipeRepository.Update( recipe.ToRecipe( _tagListBuilder ) );
+                var oldRecipe = _recipeRepository.GetRecipe( recipe.RecipeId );
+                newRecipe = _recipeRepository.Update( recipe.ToRecipe( _tagListBuilder, oldRecipe ) );
             }
 
             _unitOfWork.Commit();
 
             return RecipeExtensions.ToDto( newRecipe );
         }
-
-        public RecipeDto SaveRecipe( Recipe recipe )
-        {
-            _recipeRepository.Update( recipe );
-
-            _unitOfWork.Commit();
-
-            return RecipeExtensions.ToDto( recipe );
-        }
-
 
         public List<RecipeDto> GetRecipeList( int count )
         {
@@ -78,14 +65,11 @@ namespace Application.Services
                 }
                 else
                 {
-                    return list;
+                    continue;
                 }
             }
             return list;
         }
-
-        // слой бизнес логики, если id == 0  создается новый рецепт, если id != 0 обновляется
-        // тут хранить метод toDto() Для удаления из обьекто полученных в базе данных, которые не нужны на фронте
     }
 }
 

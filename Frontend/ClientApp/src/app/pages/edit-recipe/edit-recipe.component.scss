@@ -1,16 +1,5 @@
-@import 'fonts';
 @import 'colors';
-
-.recipes {
-    max-width: $appSize;
-    margin: 49px auto 106px;
-
-    &__header
-    {
-        display: flex;
-        justify-content: space-between;
-    }
-}
+@import 'fonts';
 
 .yellow-button
 {
@@ -30,6 +19,88 @@
     margin: 50px auto;
 }
 
+
+.edit-recipe {
+    max-width: $appSize;
+    margin: 49px auto 106px;
+
+    &__rollback {
+        color: $yellow;
+        padding-left: 20px;
+        position: relative;
+        cursor: pointer;
+
+        &:before {
+            position: absolute;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: url('../../../assets/yellow-pointer-left.svg');
+            left: -2px;
+            top: 0;
+            transition: ease-in-out 0.3s all;
+        }
+
+        &:hover {
+            font-weight: 500;
+
+            &::before {
+                left: -10px;
+            }
+        }
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0 60px;
+
+    }
+
+    &__delete-recipe {
+        border-radius: 16px;
+        padding: 12px 25px;
+        width: 100;
+        margin-right: 18px;
+    }
+
+    &__title {
+        max-width: 600px;
+    }
+
+    &__other-info {
+        display: flex;    
+        justify-content: space-between;    
+    }
+
+    &__steps {
+        width: 790px;
+    }
+
+    &__step {
+        padding: 50px 50px 50px 73px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    &__ingredient-title {
+        font-size: 20px;
+        color: $yellow;
+        margin-bottom: 15px;    
+    }
+
+    &__ingredient {
+        margin-bottom: 15px;
+        max-width: 360px;
+    }
+
+    &__postscriptum {
+        color: rgba(253, 177, 0, 1);
+        margin: 60px auto;
+        max-width: 300px;
+    }
+}
 
 .tags-list
 {
@@ -124,12 +195,7 @@
     margin-bottom: 50px;
     background-color: white;
     border-radius: 24px;
-
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0 0 4px 1px rgba(128, 128, 128, 0.616);
-    }
-
+  
 
     &__container {
         min-width: 770px;
@@ -255,6 +321,34 @@
  }
 
  .create-recipe {
+    &__preloader-container {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.8);
+      
+        &:hover {
+          cursor: pointer;
+        }
+    }
+
+    &__preloader {
+        position: fixed;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.create-recipe {
     &__preloader-container {
         z-index: 1;
         position: fixed;

@@ -2,9 +2,9 @@
     <div class="header__navigation-container">
         <span class="header__logo font__title_tiny" routerLink="">Recipes</span>
         <div class="header__navigation-menu font__text_normal">    
-            <span class="header__navigation-menu-element selected"  routerLink="">Главная</span>
-            <span class="header__navigation-menu-element"  routerLink="recipes">Рецепты</span>
-            <span class="header__navigation-menu-element">Избранное</span>
+            <span id="main" class="header__navigation-menu-element selected" (click)="switchToMain()"  routerLink="">Главная</span>
+            <span id="recipes" class="header__navigation-menu-element" (click)="switchRecipes()"  routerLink="recipes">Рецепты</span>
+            <span id="likes" class="header__navigation-menu-element"  (click)="switchLikes()">Избранное</span>
         </div>
     </div>    
     <div class="header__account-menu">

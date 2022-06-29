@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RecipesComponent } from './pages/recipes/recipes.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EditRecipeComponent } from './pages/edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {MatIconModule} from '@angular/material/icon';
     MainPageComponent,
     CreateRecipeComponent,
     NotFoundPageComponent,
-    RecipesComponent,    
+    RecipesComponent,
+    EditRecipeComponent,        
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule, 
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [RecipeHelper],
   bootstrap: [AppComponent],

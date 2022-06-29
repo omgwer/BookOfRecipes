@@ -11,7 +11,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class RecipesComponent implements OnInit {
   listIndex: number;
   recipeList: Recipe[] = [];
-  input = new FormControl('', Validators.required);
+  input = new FormControl('');
   
   constructor(private recipeHelper: RecipeHelper) {
       this.listIndex = 0;
@@ -26,11 +26,29 @@ export class RecipesComponent implements OnInit {
   }
 
   pushRecipeElementForList():void {
-    this.recipeHelper.getRecipeList(this.listIndex).subscribe(x => {
+    this.showPreloader();
+    this.recipeHelper.getRecipeList(this.listIndex).subscribe(x => {      
       x.forEach( e => this.recipeList.push(e));
       this.listIndex++;
+      this.hidePreloader();
     });
+    
+  }
+
+  showPreloader(): void {
+    let preloader = document.getElementById('preloader') as HTMLElement;
+    preloader.classList.remove('visually-hidden');
   }
   
-  
+  hidePreloader(): void {
+    let preloader = document.getElementById('preloader') as HTMLElement;
+    preloader.classList.add('visually-hidden');
+  } 
+
+  openRecipe(recipeId?: number ): void {
+    if (recipeId != null) {
+      console.log('http://localhost:4200/recipes/' + recipeId.toString());
+      window.location.href='http://localhost:4200/recipes/' + recipeId.toString();
+    }
+  }  
 }

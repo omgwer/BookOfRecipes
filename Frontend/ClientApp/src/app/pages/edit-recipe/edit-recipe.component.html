@@ -1,0 +1,135 @@
+<div class="edit-recipe">
+  <div class="edit-recipe__top-block">
+    <span class="edit-recipe__rollback font__text_normal" routerLink="/recipes"
+      >Назад</span
+    >
+    <div class="edit-recipe__block">
+      <h2 class="edit-recipe__title font__title_large">
+        {{ recipe.name }}
+      </h2>
+      <div class="edit-recipe__button-block">
+        <button
+          mat-raised-button
+          class="edit-recipe__delete-recipe"
+          [routerLink]="'/recipes/' + recipe.recipeId"
+          (click)="deleteRecipe(recipe.recipeId)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-stroked-button
+          class="yellow-button font__text_large"
+          routerLink="/edit-recipe"
+          type="submit"
+        >
+          Редактировать
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-block">
+    <img
+      *ngIf="recipe.imageUrl != 'null'"
+      class="recipe-block__upload-photo"
+      [src]="'https://localhost:7192' + recipe.imageUrl"
+      alt=""
+      width="430px"
+      height="430px"
+    />
+    <img
+      *ngIf="recipe.imageUrl == 'null'"
+      class="recipe-block__upload-photo"
+      src="../../../assets/recipe-background.png"
+      width="430px"
+      height="430px"
+    />
+    <div class="recipe-block__container">
+      <div class="recipe-block__header">
+        <div class="recipe-block__tags-list">
+          <span class="recipe-block__tag" *ngFor="let tag of recipe.tagsList"
+            >{{ tag.name }} &nbsp;</span
+          >
+        </div>
+        <div class="recipe-block__likes-container">
+          <div class="recipe-block__bookmark">
+            <img
+              class="recipe-block__bookmark_logo"
+              src="../../../assets/star-fill.svg"
+            />
+            <span class="font__text_normal recipe-block__bookmark_color"
+              >10</span
+            >
+          </div>
+          <div class="recipe-block__like">
+            <img
+              class="recipe-block__like_logo"
+              src="../../../assets/favorite-fill.svg"
+            />
+            <span class="font__text_normal recipe-block__like_color">5</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-block__title font__title_tiny"></div>
+      <div class="recipe-block__description font__text_large">
+        {{ recipe.description }}
+      </div>
+      <div class="recipe-block__footer">
+        <div class="recipe-block__time-for-cook">
+          <img src="../../../assets/time-for-cook.png" />
+          <div class="recipe-block__time-for-cook_content">
+            <p class="recipe-block__time-title">Время приготовления:</p>
+            <p class="recipe-block__time-description font__text_tiny">
+              {{ recipe.timeForCook }} мин
+            </p>
+          </div>
+        </div>
+
+        <div class="recipe-block__number-of-servings">
+          <img
+            class="recipe-block__number-of-servings-logo"
+            src="../../../assets/persons.png"
+            width="59px"
+            height="38px"
+          />
+          <div class="recipe-block__number-of-servings_content">
+            <p class="recipe-block__number-of-servings-title">Рецепт на:</p>
+            <p
+              class="recipe-block__number-of-servings-description font__text_tiny"
+            >
+              {{ recipe.numberOfServings }} персон
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="edit-recipe__other-info">
+    <div class="edit-recipe__ingredients">
+      <p class="edit-recipe__ingredient-title font__text_large">Ингредиенты</p>
+      <div
+        class="edit-recipe__ingredient"
+        *ngFor="let ingredient of recipe.ingredients"
+      >
+        <p class="font__text_large">{{ ingredient.title }}</p>
+        <p class="font__text_normal">{{ ingredient.description }}</p>
+      </div>
+    </div>
+    <div class="edit-recipe__steps">
+      <div class="edit-recipe__step" *ngFor="let step of recipe.steps">
+        <p class="font__text_large">Шаг {{ step.index }}</p>
+        <p class="font__text_normal">{{ step.description }}</p>
+      </div>
+    </div>
+  </div>
+
+    <p class="font__title_tiny edit-recipe__postscriptum">Приятного Аппетита!</p>
+</div>
+
+<div class="create-recipe__preloader-container visually-hidden" id="preloader">
+    <mat-spinner
+      class="create-recipe__preloader"
+      color="dark"
+    >
+    </mat-spinner>
+  </div>

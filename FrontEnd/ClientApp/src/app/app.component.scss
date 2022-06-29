@@ -145,4 +145,8 @@
    {
       font: 400 18px/1.55 $main-font;
    }
+
+   .mat-progress-spinner circle, .mat-spinner circle {
+      stroke: $yellow;
+   }
 }

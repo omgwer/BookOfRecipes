@@ -11,6 +11,7 @@ namespace Backend.Controllers
     {
         private readonly IRecipeService _recipeService;
         private readonly IPhotoService _photoService;
+        private readonly int sleepTime = 1000;
 
         public RecipeController( IRecipeService recipeService, IPhotoService photoService )
         {
@@ -22,6 +23,7 @@ namespace Backend.Controllers
         [Route( "save" )]
         public IActionResult SaveRecipe( [FromBody] RecipeDto recipe )
         {
+            Thread.Sleep( sleepTime );
             RecipeDto newRecipe = _recipeService.SaveRecipe( recipe );
 
             if ( newRecipe.RecipeId == 0 )
@@ -33,9 +35,38 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
+        [Route( "{recipeId}" )]
+        public IActionResult GetRecipe( int recipeId )
+        {
+            Thread.Sleep( 300 );
+            RecipeDto? recipe = _recipeService.GetRecipe( recipeId );
+            if ( recipe == null )
+            {
+                return BadRequest( "Recipe not found!" );
+            }
+
+            return Ok( recipe );
+        }
+
+        [HttpGet]
+        [Route( "{recipeId}/delete" )]
+        public IActionResult DeleteRecipe( int recipeId )
+        {
+            Thread.Sleep( sleepTime );
+            String result =_recipeService.DeleteRecipe( recipeId );
+            if ( result == "Fail" )
+            {
+                return BadRequest( "Recipe not found!" );
+            }
+
+            return Ok( "{\"response\" : \"" + result + "\"}" );
+        }
+
+        [HttpGet]
         [Route( "list/{count}" )]
         public IActionResult GetRecipeList( int count )
         {
+            Thread.Sleep( sleepTime );
             List<RecipeDto> recipeList = _recipeService.GetRecipeList( count );
 
             if ( recipeList.Count == 0 )
@@ -50,7 +81,8 @@ namespace Backend.Controllers
         [Route( "{recipeId}/updatePhoto" )]
         public IActionResult UpdatePhoto( IFormFile file, int recipeId )
         {
-            Recipe? recipe = _recipeService.GetRecipeForUpdate( recipeId );
+            Thread.Sleep( sleepTime );
+            RecipeDto? recipe = _recipeService.GetRecipe( recipeId );
             if ( recipe == null )
             {
                 return BadRequest( "Recipe not found!" );
@@ -62,7 +94,7 @@ namespace Backend.Controllers
 
             RecipeDto newRecipe = _recipeService.SaveRecipe( recipe );
 
-            return Ok( "photo saved" );
+            return Ok( newRecipe );
         }
     }
 }
