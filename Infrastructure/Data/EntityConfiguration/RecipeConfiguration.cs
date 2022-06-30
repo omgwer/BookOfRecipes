@@ -11,7 +11,7 @@ namespace Infrastructure.Data.EntityConfiguration
             builder.HasKey( t => t.RecipeId );
             builder.Property( t => t.AuthorId );
             builder.Property( t => t.Name ).HasMaxLength( 200 ).IsRequired();
-            builder.Property( t => t.Description ).HasMaxLength( 200 ).IsRequired();
+            builder.Property( t => t.Description ).IsRequired();
             builder.HasMany( t => t.TagsList );
             builder.Property( t => t.TimeForCook).IsRequired();
             builder.Property(t => t.NumberOfServings).IsRequired();            

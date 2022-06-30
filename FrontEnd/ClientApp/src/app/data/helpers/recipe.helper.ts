@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recipe } from '../containers/recipe.interface';
 import { Photo } from '../containers/photo.interface';
+import { of } from 'rxjs';
+
+export interface IOptionResponse {
+  message: string;
+  model?: Recipe[];
+}
 
 @Injectable()
 export class RecipeHelper {
@@ -15,9 +21,9 @@ export class RecipeHelper {
     return this.http.post<Recipe>(this.baseUrl + '/api/Recipe/save', recipe);
   }
 
-  getRecipeList(index: Number): Observable<Recipe[]> {
+  getRecipeList(index: Number): Observable<Recipe[]>{
     return this.http.get<Recipe[]>(this.baseUrl + '/api/Recipe/list/' + index);
-  }
+  } 
 
   updatePhoto(url: string, file: FormData) : Observable<Recipe> {    
     return this.http.post<Recipe>(url, file);

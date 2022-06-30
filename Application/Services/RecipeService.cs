@@ -33,7 +33,7 @@ namespace Application.Services
             }
             return null;
         }
-               
+
         public RecipeDto SaveRecipe( RecipeDto recipe )
         {
             Recipe newRecipe;
@@ -55,13 +55,24 @@ namespace Application.Services
 
         public List<RecipeDto> GetRecipeList( int count )
         {
+            int countTest = 4;
+            int returnCount = 4 * count;
             List<RecipeDto> list = new List<RecipeDto>();
-            for ( int i = count * 4; i < count * 4 + 4; i++ )
+            for ( int i = 0; i < 1000; i++ )
             {
                 Recipe? recipe = _recipeRepository.GetRecipe( i + 1 );
                 if ( recipe != null )
                 {
-                    list.Add( RecipeExtensions.ToDto( recipe ) );
+                    returnCount--;
+                    if (returnCount < 0) {
+                        list.Add( RecipeExtensions.ToDto( recipe ) );
+                        countTest--;
+                    }
+                    
+                    if ( countTest == 0 )
+                    {
+                        break;
+                    }
                 }
                 else
                 {

@@ -69,7 +69,7 @@
     &__description
     {
         margin: 16px 0 64px;
-        color: $gray;
+        color: $gray;        
     }
 
     &__title
@@ -196,10 +196,12 @@
 
     &__title {
         margin-top: 50px;
+        font-size: 22px;
     }
 
     &__description {
         margin-top: 15px;
+        font-weight: 400;
     }
 
     &__time-for-cook {
@@ -245,7 +247,7 @@
     &__footer {
         display: flex;
         position: relative;
-        bottom: -113px;
+        bottom: -75px;
     }
  }
 

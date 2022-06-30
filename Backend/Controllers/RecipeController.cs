@@ -71,7 +71,7 @@ namespace Backend.Controllers
 
             if ( recipeList.Count == 0 )
             {
-                return NotFound();
+                return NotFound( recipeList );
             }
 
             return Ok( recipeList );

@@ -52,7 +52,7 @@ export class CreateRecipeComponent implements OnInit {
 
   createRecipeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
+    description: new FormControl('', [Validators.maxLength(200), Validators.required ]),
     timeForCook: new FormControl('', Validators.required),
     numberOfServings: new FormControl('', Validators.required),
     ingredients: new FormArray([
@@ -132,9 +132,14 @@ export class CreateRecipeComponent implements OnInit {
          console.log(fd);
         let newUrl: string = 'https://localhost:7192/api/Recipe/'+ e.recipeId +'/updatePhoto';      
         this.recipeHelper.updatePhoto(newUrl, fd ).subscribe( e => {
+          this.hidePreloader();
+          window.location.href='http://localhost:4200/recipes';
         });
-        this.hidePreloader();
-        window.location.href='http://localhost:4200/recipes';
+        setTimeout(()=> {
+          this.hidePreloader();
+          window.location.href='http://localhost:4200/recipes';
+        }, 2000); 
+        
       }
     
     } );

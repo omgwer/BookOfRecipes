@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20220628173749_initialize")]
-    partial class initialize
+    [Migration("20220630050653_release")]
+    partial class release
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,8 +65,7 @@ namespace Backend.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
