@@ -48,7 +48,7 @@ namespace Backend.Controllers
             return Ok( recipe );
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route( "{recipeId}/delete" )]
         public IActionResult DeleteRecipe( int recipeId )
         {

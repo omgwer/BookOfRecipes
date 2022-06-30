@@ -61,7 +61,7 @@
   </div>
   
   <div *ngFor="let recipe of recipeList">
-    <div class="recipe-block" (click)="openRecipe(recipe.recipeId)">            
+    <div class="recipe-block" [routerLink]="'/recipes/' + recipe.recipeId">            
         <img 
           *ngIf="recipe.imageUrl != 'null'"
           class="recipe-block__upload-photo" 

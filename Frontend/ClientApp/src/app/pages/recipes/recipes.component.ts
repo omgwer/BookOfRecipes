@@ -44,12 +44,4 @@ export class RecipesComponent implements OnInit {
     let preloader = document.getElementById('preloader') as HTMLElement;
     preloader.classList.add('visually-hidden');
   }
-
-  openRecipe(recipeId?: number): void {
-    if (recipeId != null) {
-      console.log('http://localhost:4200/recipes/' + recipeId.toString());
-      window.location.href =
-        'http://localhost:4200/recipes/' + recipeId.toString();
-    }
-  }
 }

@@ -34,6 +34,6 @@ export class RecipeHelper {
   }
 
   deleteRecipe(index: Number): Observable<String> {
-    return this.http.get<String>(this.baseUrl + '/api/Recipe/' + index + '/delete');
+    return this.http.delete<String>(this.baseUrl + '/api/Recipe/' + index + '/delete');
   }
 }

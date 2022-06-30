@@ -10,9 +10,9 @@
       <div class="edit-recipe__button-block">
         <button
           mat-raised-button
-          class="edit-recipe__delete-recipe"
-          [routerLink]="'/recipes/' + recipe.recipeId"
+          class="edit-recipe__delete-recipe"          
           (click)="deleteRecipe(recipe.recipeId)"
+          routerLink="/recipes/"
         >
           <mat-icon>delete</mat-icon>
         </button>

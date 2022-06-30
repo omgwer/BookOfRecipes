@@ -33,6 +33,7 @@ export class CreateRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.initPhoto();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   add(event: MatChipInputEvent): void {

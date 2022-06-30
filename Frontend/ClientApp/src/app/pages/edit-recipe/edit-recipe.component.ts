@@ -18,6 +18,7 @@ export class EditRecipeComponent implements OnInit {
 
   ngOnInit(): void {    
     this.initRecipe();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   initRecipe(): void {
@@ -33,8 +34,6 @@ export class EditRecipeComponent implements OnInit {
     this.showPreloader();
     this.recipeHelper.deleteRecipe(recipeId as Number).subscribe(e =>  {
       this.hidePreloader();
-      console.log(e);
-      window.location.href='http://localhost:4200/recipes';
       }
     );
   }
