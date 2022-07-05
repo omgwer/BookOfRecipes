@@ -11,10 +11,10 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
-            modelBuilder.ApplyConfiguration( new RecipeConfiguration() );
             modelBuilder.ApplyConfiguration( new TagConfiguration() );
             modelBuilder.ApplyConfiguration( new IngredientConfiguration() );
             modelBuilder.ApplyConfiguration( new StepConfiguration() );
+            modelBuilder.ApplyConfiguration( new RecipeConfiguration() );
 
             // для каждой таблицы добавлять в билдер конфиг.
         }

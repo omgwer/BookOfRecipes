@@ -17,6 +17,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipesComponent } from './pages/recipes/recipes.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EditRecipeComponent } from './pages/edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainPageComponent,
     CreateRecipeComponent,
     NotFoundPageComponent,
+    RecipesComponent,
+    EditRecipeComponent,        
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [RecipeHelper],
   bootstrap: [AppComponent],

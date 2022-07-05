@@ -10,7 +10,7 @@ namespace Infrastructure.Data.EntityConfiguration
         {
             builder.HasKey( x => x.Id );
             builder.Property( x => x.RecipeId );
-            builder.Property( x => x.Order );
+            builder.Property( x => x.Index );
             builder.Property( x => x.Title );
             builder.Property( x => x.Description );
         }

@@ -1,0 +1,129 @@
+<div class="recipes">
+  <div class="recipes__header">
+    <h2 class="font__title_large">Рецепты</h2>
+    <button
+      mat-raised-button
+      class="recipes__add-recipe yellow-button font__text_large"
+      routerLink="/create-recipe"
+    >
+      + Добавить рецепт
+    </button>
+  </div>
+  <div class="tags-list">
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/simple.png" />
+      <h3 class="font__title_tiny tags-list__title">Простые блюда</h3>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/children.png" />
+      <h3 class="font__title_tiny tags-list__title">Детское</h3>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/chief.png" />
+      <h3 class="font__title_tiny tags-list__title">От шеф-поваров</h3>
+    </div>
+    <div class="tags-list__tag">
+      <img src="../../../assets/tags-list/holiday.png" />
+      <h3 class="font__title_tiny tags-list__title">На праздник</h3>
+    </div>
+  </div>
+
+  <div class="search-recipes">
+    <h3 class="search-recipes__title font__title_tiny">Поиск рецепта</h3>
+    <div class="search-recipe-form">
+      <div class="search-recipe-form__input">
+        <mat-form-field
+          appearance="fill"
+          class="simple-input font__text_normal"
+        >
+          <mat-label>Введите название рецепта</mat-label>
+          <input
+            autocomplete="off"
+            class="simple-input__input-field"
+            matInput
+            [formControl]="input"            
+          />          
+        </mat-form-field>
+      </div>
+      <button
+        mat-raised-button
+        class="search-recipe-form__submit font__text_normal yellow-button"
+      >
+        Поиск
+      </button>
+      <p class="search-recipe-form__tag-helper font__text_tiny">
+        <span class="search-recipe-form__tag">Мясо</span>
+        <span class="search-recipe-form__tag">Деликатесы</span>
+        <span class="search-recipe-form__tag">Пироги</span>
+        <span class="search-recipe-form__tag">Рыба</span>
+      </p>
+    </div>
+  </div>
+  
+  <div *ngFor="let recipe of recipeList">
+    <div class="recipe-block" [routerLink]="'/recipes/' + recipe.recipeId">            
+        <img 
+          *ngIf="recipe.imageUrl != 'null'"
+          class="recipe-block__upload-photo" 
+          [src]="'https://localhost:7192' + recipe.imageUrl"
+          width="430px" 
+          height="430px">  
+        <img 
+          *ngIf="recipe.imageUrl == 'null'"
+          class="recipe-block__upload-photo" 
+          src="../../../assets/recipe-background.png" 
+          width="430px" 
+          height="430px">    
+      <div class="recipe-block__container">
+          <div class="recipe-block__header">
+              <div class="recipe-block__tags-list">
+                <span class="recipe-block__tag" *ngFor="let tag of recipe.tagsList">{{tag.name}} &nbsp;</span>
+              </div>
+              <div class="recipe-block__likes-container">
+                <div class="recipe-block__bookmark">
+                  <img class="recipe-block__bookmark_logo" src="../../../assets/star-fill.svg">
+                  <span class="font__text_normal recipe-block__bookmark_color">10</span>
+                </div>
+                <div class="recipe-block__like">
+                  <img class="recipe-block__like_logo" src="../../../assets/favorite-fill.svg">
+                  <span class="font__text_normal recipe-block__like_color">5</span>
+                </div>
+              </div>
+          </div>
+          <div class="recipe-block__title font__title_tiny">{{recipe.name}}</div>
+          <div class="recipe-block__description font__text_large">{{recipe.description}}</div>
+          <div class="recipe-block__footer">
+            <div class="recipe-block__time-for-cook">
+              <img src="../../../assets/time-for-cook.png">
+              <div class="recipe-block__time-for-cook_content">
+                <p class="recipe-block__time-title">Время приготовления:</p>
+                <p class="recipe-block__time-description font__text_tiny">{{recipe.timeForCook}} мин</p>
+              </div>
+            </div>
+
+            <div class="recipe-block__number-of-servings">
+              <img class="recipe-block__number-of-servings-logo" src="../../../assets/persons.png" width="59px" height="38px">
+              <div class="recipe-block__number-of-servings_content">
+                <p class="recipe-block__number-of-servings-title">Рецепт на:</p>
+                <p class="recipe-block__number-of-servings-description font__text_tiny">{{recipe.numberOfServings}} персон</p>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+    <button 
+        mat-stroked-button 
+        class="white-button font__text_large add-recipes-button" (click)="pushRecipeElementForList()">
+          Загрузить еще
+    </button>  
+</div>
+
+<div class="create-recipe__preloader-container " id="preloader">
+  <mat-spinner
+    class="create-recipe__preloader"
+    color="dark"
+  >
+  </mat-spinner>
+</div>

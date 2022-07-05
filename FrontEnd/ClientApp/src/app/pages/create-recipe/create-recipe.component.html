@@ -19,7 +19,6 @@
         routerLink="/create-recipe"
         type="submit"
         [disabled]="createRecipeForm.invalid"
-
       >
         Опубликовать
       </button>
@@ -34,10 +33,19 @@
         class="create-recipe__upload-photo-button"
         id="photoUploadButton"
       />
-      <label
-        class="create-recipe__upload-photo"
-        for="photoUploadButton"
-      ></label>
+      <label for="photoUploadButton">        
+        <img class="create-recipe__upload-photo" 
+          src="../../../assets/create-recipe/upload-photo.png" 
+          alt=""
+          width="430px" 
+          height="430px"
+          id="newPhoto">
+      </label>
+      <div
+        *ngIf="file != null"
+        class="create-recipe__delete-photo" id="deletePhoto" (click)="deletePhoto()">
+        <mat-icon>cancel</mat-icon>
+      </div>      
     </div>
     <div class="create-recipe__input-container">
       <div class="create-recipe__recipe-name">
@@ -59,7 +67,7 @@
       </div>
       <div class="create-recipe__recipe-description">
         <mat-form-field appearance="fill" class="long-input font__text_normal">
-          <mat-label>Краткое описание рецепта(150 символов)</mat-label>
+          <mat-label>Краткое описание рецепта(200 символов)</mat-label>
           <textarea
             matInput
             class="long-input__input-field"
@@ -69,24 +77,25 @@
             >Введите значение в поле</mat-error
           >
         </mat-form-field>
-      </div>
-      <div class="create-recipe__add-tags">
-        <mat-form-field
-          appearance="fill"
-          class="simple-input font__text_normal"
-        >
-          <mat-label>Добавить теги</mat-label>
-          <input
-            autocomplete="off"
-            class="simple-input__input-field"
-            matInput
-            formControlName="tagsList"
-          />
-          <mat-error *ngIf="createRecipeForm.controls['tagsList'].invalid"
-            >Введите значение в поле</mat-error
-          >
-        </mat-form-field>
-      </div>
+      </div>         
+          <div class="create-recipe__add-tags">
+              <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label class="font__text_normal">Добавить теги</mat-label>
+                <mat-chip-list #chipList aria-label="Добавить теги">
+                  <mat-chip *ngFor="let tag of recipe.tagsList" (removed)="remove(tag)">
+                    {{tag.name}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Новый тег..."
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>                
+              </mat-form-field>
+          </div>
       <div class="create-recipe__droplist-container">
         <div class="create-recipe__droplist-elements">
           <div class="create-recipe__droplist-element">
@@ -94,7 +103,7 @@
               class="create-recipe__cooking-time"
               appearance="fill"
             >
-              <mat-label>Время готовки</mat-label>
+              <mat-label class="font__text_normal">Время готовки</mat-label>
               <mat-select formControlName="timeForCook">
                 <mat-option value="5">5</mat-option>
                 <mat-option value="15">15</mat-option>
@@ -114,7 +123,7 @@
         <div class="create-recipe__droplist-elements">
           <div class="create-recipe__droplist-element">
             <mat-form-field class="create-recipe__serving" appearance="fill">
-              <mat-label>Порций в блюде</mat-label>
+              <mat-label class="font__text_normal">Порций в блюде</mat-label>
 
               <mat-select formControlName="numberOfServings" ngDefaultControl>
                 <mat-option value="1">1</mat-option>
@@ -140,7 +149,7 @@
     </div>
   </div>
   <div class="create-recipe__container">
-    <div formArrayName ="ingredients">
+    <div formArrayName="ingredients">
       <p class="create-recipe__ingredients-header font__text_extra-large">
         Ингридиенты
       </p>
@@ -148,29 +157,32 @@
         class="create-recipe__ingredients-container"
         *ngFor="
           let control of getIngredientControls()['controls'];
-          let idx = index;
-        ">
+          let idx = index
+        "
+      >
         <img
           src="../../../assets/create-recipe/close.svg"
           class="create-recipe__close-button"
           (click)="deleteHeaderIngredient(idx)"
         />
-        <div class="create-recipe__ingredients" formGroupName="{{idx}}">
+        <div class="create-recipe__ingredients" formGroupName="{{ idx }}">
           <div class="create-recipe__ingredients">
             <div class="create-recipe__ingredient-title">
               <mat-form-field
                 appearance="fill"
                 class="simple-input font__text_normal"
               >
-                <mat-label>Заголовок для ингридиентов</mat-label>
+                <mat-label class="font__text_tiny">Заголовок для ингридиентов</mat-label>
                 <input
                   autocomplete="off"
                   class="simple-input__input-field"
                   matInput
                   formControlName="title"
                 />
-                <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
-                >Введите значение в поле</mat-error>  
+                <mat-error
+                  *ngIf="createRecipeForm.controls['description'].invalid"
+                  >Введите значение в поле</mat-error
+                >
               </mat-form-field>
             </div>
           </div>
@@ -180,15 +192,17 @@
                 appearance="fill"
                 class="long-input font__text_normal"
               >
-                <mat-label> Список продуктов для категории </mat-label>
+                <mat-label class="font__text_tiny"> Список продуктов для категории </mat-label>
                 <textarea
                   ngDefaultControl
                   matInput
                   class="long-input__input-field"
                   formControlName="description"
                 ></textarea>
-                <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
-                >Описание шага</mat-error>     
+                <mat-error
+                  *ngIf="createRecipeForm.controls['description'].invalid"
+                  >Описание шага</mat-error
+                >
               </mat-form-field>
             </div>
           </div>
@@ -205,21 +219,19 @@
         </button>
       </div>
     </div>
-    <div formArrayName ="steps" class="create-recipe__steps-container">
-      <div 
-      formGroupName="{{idx}}"
-      class="create-recipe__step" 
-      *ngFor="
-          let control of getStepsControls()['controls'];
-          let idx = index;"      
-          >
+    <div formArrayName="steps" class="create-recipe__steps-container">
+      <div
+        formGroupName="{{ idx }}"
+        class="create-recipe__step"
+        *ngFor="let control of getStepsControls()['controls']; let idx = index"
+      >
         <img
           src="../../../assets/create-recipe/close.svg"
           class="create-recipe__close-step-button"
           (click)="deleteStep(idx)"
         />
         <p class="font__text_large create-recipe__step-title">
-          Шаг {{ idx + 1}}
+          Шаг {{ idx + 1 }}
         </p>
         <div class="create-recipe__step-description">
           <mat-form-field
@@ -234,7 +246,8 @@
               name="description"
             ></textarea>
             <mat-error *ngIf="createRecipeForm.controls['description'].invalid"
-            >Введите значение в поле</mat-error>
+              >Введите значение в поле</mat-error
+            >
           </mat-form-field>
         </div>
       </div>
@@ -251,3 +264,11 @@
     </div>
   </div>
 </form>
+
+<div class="create-recipe__preloader-container visually-hidden" id="preloader">
+  <mat-spinner
+    class="create-recipe__preloader"
+    color="dark"
+  >
+  </mat-spinner>
+</div>

@@ -18,6 +18,7 @@
             height: 20px;
             background: url('../../../assets/yellow-pointer-left.svg');
             left: -2px;
+            top: 0;
             transition: ease-in-out 0.3s all;
         }
 
@@ -66,14 +67,32 @@
     &__upload-photo {
         position: absolute;
         cursor: pointer;
-        transition: all ease-in-out 0.2s;
-        background: url('../../../assets/create-recipe/upload-photo.png');
-        width: 430px;
-        height: 430px;
+        transition: all ease-in-out 0.2s;      
+        border-radius: 30px;
+    }
 
-        &:hover
-        {
-            transform: scale(1.02);
+    &__delete-photo {
+        position: absolute;
+        left: 392px;
+        top: 65px;
+        background-color: $yellow;
+        border-radius: 11px;
+        width: 24px;
+        height: 24px;
+        
+        & .mat-icon {
+            line-height: normal;
+            position: relative;
+            left: -0.5px;
+        }
+        
+        &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+
+            & .mat-icon{
+                left: 0;
+            }            
         }
     }
 
@@ -98,13 +117,13 @@
     &__droplist-elements {
         display: flex;
         gap: 10px;
-        width: 287px;
+        width: 300px;
         align-items: center;
         justify-content: stretch;
     }
 
     &__droplist-element {
-        width: 220px;
+        width: 230px;
     }
 
     &__container {
@@ -222,4 +241,32 @@
       color: $black-gray;
       cursor: pointer;
       width: 100%; 
+}
+
+.create-recipe {
+    &__preloader-container {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.8);
+      
+        &:hover {
+          cursor: pointer;
+        }
+    }
+
+    &__preloader {
+        position: fixed;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

@@ -1,13 +1,17 @@
 ﻿using Application.Models.Dto;
+using Domain;
 
 namespace Application.Services
 {
-    internal interface IRecipeService
+    public interface IRecipeService
     {
         public RecipeDto SaveRecipe(RecipeDto recipe);
 
-        public RecipeDto GetRecipe(int recipeId);
+        public RecipeDto? GetRecipe(int recipeId);
 
-        public void DeleteRecipe( int recipeId );
+        public String DeleteRecipe( int recipeId );
+
+        public List<RecipeDto> GetRecipeList(int count);
+
     }
 }

@@ -1,0 +1,377 @@
+@import 'colors';
+@import 'fonts';
+
+.yellow-button
+{
+    background-color: $yellow;
+    color: $white;
+    border-radius: 16px;
+    padding: 12px 25px;
+    width: 278px;
+}
+
+.white-button {
+    border: 1px solid $yellow;
+    color: $yellow;
+    border-radius: 16px;
+    padding: 12px 78px;
+    width: 309px;
+    margin: 50px auto;
+}
+
+
+.edit-recipe {
+    max-width: $appSize;
+    margin: 49px auto 106px;
+
+    &__rollback {
+        color: $yellow;
+        padding-left: 20px;
+        position: relative;
+        cursor: pointer;
+
+        &:before {
+            position: absolute;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: url('../../../assets/yellow-pointer-left.svg');
+            left: -2px;
+            top: 0;
+            transition: ease-in-out 0.3s all;
+        }
+
+        &:hover {
+            font-weight: 500;
+
+            &::before {
+                left: -10px;
+            }
+        }
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0 60px;
+
+    }
+
+    &__delete-recipe {
+        border-radius: 16px;
+        padding: 12px 25px;
+        width: 100;
+        margin-right: 18px;
+    }
+
+    &__title {
+        max-width: 600px;
+    }
+
+    &__other-info {
+        display: flex;    
+        justify-content: space-between;    
+    }
+
+    &__steps {
+        width: 790px;
+    }
+
+    &__step {
+        padding: 50px 50px 50px 73px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    &__ingredient-title {
+        font-size: 20px;
+        color: $yellow;
+        margin-bottom: 15px;    
+    }
+
+    &__ingredient {
+        margin-bottom: 15px;
+        max-width: 360px;
+    }
+
+    &__postscriptum {
+        color: rgba(253, 177, 0, 1);
+        margin: 60px auto;
+        max-width: 300px;
+    }
+}
+
+.tags-list
+{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+
+    &__tag
+    {
+        width: 278px;
+        background-color: $white;
+        border-radius: 15px;
+        padding: 24px 24px 32px;
+        cursor: pointer;
+        transition: all 500ms ease;
+        box-shadow: 0px 16px 72px 0px rgba(34, 39, 47, 0.05);        
+
+        &:hover
+        {
+            transform: scale(1.05);
+        }
+    }
+
+    &__title
+    {
+        margin: 24px 0 16px;
+        color: $black-gray;
+    }
+}
+
+.search-recipes
+{
+    max-width: $appSize;
+    margin: 50px auto 106px;
+    display: flex;
+
+    &__description
+    {
+        margin: 16px 0 64px;
+        color: $gray;
+    }
+
+    &__title
+    {
+        color: $dark-gray;
+        display: inline-block;
+        width: 220px;
+        padding-top: 20px;
+    }
+}  
+
+.search-recipe-form {       
+    &__submit {
+       background-color: $yellow;
+       color: $white;
+       padding: 18px 32px;
+       border-radius: 16px;
+       margin-left: 16px;
+       top: -11px;
+       max-width: 152px;
+    }
+ 
+    &__input-field {
+       caret-color: pink;
+    }
+ 
+    &__tag-helper
+    {
+       text-align: left;
+       max-width: 779px;
+       color: $white-gray;
+       margin-left: 10px;
+    }
+ 
+    &__tag
+    {
+       margin-right: 8px;
+       cursor: pointer;   
+    }
+ 
+    &__input
+    {
+       width: 779px;
+       display: inline-block;
+    }
+ }
+
+ .recipe-block {
+    min-width: 1200px;
+    min-height: 430px;
+    display: flex;
+    margin-bottom: 50px;
+    background-color: white;
+    border-radius: 24px;
+  
+
+    &__container {
+        min-width: 770px;
+        padding-left: 49px;
+        padding-right: 25px;
+    }
+
+    &__upload-photo {
+        border-radius: 25px;
+    }
+
+    &__header {
+        display: flex;
+        padding-top: 49px;
+        justify-content: space-between;
+        align-content: center;
+    }
+
+    &__tags-list {
+        align-self: center;
+    }
+
+    &__tag {
+        font: 400 14px/1.5 "montserrat", sans-serif;
+        color: rgba(242, 158,31,1);
+        background-color: #ffefcc;
+        padding: 5px 25px;
+        border-radius: 5px;
+        min-width: 90px;
+        margin-right: 5px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    &__likes-container {
+        display: flex;
+    }
+
+    &__bookmark {
+        display: flex;
+        border: 1px solid $yellow;
+        border-radius: 16px;
+        padding: 13px 15px;
+        
+        &_color {
+            color: $yellow;
+            margin-left: 10px;
+
+        }
+    }
+
+    &__like {
+        display: flex;
+        border: 1px solid $yellow;
+        border-radius: 16px;
+        padding: 13px 15px;
+        margin-left: 15px;
+
+        &_color {
+            color: $yellow;
+            margin-left: 10px;
+        }
+    }
+
+    &__title {
+        margin-top: 50px;
+    }
+
+    &__description {
+        margin-top: 15px;
+    }
+
+    &__time-for-cook {
+        display: flex;
+        margin-right: 50px;
+
+        &_content {
+            margin-left: 20px;
+        }
+        
+    }
+
+    &__time {
+        &-title {
+            font: 400 14px/1.5 "montserrat", sans-serif;
+            color: #25292D;
+            white-space: nowrap;
+        }
+    }
+
+    &__number-of-servings {
+        display: flex;
+
+        &-title {
+            font: 400 14px/1.5 "montserrat", sans-serif;
+            color: #25292D;
+            white-space: nowrap;
+        }
+
+        &-description {
+            white-space: nowrap;
+        }
+
+        &_content {
+            margin-left: 20px;
+        }
+
+        &-logo {
+            margin-top: 5px;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        position: relative;
+        bottom: -113px;
+    }
+ }
+
+ .add-recipes-button {
+    margin: 80px auto;
+    display: block;
+ }
+
+ .create-recipe {
+    &__preloader-container {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.8);
+      
+        &:hover {
+          cursor: pointer;
+        }
+    }
+
+    &__preloader {
+        position: fixed;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.create-recipe {
+    &__preloader-container {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, 0.8);
+      
+        &:hover {
+          cursor: pointer;
+        }
+    }
+
+    &__preloader {
+        position: fixed;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

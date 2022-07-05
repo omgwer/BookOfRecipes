@@ -1,31 +1,43 @@
 ﻿using Domain;
 using Domain.Services;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services
 {
     public class RecipeRepository : IRecipeRepository
     {
-        private readonly RecipeDbContext _dbContext;
+        private readonly DbSet<Recipe> _dbSet;
 
         public RecipeRepository( RecipeDbContext dbContext )
         {
-            _dbContext = dbContext;
+            _dbSet = dbContext.Set<Recipe>();
         }
-        public Recipe CreateRecipe( Recipe recipe )
+        public Recipe Add( Recipe recipe )
         {
-            var entity = _dbContext.Set<Recipe>().Add( recipe );
-            return entity.Entity;
-        }
-
-        public void DeleteRecipe( int id )
-        {
-            throw new NotImplementedException();
+            _dbSet.Add( recipe );
+            return recipe;
         }
 
-        public Recipe GetRecipe( int id )
+        public String Delete( int id )
         {
-            throw new NotImplementedException();
+            Recipe? recipe = _dbSet.Where( r => r.RecipeId == id ).FirstOrDefault();
+            if ( recipe != null )
+            {
+                _dbSet.Remove( recipe );
+                return "Success";
+            }
+            return "Fail";            
+        }
+
+        public Recipe? GetRecipe( int recipeId )
+        {
+            Recipe? recipe = _dbSet
+                .Include( x => x.Ingredients )
+                .Include( x => x.Steps )
+                .Include( x => x.TagsList)
+                .FirstOrDefault( x => x.RecipeId == recipeId );
+            return recipe;
         }
 
         public List<Recipe> GetRecipes()
@@ -33,9 +45,10 @@ namespace Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public int UpdateRecipe( Recipe recipe )
+        public Recipe Update( Recipe recipe )
         {
-            throw new NotImplementedException();
+            _dbSet.Update( recipe );
+            return recipe;
         }
     }
 }

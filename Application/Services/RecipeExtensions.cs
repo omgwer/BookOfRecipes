@@ -3,9 +3,9 @@ using Domain;
 
 namespace Application.Services
 {
-    public static class RecipeExtenshions
+    public static class RecipeExtensions
     {
-        public static RecipeDto toDto(this Recipe recipe )
+        public static RecipeDto ToDto( this Recipe recipe )
         {
             RecipeDto recipeDto = new RecipeDto
             {
@@ -43,32 +43,40 @@ namespace Application.Services
             return listDto;
         }
 
-        private static string GetTagsDtoList( List<Tag> tagsList )
+        private static List<TagDto> GetTagsDtoList( List<Tag> tagsList )
         {
-            string tagsDto = " ";
-            foreach ( var tag in tagsList )
+            var listDto = new List<TagDto>();
+            foreach ( var item in tagsList )
             {
-                tagsDto += tag.Name + ", ";
+                listDto.Add( ToTagDto( item ) );
             }
-
-            return tagsDto;
+            return listDto;
         }
 
-        private static IngredientDto ToIngredientDto(Ingredient ingredient)
+        private static IngredientDto ToIngredientDto( Ingredient ingredient )
         {
             return new IngredientDto
             {
                 Description = ingredient.Description,
-                Order = ingredient.Order,
+                Index = ingredient.Index,
                 Title = ingredient.Title,
             };
         }
 
         private static StepDto ToStepDto( Step step )
         {
-            return new StepDto { 
-             Description = step.Description,
-             Order = step.Order,             
+            return new StepDto
+            {
+                Description = step.Description,
+                Index = step.Index,
+            };
+        }
+
+        private static TagDto ToTagDto( Tag tag )
+        {
+            return new TagDto
+            {
+                Name = tag.Name
             };
         }
     }

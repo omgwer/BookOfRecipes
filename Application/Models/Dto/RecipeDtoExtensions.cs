@@ -1,10 +1,12 @@
-﻿using Domain;
+﻿using System.Diagnostics;
+using Application.Services;
+using Domain;
 
 namespace Application.Models.Dto
 {
-    public static class RecipeDtoExtenshions
+    public static class RecipeDtoExtensions
     {
-        public static Recipe ToRecipe( this RecipeDto dto )
+        public static Recipe ToRecipe( this RecipeDto dto, ITagListBuilder tagListBuilder )
         {
             return new Recipe
             {
@@ -12,13 +14,27 @@ namespace Application.Models.Dto
                 AuthorId = dto.AuthorId,
                 Name = dto.Name,
                 Description = dto.Description,
-                TagsList = GetTagsList( dto.TagsList ),
                 TimeForCook = dto.TimeForCook,
                 NumberOfServings = dto.NumberOfServings,
                 ImageUrl = dto.ImageUrl,
                 Ingredients = GetIngredientsList( dto.Ingredients ),
+                TagsList = tagListBuilder.Build( dto.TagsList ) ,
                 Steps = GetStepsList(dto.Steps)
             };
+        }
+
+        public static Recipe ToRecipe( this RecipeDto dto, ITagListBuilder tagListBuilder, Recipe recipe )
+        {
+            recipe.AuthorId = dto.AuthorId;
+            recipe.Name = dto.Name;
+            recipe.Description = dto.Description;
+            recipe.TimeForCook = dto.TimeForCook;
+            recipe.NumberOfServings = dto.NumberOfServings;
+            recipe.ImageUrl = dto.ImageUrl;
+            recipe.Ingredients = GetIngredientsList( dto.Ingredients );
+            recipe.TagsList = tagListBuilder.Build( dto.TagsList );
+            recipe.Steps = GetStepsList( dto.Steps );
+            return recipe;
         }
 
         private static List<Ingredient> GetIngredientsList( List<IngredientDto> listDto )
@@ -39,25 +55,6 @@ namespace Application.Models.Dto
                 list.Add( item.ToStep( item ) );
             }
             return list;
-        }
-
-        private static List<Tag> GetTagsList( string tags )
-        {
-            var list = new List<Tag>();
-            string tag = tags.Replace( ",", " " ).Replace(".", " ");
-            var tagsList = tag.Split( " " );
-            foreach ( var item in tagsList ) 
-            {
-                if ( item.Trim() == " " )
-                {
-                    continue;
-                }
-                list.Add( new Tag { 
-                    Id = 0,
-                    Name = item.Trim(),
-                } );
-            }
-            return list;
-        }
+        }       
     }
 }

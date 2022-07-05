@@ -12,14 +12,14 @@ var app = builder.Build();
 {
     configuration.RootPath = "ClientApp/dist";
 } );*/
-          
+
 app.UseDeveloperExceptionPage();
           
 app.UseStaticFiles();          
 
 app.UseSpa( spa =>
 {
-    spa.Options.SourcePath = "ClientApp";               
+    spa.Options.SourcePath = "ClientApp";
     spa.UseAngularCliServer( npmScript: "start" );                
 } );
  
