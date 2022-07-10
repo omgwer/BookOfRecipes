@@ -30,9 +30,9 @@ export class RecipesComponent implements OnInit {
     this.recipeHelper.getRecipeList(this.listIndex).subscribe((x) => {
       x.forEach((e) => this.recipeList.push(e));
       this.listIndex++;
-      this.hidePreloader();
+      setInterval(()=> this.hidePreloader(), 4000);
     });
-    setInterval(()=> this.hidePreloader(), 3000);
+    setInterval(()=> this.hidePreloader(), 4000);
   }
 
   showPreloader(): void {
